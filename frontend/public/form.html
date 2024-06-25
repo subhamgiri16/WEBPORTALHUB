@@ -246,17 +246,22 @@
             </div><br>
             <div class="btns-group">
                 <!-- Save Button -->
-                <button type="button" onclick="saveData(1)">Save Module 1</button>
+                <button type="button" onclick="saveData(1)"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Save
+                    Module 1</button>
 
                 <!-- Submit Button -->
-                <button type="button" onclick="submitData()">Submit Module 1</button>
-                <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+                <button type="button" onclick="submitData()"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Submit
+                    Module 1</button>
+                <button type="button"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Next</button>
             </div>
         </div>
     </form>
 
 
-    <!-- module-2 form --> 
+    <!-- module-2 form -->
     <form method="POST" id="module2Form" class="form" action="http://127.0.0.1:5500/submit-module2">
 
         <h3 class="text-center">Please Fill out the form</h3>
@@ -268,7 +273,7 @@
             <div class="progress-step progress-step-active" data-title="Module-2" data-step="2"></div>
         </div>
 
-        <div class="form-step" data-step="2" >
+        <div class="form-step" data-step="2">
             <h1 class="text-center">Module-2</h1>
             <h1 class="text-center schemeName"></h1>
             <div class="input-group">
@@ -435,12 +440,21 @@
                 </select>
             </div><br>
             <div class="btns-group">
+
+                <a href="#" class="btn btn-prev" style="background-color:lightskyblue; border-radius: 30px; border-color: lightskyblue;">Previous</a>
+
                 <!-- Save Button -->
-                <button type="button" onclick="saveData(1)">Save Module 2</button>
+                <button type="button" onclick="saveData(1)"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Save
+                    Module 2</button>
 
                 <!-- Submit Button -->
-                <button type="button" onclick="submitData()">Submit Module 2</button>
-                <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+                <button type="button" onclick="submitData()"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Submit
+                    Module 2</button>
+                    
+                <button type="button"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Next</button>
             </div>
         </div>
     </form>
@@ -642,14 +656,20 @@
                 </select>
             </div><br>
             <div class="btns-group">
-                <a href="#" class="btn btn-prev">Previous</a>
+                <a href="#" class="btn btn-prev" style="background-color:lightskyblue; border-radius: 30px; border-color: lightskyblue;">Previous</a>
                 <!-- Save Button -->
-                <a href="#" class="btn btn-save width-50 ml-auto">Save</a>
+                <button type="button" onclick="saveData(1)"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Save
+                    Module 3</button>
+
                 <!-- Submit Button -->
-                <a href="#" class="btn btn-submit width-50 ml-auto">Submit Module-3</a>
+                <button type="button" onclick="submitData()"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Submit
+                    Module 3</button>
             </div>
         </div>
     </form>
+
 
     <!-- capex data form -->
     <form method="POST" id="capexForm" class="form" action="http://localhost:5500/submit-capex">
@@ -1310,11 +1330,16 @@
             </div>
 
             <div class="btns-group">
-                <a href="#" class="btn btn-prev">Previous</a>
+                <a href="#" class="btn btn-prev" style="background-color:lightskyblue; border-radius: 30px; border-color: lightskyblue;">Previous</a>
                 <!-- Save Button -->
-                <a href="#" class="btn btn-save width-50 ml-auto" id="btn-save">Save</a>
+                <button type="button" onclick="saveData(1)"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Save
+                    Capex</button>
+
                 <!-- Submit Button -->
-                <a href="#" class="btn btn-submit width-50 ml-auto" id="btn-submit">Submit</a>
+                <button type="button" onclick="submitData()"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Submit
+                    Capex</button>
             </div>
         </div>
     </form>
