@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - WebPortalHub</title>
+    <!-- Favicons -->
+    <link href="/frontend/images/site_logo.png" rel="icon">
+    <link rel="stylesheet" href="/frontend/public/styles.css"> <!-- Assuming this file exists and contains your CSS styles -->
+</head>
+
+<body>
+    <a href="index.html">
+        <img src="/frontend/images/logo.png" alt="Logo" />
+    </a>
+    <main>
+        <h1>Sign Up</h1>
+        <form id="signupForm" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+            <button type="button" onclick="handleVerifyPhone()" style="background-color: chocolate; font-size: 14px;transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;">Verify Phone</button>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+
+            <label for="dt">Date:</label>
+            <input type="datetime-local" id="dt" name="dt" placeholder="Date-Time" required>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role" style="background-color: chocolate; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;"">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select><br>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login</a></p>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
+    <!-- Optional: if you plan to use Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
+    <!-- Optional: if you plan to use Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js"></script>
+    <!-- Optional: if you want to use Analytics -->
+
+    <script>
+        // Your Firebase config
+        var firebaseConfig = {
+            apiKey: "AIzaSyB8LNRWbLj7i6OpbMu2_qCE_7vrb2xJhmI",
+            authDomain: "webportalhub.firebaseapp.com",
+            projectId: "webportalhub",
+            storageBucket: "webportalhub.appspot.com",
+            messagingSenderId: "124546835776",
+            appId: "1:124546835776:web:0b9d2c427d842ed41346a5",
+            measurementId: "G-TS8QV6L6Q3"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+</body>
+
+</html>

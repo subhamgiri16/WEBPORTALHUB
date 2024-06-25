@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/frontend/public/app.css" />
+    <!-- Favicons -->
+    <link href="/frontend/images/site_logo.png" rel="icon">
+
+
+    <!-- <script src="./script/app_1.js" defer></script> -->
+    <title>User Form</title>
+</head>
+
+<body>
+    <form method="POST" id="module1Form" class="form" action="http://127.0.0.1:5500/submit-module1">
+
+        <h3 class="text-center">Please Fill out the form</h3>
+        <!-- Progress bar -->
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+
+            <div class="progress-step progress-step-active" data-title="Module-1" data-step="1"></div>
+        </div>
+
+
+        <!-- module-1 form -->
+        <div class="form-step form-step-active" data-step="1">
+            <h1 class="text-center">Module-1</h1>
+            <h1 class="text-center schemeName"></h1>
+            <div class="input-group">
+                <label for="Sl1">SL. (FY2023-24):</label>
+                <input type="number" id="Sl1" name="Sl1" required>
+            </div>
+            <div class="input-group">
+                <label for="previousSl1">Sl. (FY 2022-23):</label>
+                <input type="number" id="previousSl1" name="previousSl1" required>
+            </div>
+            <div>
+                <label for="wbsElement">WBS Element IPM-F&A:</label>
+                <input type="text" id="wbsElement" name="wbsElement" required>
+            </div><br>
+            <div>
+                <label for="projectId">PROJECT ID:</label>
+                <input type="text" id="projectId" name="projectId" required>
+            </div><br>
+
+            <div>
+                <label for="schemeName">Scheme Name:</label>
+                <input type="text" id="schemeName" name="schemeName" required>
+            </div><br>
+            <div>
+                <label for="sanctionedCost">Sanctioned cost (INR / Crs):</label>
+                <input type="number" id="sanctionedCost" name="sanctionedCost" required>
+            </div> <br>
+            <div>
+                <label for="anticipatedCost">Anticipated cost (INR / Crs):</label>
+                <input type="number" id="anticipatedCost" name="anticipatedCost" required>
+            </div><br>
+            <div>
+                <label for="ipmm">IPM-MM (DO):</label>
+                <select id="ipmm" name="ipmm" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="dept">Dept:</label>
+                <select id="dept" name="dept" required>
+                    <option value="">Select Department</option>
+                    <option value="dept1">Dept 1</option>
+                    <option value="dept2">Dept 2</option>
+                </select>
+            </div> <br>
+            <div>
+                <label for="proj_mgr">PROJ MGR:</label>
+                <select id="proj_mgr" name="proj_mgr" required>
+                    <option value="">Select Manager</option>
+                    <option value="manager1">Gopal Prasad</option>
+                    <option value="manager2">C S Pant</option>
+                    <option value="manager3">P K Sinha</option>
+                    <option value="manager4">Sanjay Kar</option>
+                    <option value="manager5">Suresh Sarkar</option>
+                    <option value="manager6">Medical Org</option>
+                    <option value="manager7">Misc</option>
+                </select>
+            </div> <br>
+            <div>
+                <label for="current_status">CURRENT STATUS:</label>
+                <select id="current_status" name="current_status" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div> <br>
+            <div>
+                <label for="scheme_type">SCHEME TYPE:</label>
+                <select id="scheme_type" name="scheme_type" required>
+                    <option value="">Select Scheme</option>
+                    <option value="scheme1">Corporate</option>
+                    <option value="scheme2">IPU</option>
+                    <option value="scheme3">MEP</option>
+                    <option value="scheme4">CR</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="stage1_approval">Stage-I Plant PAG Date (Actual/Likely):</label>
+                <input type="date" id="stage1_approval" name="stage1_approval" required placeholder="Select date">
+            </div><br>
+            <div>
+                <label for="stage1_approvaldate">Stage-I Approval Date (Actual/Likely):</label>
+                <input type="date" id="stage1_approvaldate" name="stage1_approvaldate" required
+                    placeholder="Select date">
+            </div><br>
+            <div>
+                <label for="stage1_cost_gross">Stage-I Cost (Gross Rs Cr):</label>
+                <input type="number" id="stage1_cost_gross" name="stage1_cost_gross">
+            </div> <br>
+            <div>
+                <label for="stage1_cost_net">Stage-I Cost (Net Rs Cr):</label>
+                <input type="number" id="stage1_cost_net" name="stage1_cost_net">
+            </div><br>
+            <div>
+                <label for="stage1_approval_time">Time taken in Stage-I Approval from PAG-I (Actual / Likely):</label>
+                <input type="number" id="stage1_approval_time" name="stage1_approval_time">
+            </div> <br>
+            <div>
+                <label for="stage1_pag_qtr">Stage-I PAG (Qtr/FY):</label>
+                <input type="number" id="stage1_pag_qtr" name="stage1_pag_qtr">
+            </div><br>
+
+            <div>
+                <label for="stage1_approval_qtr">Stage-I Approval (Qtr/FY):</label>
+                <input type="number" id="stage1_approval_qtr" name="stage1_approval_qtr">
+            </div><br>
+
+            <div>
+                <label for="stage1_approval_trend">Stage-I Approval Trend (Actual/ likely):</label>
+                <select id="stage1_approval_trend" name="stage1_approval_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label for="award_trend_nit">Award Trend from NIT (Actual/Likely):</label>
+                <select id="award_trend_nit" name="award_trend_nit" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label for="stage2_pag_trend">Stage-II PAG Trend (Actual/ likely):</label>
+                <select id="stage2_pag_trend" name="stage2_pag_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label for="award_trend_stage2">Award Trend from Stage-II Approval (Actual/ likely):</label>
+                <select id="award_trend_stage2" name="award_trend_stage2" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label for="project_delay_trend">Project Delay Trend (Actual / Likely):</label>
+                <select id="project_delay_trend" name="project_delay_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div class="btns-group">
+                <!-- Save Button -->
+                <button type="button" onclick="saveData(1)">Save Module 1</button>
+
+                <!-- Submit Button -->
+                <button type="button" onclick="submitData()">Submit Module 1</button>
+                <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- module-2 form -->
+    <form method="POST" id="module2Form" class="form" action="http://127.0.0.1:5500/submit-module2">
+
+        <h3 class="text-center">Please Fill out the form</h3>
+        <!-- Progress bar -->
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+
+            <!-- <div class="progress-step progress-step-active" data-title="Module-2" data-step="2"></div> -->
+            <div class="progress-step progress-step-active" data-title="Module-2" data-step="2"></div>
+        </div>
+
+        <!-- module-2 form -->
+        <div class="form-step" data-step="2" >
+            <h1 class="text-center">Module-2</h1>
+            <h1 class="text-center schemeName"></h1>
+            <div class="input-group">
+                <label for="Sl2">SL. (FY2023-24):</label>
+                <input type="number" id="Sl2" name="Sl2" required>
+            </div>
+            <div class="input-group">
+                <label for="previousSl2">Sl. (FY 2022-23):</label>
+                <input type="number" id="previousSl2" name="previousSl2" required>
+            </div>
+            <div class="input-group">
+                <label for="nitdate">NIT Date (Actual/Likely):</label>
+                <input type="date" id="nitdate" name="nitdate" required>
+            </div>
+            <div class="input-group">
+                <label for="tod">TOD (Actual / Likely):</label>
+                <input type="date" id="tod" name="tod" required>
+            </div>
+            <div class="input-group">
+                <label for="tc_recomendation_date">TC recommendation Date (Actual / Likely):</label>
+                <input type="date" id="tc_recomendation_date" name="tc_recomendation_date" required>
+            </div>
+            <div class="input-group">
+                <label for="stageII_pagdate">Stage-II Plant PAG Date(Actual /Likely):</label>
+                <input type="date" id="stageII_pagdate" name="stageII_pagdate" required>
+            </div>
+            <div class="input-group">
+                <label for="stageII_approval">Stage-II Approval (Actual /Likely):</label>
+                <input type="date" id="stageII_approval" name="stageII_approval" required>
+            </div>
+            <div class="input-group">
+                <label for="stageII_gross">Stage-II Cost (Gross Rs Cr):</label>
+                <input type="number" id="stageII_gross" name="stageII_gross" required>
+            </div>
+            <div class="input-group">
+                <label for="stageII_net">Stage-II Cost (Net Rs Cr):</label>
+                <input type="number" id="stageII_net" name="stageII_net" required>
+            </div>
+            <div>
+                <label for="stage1_approval_trend">Stage-I Approval Trend (Actual/ likely):</label>
+                <select id="stage1_approval_trend" name="stage1_approval_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="time_taken_in_issuing_nIT_after_StageI">Time taken in issuing NIT after Stage-I (Actual /
+                    Likely):</label>
+                <input type="number" id="time_taken_in_issuing_nIT_after_StageI"
+                    name="ttime_taken_in_issuing_nIT_after_StageI" required>
+            </div>
+            <div class="input-group">
+                <label for="nit">NIT (Qtr/FY):</label>
+                <input type="number" id="nit" name="nit" required>
+            </div>
+            <!-- <div class="input-group">
+                <label for="nit_issuing_trend">NIT issuing Trend (Actual/ likely):</label>
+                <select id="nit_issuing_trend" name="nit_issuing_trend" required>
+            </div> -->
+            <div>
+                <label for="award_trend_nit">Award Trend from NIT (Actual/Likely):</label>
+                <select id="award_trend_nit_select" name="award_trend_nit" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div class="input-group">
+                <label for="time_taken_StageIIPAG_after_TC_Recommendation">Time taken in Stage-II PAG after TC
+                    Recommendation (Actual / Likely):</label>
+                <input type="number" id="time_taken_StageIIPAG_after_TC_Recommendation"
+                    name="time_taken_StageIIPAG_after_TC_Recommendation" required>
+            </div>
+            <div class="input-group">
+                <label for="TC_Recommendation">TC Recommendation (Qtr./FY):</label>
+                <input type="number" id="TC_Recommendation" name="TC_Recommendation" required>
+            </div>
+            <div class="input-group">
+                <label for="stageII_plant_pag">Stage-II Plant PAG (Qtr/FY):</label>
+                <input type="number" id="stageII_plant_pag" name="stageII_plant_pag" required>
+            </div>
+            <div>
+                <label for="stage2_pag_trend">Stage-II PAG Trend (Actual/ likely):</label>
+                <select id="stage2_pag_trend" name="stage2_pag_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="time_taken_StageII_Approval_from_PAGII">Time taken in Stage-II Approval from PAG-II (Actual
+                    / Likely):</label>
+                <input type="number" id="time_taken_StageII_Approval_from_PAGII"
+                    name="time_taken_StageII_Approval_from_PAGII" required>
+            </div>
+            <div class="input-group">
+                <label for="stageII_approval_qtr">Stage-II Approval (Qtr/FY):</label>
+                <input type="number" id="stageII_approval_qtr" name="stageII_approval_qtr" required>
+            </div>
+            <div class="input-group">
+                <label for="stageII_approval_trend">Stage-II Approval Trend (Actual/ likely):</label>
+                <input type="number" id="stageII_approval_trend" name="stageII_approval_trend" required>
+            </div>
+            <div>
+                <label for="award_trend_stage2">Award Trend from Stage-II Approval (Actual/ likely):</label>
+                <select id="award_trend_stage2" name="award_trend_stage2" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="project_delay_trend">Project Delay Trend (Actual / Likely):</label>
+                <select id="project_delay_trend" name="project_delay_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div class="btns-group">
+                <!-- Save Button -->
+                <button type="button" onclick="saveData(1)">Save Module 2</button>
+
+                <!-- Submit Button -->
+                <button type="button" onclick="submitData()">Submit Module 2</button>
+                <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- module-3 form -->
+    <form method="POST" id="module3Form" class="form" action="http://localhost:5500/submit-module3">
+
+        <h3 class="text-center">Please Fill out the form</h3>
+        <!-- Progress bar -->
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+
+            <div class="progress-step progress-step-active" data-title="Module-3" data-step="3"></div>
+        </div>
+
+        <div class="form-step" data-step="3">
+            <h1 class="text-center">Module-3</h1>
+            <h1 class="text-center schemeName"></h1>
+            <div class="input-group">
+                <label for="Sl">SL. (FY2023-24):</label>
+                <input type="number" id="Sl" name="Sl" required>
+            </div>
+            <div class="input-group">
+                <label for="previousSl">Sl. (FY 2022-23):</label>
+                <input type="number" id="previousSl" name="previousSl" required>
+            </div>
+            <div>
+                <label for="award_date">Award Date (Qtr/FY):</label>
+                <input type="date" id="award_date_input" name="award_date" required placeholder="Select date">
+            </div>
+
+
+            <div class="input-group">
+                <label for="order_cost">Order Cost (Gross Rs Cr):</label>
+                <input type="number" id="order_cost" name="order_cost" required>
+            </div>
+            <div class="input-group">
+                <label for="order_cost_net">Order Cost (Net Rs Cr):</label>
+                <input type="number" id="order_cost_net" name="order_cost_net" required>
+            </div>
+            <div>
+                <label for="party_name">Name of the Party:</label>
+                <input type="text" id="party_name" name="party_name"><br>
+            </div>
+            <div>
+                <label for="email">Email No:</label>
+                <input type="email" id="email" name="email"><br>
+            </div>
+            <div>
+                <label for="contact_no">Contact No:</label>
+                <input type="number" id="contact_no" name="contact_no"><br>
+            </div>
+            <div>
+                <label for="pan_no">PAN NO:</label>
+                <input type="text" id="pan_no" name="pan_no"><br>
+            </div>
+            <div class="input-group">
+                <label for="contract_date">Effective Date of Contract:</label>
+                <input type="date" id="contract_date" name="contract_date" required>
+            </div>
+            <div>
+                <label for="completion_period">Completion period from effective date of contract (months):</label>
+                <input type="number" id="completion_period" name="completion_period"><br>
+            </div>
+            <div class="input-group">
+                <label for="completion_date">Schedule Completion Date:</label>
+                <input type="date" id="completion_date" name="completion_date" required>
+            </div>
+            <div class="input-group">
+                <label for="actual_completion_date">Actual / Likely Completion Date :</label>
+                <input type="date" id="actual_completion_date" name="actual_completion_date" required>
+            </div>
+            <div class="input-group">
+                <label for="delay_reason">Reason for Delay:</label>
+                <input type="text" id="delay_reason" name="delay_reason" required>
+            </div>
+            <div class="input-group">
+                <label for="action_taken">Issues / Action taken:</label>
+                <input type="text" id="action_taken" name="action_taken" required>
+            </div>
+            <div class="input-group">
+                <label for="status_scheme">Progress Status of the Scheme :</label>
+                <input type="text" id="status_scheme" name="status_scheme" required>
+            </div>
+            <div>
+                <label for="stage1_approval_trend">Stage-I Approval Trend (Actual/ likely):</label>
+                <select id="stage1_approval_trend" name="stage1_approval_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="award_nit">Time taken in Award from NIT (Actual / Likely):</label>
+                <input type="number" id="award_nit" name="award_nit"><br>
+            </div>
+            <div>
+                <label for="award_date">Award Date (Qtr/FY):</label>
+                <input type="date" id="award_date_input" name="award_date_qtr" required placeholder="Select date">
+            </div>
+
+            <div>
+                <label for="award_trend_nit">Award Trend from NIT (Actual/Likely):</label>
+                <select id="award_trend_nit_select" name="award_trend_nit" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="stage2_pag_trend">Stage-II PAG Trend (Actual/ likely):</label>
+                <select id="stage2_pag_trend" name="stage2_pag_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="time_taken_stage_approval">Time taken in Award from Stage-II Approval (Actual /
+                    Likely):</label>
+                <input type="number" id="time_taken_stage_approval" name="time_taken_stage_approval"><br>
+            </div>
+            <div>
+                <label for="award_trend_stage2">Award Trend from Stage-II Approval (Actual/ likely):</label>
+                <select id="award_trend_stage2" name="award_trend_stage2" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="eff_contractdate">Eff Contract Date (Qtr./FY):</label>
+                <input type="number" id="eff_contractdate" name="eff_contractdate"><br>
+            </div>
+            <div>
+                <label for="schedule_completion">Schedule Completion (Qtr./FY):</label>
+                <input type="number" id="schedule_completion" name="schedule_completion"><br>
+            </div>
+            <div>
+                <label for="completion_qtr">(Likely / Actual) Completion (Qtr./FY):</label>
+                <input type="number" id="completion_qtr" name="completion_qtr"><br>
+            </div>
+            <div>
+                <label for="projectdelay">Project Delay (Actual / Likely) (Months):</label>
+                <input type="number" id="projectdelay" name="projectdelay"><br>
+            </div>
+            <div>
+                <label for="project_delay_trend">Project Delay Trend (Actual / Likely):</label>
+                <select id="project_delay_trend" name="project_delay_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div class="btns-group">
+                <a href="#" class="btn btn-prev">Previous</a>
+                <!-- Save Button -->
+                <a href="#" class="btn btn-save width-50 ml-auto">Save</a>
+                <!-- Submit Button -->
+                <a href="#" class="btn btn-submit width-50 ml-auto">Submit Module-3</a>
+            </div>
+        </div>
+    </form>
+
+    <!-- capex data form -->
+    <form method="POST" id="capexForm" class="form" action="http://localhost:5500/submit-capex">
+
+        <h3 class="text-center">Please Fill out the form</h3>
+        <!-- Progress bar -->
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+
+            <div class="progress-step progress-step-active" data-title="capex" data-step="4"></div>
+        </div>
+
+        <div class="form-step" data-step="4">
+            <h1 class="text-center">Capex</h1>
+            <h1 class="text-center schemeName"></h1>
+            <div class="input-group">
+                <label for="Sl">SL. (FY2023-24):</label>
+                <input type="number" id="Sl" name="Sl" required>
+            </div>
+            <div class="input-group">
+                <label for="previousSl">Sl. (FY 2022-23):</label>
+                <input type="number" id="previousSl" name="previousSl" required>
+            </div>
+            <div class="input-group">
+                <label for="actualupto">Actual upto 31.03.21:</label>
+                <input type="number" name="actualupto" id="actualupto" />
+            </div>
+            <div class="input-group">
+                <label for="2021-22 BE">2021-22 BE:</label>
+                <input type="number" name="2021-22 BE" id="2021-22 BE" />
+            </div>
+            <div class="input-group">
+                <label for="2021-22 RE">2021-22 RE:</label>
+                <input type="number" name="2021-22 RE" id="2021-22 RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual Aprl-Mar'22">Actual Aprl-Mar'22:</label>
+                <input type="number" name="Actual Aprl-Mar'22" id="Actual Aprl-Mar'22" />
+            </div>
+            <div class="input-group">
+                <label for="2022-23 BE">2022-23 BE:</label>
+                <input type="number" name="2022-23 BE" id="2022-23 BE" />
+            </div>
+            <div class="input-group">
+                <label for="2022-23 RE">2022-23 RE:</label>
+                <input type="number" name="2022-23 RE" id="2022-23 RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual Capex 2022-23">Actual Capex 2022-23:</label>
+                <input type="number" name="Actual Capex 2022-23" id="Actual Capex 2022-23" />
+            </div>
+            <div>
+                <label for="STATUS on 31.03.2023"> STATUS on 31.03.2023:</label>
+                <select id="STATUS on 31.03.2023" name="STATUS on 31.03.2023" required>
+            </div>
+            <div class="input-group">
+                <label for="2023-24 BE">2023-24 BE:</label>
+                <input type="number" name="2023-24 BE" id="2023-24 BE" />
+            </div>
+            <div>
+                <label for="STATUS as per Annual Plan 23-24"> STATUS
+                    as per Annual Plan 23-24:</label>
+                <select id="STATUS as per Annual Plan 23-24" name="STATUS as per Annual Plan 23-24" required>
+            </div>
+            <div class="input-group">
+                <label for="2023-24 RE">2023-24 RE:</label>
+                <input type="number" name="2023-24 RE" id="2023-24 RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual Capex 2023-24">Actual Capex 2023-24:</label>
+                <input type="number" name="Actual Capex 2023-24" id="Actual Capex 2023-24" />
+            </div>
+            <div class="input-group">
+                <label for="Actual Capex Upto 31.03.2024">Actual Capex Upto 31.03.2024:</label>
+                <input type="number" name="Actual Capex Upto 31.03.2024" id="Actual Capex Upto 31.03.2024" />
+            </div>
+            <div>
+                <label for="STATUS on 31.03.24"> STATUS on 31.03.24:</label>
+                <select id="STATUS on 31.03.24" name="STATUS on 31.03.24" required>
+            </div>
+            <div class="input-group">
+                <label for="2024-25 (BE)">2024-25 (BE):</label>
+                <input type="number" name="2024-25 (BE)" id="2024-25 (BE)" />
+            </div>
+            <div class="input-group">
+                <label for="2024-25 (RE)">2024-25 (RE):</label>
+                <input type="number" name="2024-25 (RE)" id="2024-25 (RE)" />
+            </div>
+            <div>
+                <label for="STATUS as per Annual Plan 24-25">STATUS as per Annual Plan 24-25:</label>
+                <select id="STATUS as per Annual Plan 24-25" name="STATUS as per Annual Plan 24-25" required>
+            </div>
+            <div class="input-group">
+                <label for="Actual Capex 2024-25(TILL DATE)">Actual Capex 2024-25(TILL DATE):</label>
+                <input type="number" name="Actual Capex 2024-25(TILL DATE)" id="Actual Capex 2024-25(TILL DATE)" />
+            </div>
+            <div>
+                <label for="stage1_approval_trend">Stage-I Approval Trend (Actual/ likely):</label>
+                <select id="stage1_approval_trend" name="stage1_approval_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label for="award_trend_nit">Award Trend from NIT (Actual/Likely):</label>
+                <select id="award_trend_nit_select" name="award_trend_nit" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+
+
+            <div>
+                <label for="stage2_pag_trend">Stage-II PAG Trend (Actual/ likely):</label>
+                <select id="stage2_pag_trend" name="stage2_pag_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="award_trend_stage2">Award Trend from Stage-II Approval (Actual/ likely):</label>
+                <select id="award_trend_stage2" name="award_trend_stage2" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="project_delay_trend">Project Delay Trend (Actual / Likely):</label>
+                <select id="project_delay_trend" name="project_delay_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div class="input-group">
+                <label for="Bill at Cash, Current Month">Bill at Cash, Current Month:</label>
+                <input type="number" name="Bill at Cash, Current Month" id="Bill at Cash, Current Month" />
+            </div>
+            <div class="input-group">
+                <label for="Bill at Fin, Current Month">Bill at Fin, Current Month:</label>
+                <input type="number" name="Bill at Fin, Current Month" id="Bill at Fin, Current Month" />
+            </div>
+            <div class="input-group">
+                <label for="Likely Capex in current month incl. Bill at Fin, Cash">Likely Capex in current month incl.
+                    Bill at Fin, Cash:</label>
+                <input type="number" name="Likely Capex in current month incl. Bill at Fin, Cash"
+                    id="Likely Capex in current month incl. Bill at Fin, Cash" />
+            </div>
+            <div class="input-group">
+                <label for="Shortfall (-) / Excess (+) Current Month">Shortfall (-) / Excess (+) Current Month:</label>
+                <input type="number" name="Shortfall (-) / Excess (+) Current Month"
+                    id="Shortfall (-) / Excess (+) Current Month" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex plan 1st F/N
+                                                                                        (10 cr.)">APR 24 Capex plan 1st
+                    F/N
+                    (10 cr.):</label>
+                <input type="number" name="APR 24 Capex plan 1st F/N
+                                                                                        (10 cr.)" id="APR 24 Capex plan 1st F/N
+                                                                                        (10 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Actual Capex 1st F/N">APR 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="APR 24 Actual Capex 1st F/N" id="APR 24 Actual Capex 1st F/N" />
+            </div>
+
+            <div class="input-group">
+                <label for="APR 24 Capex plan 2nd F/N (25 cr.)">APR 24 Capex plan 2nd F/N (25 cr.):</label>
+                <input type="number" name="APR 24 Capex plan 2nd F/N (25 cr.)"
+                    id="APR 24 Capex plan 2nd F/N (25 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Actual Capex 2nd F/N upd 30.04.24">APR 24 Actual Capex 2nd F/N upd 30.04.24:</label>
+                <input type="number" name="APR 24 Actual Capex 2nd F/N upd 30.04.24"
+                    id="APR 24 Actual Capex 2nd F/N upd 30.04.24" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex Plan BE (34.81 cr.)">APR 24 Capex Plan BE (34.81 cr.):</label>
+                <input type="number" name="APR 24 Capex Plan BE (34.81 cr.)" id="APR 24 Capex Plan BE (34.81 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex Plan RE (34.81 cr.)">APR 24 Capex Plan RE (34.81 cr.):</label>
+                <input type="number" name="APR 24 Capex Plan RE (34.81 cr.)" id="APR 24 Capex Plan RE (34.81 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex Plan PM 01.04.24">APR 24 Capex Plan PM 01.04.24:</label>
+                <input type="number" name="APR 24 Capex Plan PM 01.04.24" id="APR 24 Capex Plan PM 01.04.24" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex Plan PM 24.04.24">APR 24 Capex Plan PM 24.04.24:</label>
+                <input type="number" name="APR 24 Capex Plan PM 24.04.24" id="APR 24 Capex Plan PM 24.04.24" />
+            </div>
+            <div class="input-group">
+                <label for="Apr'24 Actual Capex">Apr'24 Actual Capex:</label>
+                <input type="number" name="Apr'24 Actual Capex" id="Apr'24 Actual Capex" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex plan 1st F/N (14 cr.)">MAY 24 Capex plan 1st F/N (14 cr.):</label>
+                <input type="number" name="MAY 24 Capex plan 1st F/N (14 cr.)"
+                    id="MAY 24 Capex plan 1st F/N (14 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Actual Capex 1st F/N">MAY 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="MAY 24 Actual Capex 1st F/N" id="MAY 24 Actual Capex 1st F/N" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex plan 2nd F/N (34 cr.)">MAY 24 Capex plan 2nd F/N (34 cr.):</label>
+                <input type="number" name="MAY 24 Capex plan 2nd F/N (34 cr.)"
+                    id="MAY 24 Capex plan 2nd F/N (34 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Actual Capex 2nd F/N">MAY 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="MAY 24 Actual Capex 2nd F/N" id="MAY 24 Actual Capex 2nd F/N" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex Plan BE (48.02 cr.)">MAY 24 Capex Plan BE (48.02 cr.):</label>
+                <input type="number" name="MAY 24 Capex Plan BE (48.02 cr.)" id="MAY 24 Capex Plan BE (48.02 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex Plan RE (48.02 cr.)">MAY 24 Capex Plan RE (48.02 cr.):</label>
+                <input type="number" name="MAY 24 Capex Plan RE (48.02 cr.)" id="MAY 24 Capex Plan RE (48.02 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex Plan PM 24.04.23">MAY 24 Capex Plan - PM 24.04.23:</label>
+                <input type="number" name="MAY 24 Capex Plan PM 24.04.23" id="MAY 24 Capex Plan PM 24.04.23" />
+            </div>
+            <div class="input-group">
+                <label for="MAY_24_Actual_Capex">MAY 24 Actual Capex:</label>
+                <input type="number" name="MAY_24_Actual_Capex" id="MAY_24_Actual_Capex" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_plan_1st_FN">JUN 24 Capex plan 1st F/N (26 cr):</label>
+                <input type="number" name="JUN_24_Capex_plan_1st_FN" id="JUN_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Actual_Capex_1st_FN">JUN 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="JUN_24_Actual_Capex_1st_FN" id="JUN_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_plan_2nd_FN">JUN 24 Capex plan 2nd F/N (36 cr.):</label>
+                <input type="number" name="JUN_24_Capex_plan_2nd_FN" id="JUN_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Actual_Capex_2nd_FN">JUN 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="JUN_24_Actual_Capex_2nd_FN" id="JUN_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_Plan_BE">JUN 24 Capex Plan BE (61.9 cr.):</label>
+                <input type="number" name="JUN_24_Capex_Plan_BE" id="JUN_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_Plan_RE">JUN 24 Capex Plan RE (61.9 cr.):</label>
+                <input type="number" name="JUN_24_Capex_Plan_RE" id="JUN_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_Plan_PM">JUN 24 Capex Plan - PM:</label>
+                <input type="text" name="JUN_24_Capex_Plan_PM" id="JUN_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Actual_Capex">JUN'24 Actual Capex:</label>
+                <input type="number" name="JUN_24_Actual_Capex" id="JUN_24_Actual_Capex" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q1_BE_24_25">Capex Plan Q1 BE 24-25 (145 cr.):</label>
+                <input type="number" name="Capex_Plan_Q1_BE_24_25" id="Capex_Plan_Q1_BE_24_25" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q1_RE_24_25">Capex Plan Q1 RE 24-25 (145 cr.):</label>
+                <input type="number" name="Capex_Plan_Q1_RE_24_25" id="Capex_Plan_Q1_RE_24_25" />
+            </div>
+            <div class="input-group">
+                <label for="Actual_Capex_Exp_Q1_BE_24_25">Actual Capex Exp Q1 BE 24-25:</label>
+                <input type="number" name="Actual_Capex_Exp_Q1_BE_24_25" id="Actual_Capex_Exp_Q1_BE_24_25" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_plan_1st_FN">JUL 24 Capex plan 1st F/N:</label>
+                <input type="number" name="JUL_24_Capex_plan_1st_FN" id="JUL_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Actual_Capex_1st_FN">JUL 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="JUL_24_Actual_Capex_1st_FN" id="JUL_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_plan_2nd_FN">JUL 24 Capex plan 2nd F/N 36Cr:</label>
+                <input type="number" name="JUL_24_Capex_plan_2nd_FN" id="JUL_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Actual_Capex_2nd_FN">JUL 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="JUL_24_Actual_Capex_2nd_FN" id="JUL_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_Plan_BE">JUL 24 Capex Plan BE (56.79 cr.):</label>
+                <input type="number" name="JUL_24_Capex_Plan_BE" id="JUL_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_Plan_RE">JUL 24 Capex Plan RE (56.79 cr.):</label>
+                <input type="number" name="JUL_24_Capex_Plan_RE" id="JUL_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_Plan_PM">JUL 24 Capex Plan - PM:</label>
+                <input type="text" name="JUL_24_Capex_Plan_PM" id="JUL_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Actual_Capex">JUL 24 Actual Capex:</label>
+                <input type="number" name="JUL_24_Actual_Capex" id="JUL_24_Actual_Capex" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_plan_1st_FN">AUG 24 Capex plan 1st F/N 38Cr.:</label>
+                <input type="number" name="AUG_24_Capex_plan_1st_FN" id="AUG_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Actual_Capex_1st_FN">AUG 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="AUG_24_Actual_Capex_1st_FN" id="AUG_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_plan_2nd_FN">AUG 24 Capex plan 2nd F/N 88Cr.:</label>
+                <input type="number" name="AUG_24_Capex_plan_2nd_FN" id="AUG_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Actual_Capex_2nd_FN">AUG 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="AUG_24_Actual_Capex_2nd_FN" id="AUG_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_Plan_BE">AUG 24 Capex Plan BE (126.10 cr.):</label>
+                <input type="number" name="AUG_24_Capex_Plan_BE" id="AUG_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_Plan_RE">AUG 24 Capex Plan RE (126.10 cr.):</label>
+                <input type="number" name="AUG_24_Capex_Plan_RE" id="AUG_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_Plan_PM">AUG 24 Capex Plan - PM:</label>
+                <input type="text" name="AUG_24_Capex_Plan_PM" id="AUG_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Actual_Capex">AUG'24 Actual Capex:</label>
+                <input type="number" name="AUG_24_Actual_Capex" id="AUG_24_Actual_Capex" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_plan_1st_FN">SEP 24 Capex plan 1st F/N 20Cr:</label>
+                <input type="number" name="SEP_24_Capex_plan_1st_FN" id="SEP_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Actual_Capex_1st_FN">SEP 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="SEP_24_Actual_Capex_1st_FN" id="SEP_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_plan_2nd_FN">SEP 24 Capex plan 2nd F/N 48Cr:</label>
+                <input type="number" name="SEP_24_Capex_plan_2nd_FN" id="SEP_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Actual_Capex_2nd_FN">SEP 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="SEP_24_Actual_Capex_2nd_FN" id="SEP_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_Plan_BE">SEP 24 Capex Plan BE (67.85 cr.):</label>
+                <input type="number" name="SEP_24_Capex_Plan_BE" id="SEP_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_Plan_RE">SEP 24 Capex Plan RE (67.85 cr.):</label>
+                <input type="number" name="SEP_24_Capex_Plan_RE" id="SEP_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_Plan_PM">SEP 24 Capex Plan - PM:</label>
+                <input type="text" name="SEP_24_Capex_Plan_PM" id="SEP_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Actual_Capex">SEP'24 Actual Capex:</label>
+                <input type="number" name="SEP_24_Actual_Capex" id="SEP_24_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="Capex_Plan_Q2_BE">Capex Plan Q2 BE 24-25 (251 cr.):</label>
+                <input type="number" name="Capex_Plan_Q2_BE" id="Capex_Plan_Q2_BE" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q2_RE">Capex Plan Q2 RE 24-25 (251 cr.):</label>
+                <input type="number" name="Capex_Plan_Q2_RE" id="Capex_Plan_Q2_RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual_Capex_Exp_Q2_BE">Actual Capex Exp Q2 BE 24-25:</label>
+                <input type="number" name="Actual_Capex_Exp_Q2_BE" id="Actual_Capex_Exp_Q2_BE" />
+            </div>
+
+            <div class="input-group">
+                <label for="OCT_24_Capex_plan_1st_FN">OCT 24 Capex plan 1st F/N 20Cr:</label>
+                <input type="number" name="OCT_24_Capex_plan_1st_FN" id="OCT_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Actual_Capex_1st_FN">OCT 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="OCT_24_Actual_Capex_1st_FN" id="OCT_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Capex_plan_2nd_FN">OCT 24 Capex plan 2nd F/N 44Cr:</label>
+                <input type="number" name="OCT_24_Capex_plan_2nd_FN" id="OCT_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Actual_Capex_2nd_FN">OCT 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="OCT_24_Actual_Capex_2nd_FN" id="OCT_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Capex_Plan_BE">OCT 24 Capex Plan BE (63.83 cr.):</label>
+                <input type="number" name="OCT_24_Capex_Plan_BE" id="OCT_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Capex_Plan_RE">OCT 24 Capex Plan RE (63.83 cr.):</label>
+                <input type="number" name="OCT_24_Capex_Plan_RE" id="OCT_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Capex_Plan_PM">OCT 24 Capex Plan - PM:</label>
+                <input type="text" name="OCT_24_Capex_Plan_PM" id="OCT_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Actual_Capex">OCT 24 Actual Capex:</label>
+                <input type="number" name="OCT_24_Actual_Capex" id="OCT_24_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="NOV_24_Capex_plan_1st_FN">NOV 24 Capex plan 1st F/N 24Cr:</label>
+                <input type="number" name="NOV_24_Capex_plan_1st_FN" id="NOV_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Actual_Capex_1st_FN">NOV 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="NOV_24_Actual_Capex_1st_FN" id="NOV_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Capex_plan_2nd_FN">NOV 24 Capex plan 2nd F/N 60Cr:</label>
+                <input type="number" name="NOV_24_Capex_plan_2nd_FN" id="NOV_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Actual_Capex_2nd_FN">NOV 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="NOV_24_Actual_Capex_2nd_FN" id="NOV_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Capex_Plan_BE">NOV 24 Capex Plan BE (83.55 cr.):</label>
+                <input type="number" name="NOV_24_Capex_Plan_BE" id="NOV_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Capex_Plan_RE">NOV 24 Capex Plan RE (83.55 cr.):</label>
+                <input type="number" name="NOV_24_Capex_Plan_RE" id="NOV_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Capex_Plan_PM">NOV 24 Capex Plan - PM:</label>
+                <input type="text" name="NOV_24_Capex_Plan_PM" id="NOV_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Actual_Capex">NOV'24 Actual Capex:</label>
+                <input type="number" name="NOV_24_Actual_Capex" id="NOV_24_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="DEC_24_Capex_plan_1st_FN">DEC 24 Capex plan 1st F/N 25Cr:</label>
+                <input type="number" name="DEC_24_Capex_plan_1st_FN" id="DEC_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Actual_Capex_1st_FN">DEC 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="DEC_24_Actual_Capex_1st_FN" id="DEC_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Capex_plan_2nd_FN">DEC 24 Capex plan 2nd F/N 68Cr:</label>
+                <input type="number" name="DEC_24_Capex_plan_2nd_FN" id="DEC_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Actual_Capex_2nd_FN">DEC 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="DEC_24_Actual_Capex_2nd_FN" id="DEC_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Capex_Plan_BE">DEC 24 Capex Plan BE (94.62 cr.):</label>
+                <input type="number" name="DEC_24_Capex_Plan_BE" id="DEC_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Capex_Plan_RE">DEC 24 Capex Plan RE (94.62 cr.):</label>
+                <input type="number" name="DEC_24_Capex_Plan_RE" id="DEC_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Capex_Plan_PM">DEC 24 Capex Plan - PM:</label>
+                <input type="text" name="DEC_24_Capex_Plan_PM" id="DEC_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Actual_Capex">DEC '24 Actual Capex:</label>
+                <input type="number" name="DEC_24_Actual_Capex" id="DEC_24_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="Capex_Plan_Q3_BE">Capex Plan Q3 BE 24-25 (241 cr.):</label>
+                <input type="number" name="Capex_Plan_Q3_BE" id="Capex_Plan_Q3_BE" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q3_RE">Capex Plan Q3 RE 24-25 (241 cr.):</label>
+                <input type="number" name="Capex_Plan_Q3_RE" id="Capex_Plan_Q3_RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual_Capex_Exp_Q3_BE">Actual Capex Exp Q3 BE 24-25:</label>
+                <input type="number" name="Actual_Capex_Exp_Q3_BE" id="Actual_Capex_Exp_Q3_BE" />
+            </div>
+
+            <div class="input-group">
+                <label for="JAN_25_Capex_plan_1st_FN">JAN 25 Capex plan 1st F/N 20Cr:</label>
+                <input type="number" name="JAN_25_Capex_plan_1st_FN" id="JAN_25_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Actual_Capex_1st_FN">JAN 25 Actual Capex 1st F/N:</label>
+                <input type="number" name="JAN_25_Actual_Capex_1st_FN" id="JAN_25_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Capex_plan_2nd_FN">JAN 25 Capex plan 2nd F/N 45Cr:</label>
+                <input type="number" name="JAN_25_Capex_plan_2nd_FN" id="JAN_25_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Actual_Capex_2nd_FN">JAN 25 Actual Capex 2nd F/N:</label>
+                <input type="number" name="JAN_25_Actual_Capex_2nd_FN" id="JAN_25_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Capex_Plan_BE">JAN 25 Capex Plan BE (64.9 cr.):</label>
+                <input type="number" name="JAN_25_Capex_Plan_BE" id="JAN_25_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Capex_Plan_RE">JAN 25 Capex Plan RE (64.9 cr.):</label>
+                <input type="number" name="JAN_25_Capex_Plan_RE" id="JAN_25_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Capex_Plan_PM">JAN 25 Capex Plan - PM:</label>
+                <input type="text" name="JAN_25_Capex_Plan_PM" id="JAN_25_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Actual_Capex">JAN 25 Actual Capex:</label>
+                <input type="number" name="JAN_25_Actual_Capex" id="JAN_25_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="FEB_25_Capex_plan_1st_FN">FEB 25 Capex plan 1st F/N 30Cr:</label>
+                <input type="number" name="FEB_25_Capex_plan_1st_FN" id="FEB_25_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Actual_Capex_1st_FN">FEB 25 Actual Capex 1st F/N:</label>
+                <input type="number" name="FEB_25_Actual_Capex_1st_FN" id="FEB_25_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Capex_plan_2nd_FN">FEB 25 Capex plan 2nd F/N 66Cr:</label>
+                <input type="number" name="FEB_25_Capex_plan_2nd_FN" id="FEB_25_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Actual_Capex_2nd_FN">FEB 25 Actual Capex 2nd F/N:</label>
+                <input type="number" name="FEB_25_Actual_Capex_2nd_FN" id="FEB_25_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Capex_Plan_BE">FEB 25 Capex Plan BE (95.91 cr.):</label>
+                <input type="number" name="FEB_25_Capex_Plan_BE" id="FEB_25_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Capex_Plan_RE">FEB 25 Capex Plan RE (95.91 cr.):</label>
+                <input type="number" name="FEB_25_Capex_Plan_RE" id="FEB_25_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Capex_Plan_PM">FEB 25 Capex Plan - PM:</label>
+                <input type="text" name="FEB_25_Capex_Plan_PM" id="FEB_25_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Actual_Capex">FEB 25 Actual Capex:</label>
+                <input type="number" name="FEB_25_Actual_Capex" id="FEB_25_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="MAR_25_Capex_plan_1st_FN">MAR 25 Capex plan 1st F/N 14Cr:</label>
+                <input type="number" name="MAR_25_Capex_plan_1st_FN" id="MAR_25_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Actual_Capex_1st_FN">MAR 25 Actual Capex 1st F/N:</label>
+                <input type="number" name="MAR_25_Actual_Capex_1st_FN" id="MAR_25_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Capex_plan_2nd_FN">MAR 25 Capex plan 2nd F/N 38Cr:</label>
+                <input type="number" name="MAR_25_Capex_plan_2nd_FN" id="MAR_25_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Actual_Capex_2nd_FN">MAR 25 Actual Capex 2nd F/N:</label>
+                <input type="number" name="MAR_25_Actual_Capex_2nd_FN" id="MAR_25_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Capex_Plan_BE">MAR 25 Capex Plan BE (51.62 cr.):</label>
+                <input type="number" name="MAR_25_Capex_Plan_BE" id="MAR_25_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Capex_Plan_RE">MAR 25 Capex Plan RE (51.62 cr.):</label>
+                <input type="number" name="MAR_25_Capex_Plan_RE" id="MAR_25_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Capex_Plan_PM">MAR 25 Capex Plan - PM:</label>
+                <input type="text" name="MAR_25_Capex_Plan_PM" id="MAR_25_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Actual_Capex">MAR 25 Actual Capex:</label>
+                <input type="number" name="MAR_25_Actual_Capex" id="MAR_25_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="Capex_Plan_Q4_BE">Capex Plan Q4 BE 24-25 (213 cr.):</label>
+                <input type="number" name="Capex_Plan_Q4_BE" id="Capex_Plan_Q4_BE" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q4_RE">Capex Plan Q4 RE 24-25 (204 cr.):</label>
+                <input type="number" name="Capex_Plan_Q4_RE" id="Capex_Plan_Q4_RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual_Capex_Exp_Q4_BE">Actual Capex Exp Q4 BE 24-25:</label>
+                <input type="number" name="Actual_Capex_Exp_Q4_BE" id="Actual_Capex_Exp_Q4_BE" />
+            </div>
+
+            <div class="btns-group">
+                <a href="#" class="btn btn-prev">Previous</a>
+                <!-- Save Button -->
+                <a href="#" class="btn btn-save width-50 ml-auto" id="btn-save">Save</a>
+                <!-- Submit Button -->
+                <a href="#" class="btn btn-submit width-50 ml-auto" id="btn-submit">Submit</a>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve selected scheme from localStorage and update scheme name elements
+            var selectedScheme = localStorage.getItem("selectedScheme");
+            var schemeNameElements = document.getElementsByClassName("schemeName");
+            if (selectedScheme) {
+                for (var i = 0; i < schemeNameElements.length; i++) {
+                    schemeNameElements[i].innerText = "Selected Scheme: " + selectedScheme;
+                }
+            } else {
+                for (var i = 0; i < schemeNameElements.length; i++) {
+                    schemeNameElements[i].innerText = "No scheme selected";
+                }
+            }
+
+            // Retrieve current step from localStorage, default to 0 if not set
+            var currentStep = parseInt(localStorage.getItem("currentStep")) || 0;
+            showStep(currentStep);
+
+            const progress = document.getElementById('progress');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const formSteps = document.querySelectorAll('.form-step');
+
+            progressSteps.forEach((step, index) => {
+                step.addEventListener('click', () => {
+                    showStep(index);
+                });
+            });
+        });
+
+        function showStep(stepIndex) {
+            const progress = document.getElementById('progress');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const formSteps = document.querySelectorAll('.form-step');
+
+            // Remove active class from all steps
+            progressSteps.forEach(step => step.classList.remove('progress-step-active'));
+
+            // Add active class to clicked step and all previous steps
+            for (let i = 0; i <= stepIndex; i++) {
+                progressSteps[i].classList.add('progress-step-active');
+            }
+
+            // Update progress bar width
+            const progressWidth = (stepIndex + 1) / progressSteps.length * 100;
+            progress.style.width = progressWidth + '%';
+
+            // Show the corresponding form section
+            formSteps.forEach(section => section.classList.remove('form-step-active'));
+            formSteps[stepIndex].classList.add('form-step-active');
+
+            // Save current step to localStorage
+            localStorage.setItem("currentStep", stepIndex);
+        }
+
+        // const form = document.getElementById('multiStepForm');
+        // const formSteps = document.querySelectorAll('.form-step');
+        // const progress = document.getElementById('progress');
+        // const progressSteps = document.querySelectorAll('.progress-step');
+
+        // let formStepIndex = parseInt(localStorage.getItem("currentStep")) || 0;
+
+        // function nextStep() {
+        //     if (formStepIndex < formSteps.length - 1) {
+        //         formSteps[formStepIndex].classList.remove('form-step-active');
+        //         formStepIndex++;
+        //         formSteps[formStepIndex].classList.add('form-step-active');
+        //         updateProgressBar();
+        //     }
+        // }
+
+        // function updateProgressBar() {
+        //     progressSteps.forEach((progressStep, idx) => {
+        //         if (idx <= formStepIndex) {
+        //             progressStep.classList.add('progress-step-active');
+        //         } else {
+        //             progressStep.classList.remove('progress-step-active');
+        //         }
+        //     });
+        //     const progressActive = document.querySelectorAll('.progress-step-active');
+        //     progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + '%';
+        // }
+
+        async function saveData(step) {
+            const form = document.getElementById('module1Form');
+            const data = new FormData(form);
+            const jsonData = Object.fromEntries(data.entries());
+            const url = step === 1 ? '/submit-module1' : '/submit-module2';
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + (localStorage.getItem('accessToken') || '')
+                    },
+                    body: JSON.stringify(jsonData),
+                });
+                const result = await response.text();
+                alert(result);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to save data');
+            }
+        }
+
+        async function submitData() {
+            await saveData(2);
+            alert('Form submitted successfully');
+        }
+
+        // Console.log the access token
+        console.log(localStorage.getItem('accessToken'));
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+    :root {
+        --primary-color: rgb(101, 228, 69);
+        
+    }
+    
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+
+    body {
+    background: rgba(97, 95, 95, 0.452);
+    background-size: cover;
+    height: auto;
+    font-family: 'Arial', sans-serif;
+    }
+    
+    /* Overlay for the blur effect */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px); /* Adjust the blur amount as needed */
+    z-index: -1; /* Ensure the overlay stays behind the content */
+}
+    /* Global Stylings */
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #222121;
+        padding: 4px;
+    }
+    
+    input {
+        background: transparent;
+        width: 100%;
+        padding: 1em;
+        margin-bottom: 2em;
+        border: none;
+        border-left: 1px solid rgba(255, 255, 255, 0.3); /* Using RGBA color directly */
+        border-top: 1px solid rgba(255, 255, 255, 0.3);  /* Using RGBA color directly */
+        border-radius: 5000px;
+        backdrop-filter: blur(5px);
+        box-shadow: 5px 5px 60px rgba(0,0,0,0.5);
+        border: 1px solid #555;
+        color: #242222;
+        font-family: Montserrat, sans-serif;
+        font-weight: 700;
+        transition: all 0.2s ease-in-out;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    &:hover {
+        background: rgba(255,255,255,0.1);
+        box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2); /* Specifying the color for the box-shadow */
+    }
+    
+    .width-50 {
+        width: 50%;
+    }
+    
+    .ml-auto {
+        margin-left: auto;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    
+    /* Progressbar */
+    .progressbar {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        counter-reset: step;
+        margin: 2rem 0 4rem;
+    }
+    
+    .progressbar::before,
+    .progress {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 4px;
+        width: 100%;
+        background-color: #dcdcdc;
+        z-index: -1;
+    }
+    
+    .progress {
+        background-color: var(--primary-color);
+        width: 0%;
+        transition: 0.3s;
+    }
+    
+    .progress-step {
+        width: 2.1875rem;
+        height: 2.1875rem;
+        background-color: #dcdcdc;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        cursor: pointer; /* Add cursor pointer to indicate clickable */
+    }
+    
+    .progress-step::before {
+        counter-increment: step;
+        content: counter(step);
+    }
+    
+    .progress-step::after {
+        content: attr(data-title);
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        font-size: 0.85rem;
+        color: #131212;
+    }
+    
+    .progress-step-active {
+        background-color: var(--primary-color);
+        color: #f3f3f3;
+    }
+    
+    /* Form */
+    .form {
+        background: rgb(255, 255, 255);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto 45px;
+    }
+    
+    .form-step {
+        display: none;
+        transform-origin: top;
+        animation: animate 0.5s;
+    }
+    
+    .form-step-active {
+        display: block;
+    }
+    
+    .input-group {
+        margin: 2rem 0;
+    }
+    
+    @keyframes animate {
+        from {
+        transform: scale(1, 0);
+        opacity: 0;
+        }
+        to {
+        transform: scale(1, 1);
+        opacity: 1;
+        }
+    }
+    
+/* Button group */
+.btns-group {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing between buttons */
+    align-items: center;
+    gap: 0.5rem; /* Adjust the gap between buttons if needed */
+}
+
+/* Button */
+.btn {
+    background-color: #65eea3;
+    border: none;
+    color: black;
+    padding: 4px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+
+.btn:hover {
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--primary-color);
+}
+
+/* Save Button specific styles */
+.btn-save {
+    background-color: #28a745; /* Green background */
+}
+
+.btn-save:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* Submit Button specific styles */
+.btn-submit {
+    background-color: #007bff; /* Blue background */
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.input .submit {
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+    /* Dropdown styling */
+select {
+    background: transparent;
+    width: 100%;
+    padding: 1em;
+    margin-bottom: 2em;
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5000px;
+    backdrop-filter: blur(5px);
+    box-shadow: 5px 5px 60px rgba(0,0,0,0.5);
+    border: 1px solid #555;
+    backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+    color: #252524;
+    font-family: Montserrat, sans-serif;
+    font-weight: 700;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 2px 2px 4px rgba(58, 58, 58, 0.2);
+    appearance: none; /* Removes default dropdown arrow */
+    -webkit-appearance: none; /* For older versions of Chrome/Safari */
+    -moz-appearance: none; /* For older versions of Firefox */
+}
+
+/* Styling when the dropdown is focused */
+select:focus {
+    outline: none;
+}
+
+/* Styling the dropdown arrow */
+/* Caret for modern browsers */
+select::after {
+    content: '\25BC'; /* Unicode character for downward arrow */
+    position: absolute;
+    top: 50%;
+    right: 1em;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Styling for hover state */
+select:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 4px 4px 60px 8px rgba(87, 86, 86, 0.2);
+}
+
+/* Styling for options */
+option {
+    background: #333335; /* Background color for options */
+    color: #ffffff; /* Text color for options */
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+/* Styling for options on hover */
+option:hover {
+    background: #555; /* Background color for options on hover */
+}

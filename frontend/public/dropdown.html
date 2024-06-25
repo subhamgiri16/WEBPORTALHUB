@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <!-- Favicons -->
+    <link href="/frontend/images/site_logo.png" rel="icon">
+
+
+    <style>
+        body,
+        html {
+            background: linear-gradient(135deg,#735DA5, #b28be6), center/cover fixed;
+            height: 100%;
+            margin: 10;
+            border-radius: 60px;
+            border-width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'poppins';
+            color: #f0f0f0;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            text-align: left;
+            padding: 30px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+            /* adjust as needed */
+        }
+
+        .dropbtn {
+            background: linear-gradient(135deg, #74ff03, #40a700);
+            color: #0e0d0d;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .dropbtn:hover {
+            background: linear-gradient(135deg, #66e302, #379600);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: rgba(249, 249, 249, 0.95);
+            min-width: 160px;
+            max-height: 200px;
+            /* Adjust the max height as needed */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #ddd;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1ad;
+        }
+
+        .show {
+            display: block;
+            opacity: 1;
+        }
+
+        .fatkun-drop-area {
+            user-select: none;
+            /* Standard property */
+            -webkit-user-select: none;
+            /* Safari-specific property */
+        }
+
+        #myInput {
+            box-sizing: border-box;
+            background-image: url('searchicon.png');
+            background-position: 14px 12px;
+            background-repeat: no-repeat;
+            font-size: 16px;
+            padding: 14px 20px 12px 45px;
+            border: none;
+            border-bottom: 2px solid #74ff03;
+            border-radius: 8px;
+            background-color: #424141;
+            color: #f0f0f0;
+            transition: border-bottom 0.3s ease, background-color 0.3s ease;
+        }
+
+        #myInput:focus {
+            outline: none;
+            border-bottom: 2px solid #66e302;
+            background-color: #333;
+        }
+
+        button {
+            background: linear-gradient(135deg, #74ff03, #40a700);
+            color: #ffffff;
+            padding: 12px 24px;
+            font-size: 16px;
+            border: black;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #66e302, #379600);
+            transform: translateY(-2px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        button:active {
+            background: linear-gradient(135deg, #5ec001, #318500);
+            transform: translateY(0);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 150px;
+            height: auto;
+        }
+    </style>
+
+    <div class="logo">
+        <a href="index.html"><img src="/frontend/images/logo.png" alt="logo" class="logo"></a>
+    </div>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="dropdown">
+            <input type="text" id="myInput" onkeyup="filterFunction()" placeholder="Search for scheme names...">
+            <button onclick="myFunction()" class="dropbtn">Select Scheme</button>
+            <div class="dropdown-content" id="myDropdown">
+                <a href="javascript:updateForm('Medium Structural Mill')">Medium Structural Mill</a>
+                <a href="javascript:updateForm('New Bloom Cum Round Caster')">New Bloom Cum Round Caster</a>
+                <a href="javascript:updateForm('Augmentation of SMS')">Augmentation of SMS</a>
+                <a href="javascript:updateForm('Raw Material Handling')">Raw Material Handling</a>
+                <a href="javascript:updateForm('Power Distribution Facilities')">Power Distribution Facilities</a>
+                <a href="javascript:updateForm('Infrastructure Facilities')">Infrastructure Facilities</a>
+                <a href="javascript:updateForm('Gas Facilities and Utilities')">Gas Facilities and Utilities</a>
+                <a href="javascript:updateForm('Rebuilding of COB-2 including Coke Sorting Plant')">Rebuilding of COB-2
+                    including Coke Sorting Plant</a>
+                <a href="javascript:updateForm('Revamping/ Modification of 1.0 MT By Products Plant')">Revamping/
+                    Modification of 1.0 MT By Products Plant</a>
+                <a href="javascript:updateForm('Revamping of Ammonium Sulphate Plant')">Revamping of Ammonium Sulphate
+                    Plant</a>
+                <a href="javascript:updateForm('Enabling Jobs')">Enabling Jobs</a>
+                <a href="javascript:updateForm('Additional Packages, CET Packages, Extra Claims etc.')">Additional
+                    Packages, CET Packages, Extra Claims etc.</a>
+                <a href="javascript:updateForm('EDC/IDC/CONTINGENCY')">EDC/IDC/CONTINGENCY</a>
+                <a href="javascript:updateForm('CENVAT/ITC')">CENVAT/ITC</a>
+                <a href="javascript:updateForm('Installation of SPU at Kangra')">Installation of SPU at Kangra</a>
+                <a href="javascript:updateForm('Installation of Bell less Top charging system in BF')">Installation of
+                    Bell less Top charging system in BF</a>
+                <a href="javascript:updateForm('Rebuilding of COB-5A and Construction of new COB 5B')">Rebuilding of
+                    COB-5A and Construction of new COB 5B</a>
+                <a href="javascript:updateForm('Augmtn of Wheel Machining Facilities at Wheel Machine Shop')">Augmtn of
+                    Wheel Machining Facilities at Wheel Machine Shop</a>
+                <a href="javascript:updateForm('Installation of New Rotary Hearth Furnace')">Installation of New Rotary
+                    Hearth Furnace</a>
+                <a href="javascript:updateForm('Power Evacuation System for NPP (2x20 MW)')">Power Evacuation System for
+                    NPP (2x20 MW)</a>
+                <a href="javascript:updateForm('Replacement of Convertor shell & secondary emission control in BOF')">Replacement
+                    of Convertor shell & secondary emission control in BOF</a>
+                <a
+                    href="javascript:updateForm('Installation of New Conveyor System for Transportation of Coke from Coke Storage Yard to Blast Furnace Highline')">Installation
+                    of New Conveyor System for Transportation of Coke from Coke Storage Yard to Blast Furnace
+                    Highline</a>
+                <a
+                    href="javascript:updateForm('Supply & Installation of online stack Emission and Effluent quality monitoring system in DSP (Phase-3)')">Supply
+                    & Installation of online stack Emission and Effluent quality monitoring system in DSP (Phase-3)</a>
+                <a href="javascript:updateForm('Replacenent of Chilled water Central AC Plant unit in BOF & CCP')">Replacenent
+                    of Chilled water Central AC Plant unit in BOF & CCP</a>
+                <a
+                    href="javascript:updateForm('Upgradation of ESP-2 & installation of pneumatic conveying system in Sinter Plant')">Upgradation
+                    of ESP-2 & installation of pneumatic conveying system in Sinter Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of 3 nos. of primary gas coolers (1,5 & 11) under 1.0 MT in CO&CC')">Replacement
+                    of 3 nos. of primary gas coolers (1,5 & 11) under 1.0 MT in CO&CC</a>
+                <a href="javascript:updateForm('Augmentation of Power Supply at 33 KV / 11 KV Punabad Substation')">Augmentation
+                    of Power Supply at 33 KV / 11 KV Punabad Substation</a>
+                <a
+                    href="javascript:updateForm('Installation of oxy-fuel cutting torches for billet caster machine # 2')">Installation
+                    of oxy-fuel cutting torches for billet caster machine # 2</a>
+                <a
+                    href="javascript:updateForm('Installation of Independent closed soft water circuit for LF-1 & LF-2 in BOF')">Installation
+                    of Independent closed soft water circuit for LF-1 & LF-2 in BOF</a>
+                <a href="javascript:updateForm('Cold Repair of COB 3')">Cold Repair of COB 3</a>
+                <a
+                    href="javascript:updateForm('Refurbishment of Passenger-cum-goods Lift of BF # 2, BF # 3 & BF # 4 of DSP')">Refurbishment
+                    of Passenger-cum-goods Lift of BF # 2, BF # 3 & BF # 4 of DSP</a>
+                <a
+                    href="javascript:updateForm('Installation of 4 nos. 33KV Reactors in DSP for 2x20 MW NPP Power Evacuation')">Installation
+                    of 4 nos. 33KV Reactors in DSP for 2x20 MW NPP Power Evacuation</a>
+                <a
+                    href="javascript:updateForm('Laying of Additional Cooling Water Line for Wheel & Axle Plant , Section Mill and Merchant Mill of DSP')">Laying
+                    of Additional Cooling Water Line for Wheel & Axle Plant , Section Mill and Merchant Mill of DSP</a>
+                <a
+                    href="javascript:updateForm('Installation of New Online Hardness Testing Machine for Wheels in Wheel Plant of DSP')">Installation
+                    of New Online Hardness Testing Machine for Wheels in Wheel Plant of DSP</a>
+                <a href="javascript:updateForm('Installation of Ladle turret weighing system at Billet Caster')">Installation
+                    of Ladle turret weighing system at Billet Caster</a>
+                <a
+                    href="javascript:updateForm('Consultancy services for obtaining environment clerance for 6 schemes of Project')">Consultancy
+                    services for obtaining environment clerance for 6 schemes of Project</a>
+                <a
+                    href="javascript:updateForm('Replacement of Hydraulic (Askania) Regulator and Instrumentation & control system for under firing gas pressure & tunnel draft in COB#3')">Replacement
+                    of Hydraulic (Askania) Regulator and Instrumentation & control system for under firing gas pressure
+                    & tunnel draft in COB#3</a>
+                <a
+                    href="javascript:updateForm('Replacement of the ACSR conductors of 11KV overhead incoming feeder No.3,4,5 & 6 from plant end to Bulk supply sub-station')">Replacement
+                    of the ACSR conductors of 11KV overhead incoming feeder No.3,4,5 & 6 from plant end to Bulk supply
+                    sub-station</a>
+                <a href="javascript:updateForm('Replacement of Charging Car # 14 for COB#3 in CO&CC of DSP')">Replacement
+                    of Charging Car # 14 for COB#3 in CO&CC of DSP</a>
+                <a href="javascript:updateForm('Replacement of Ural Winch (UW-01) of Plant Garage of DSP')">Replacement
+                    of Ural Winch (UW-01) of Plant Garage of DSP</a>
+                <a href="javascript:updateForm('Roof Top Solar Plant,DSP: 1.0 MWH')">Roof Top Solar Plant, DSP: 1.0
+                    MWH</a>
+                <a href="javascript:updateForm('Site Survey and Soil Investigation for the proposed New Oxygen Plant')">Site
+                    Survey and Soil Investigation for the proposed New Oxygen Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of Relay Logic Control System by PLC based Control System for Reversing Winch of Battery # 3')">Replacement
+                    of Relay Logic Control System by PLC based Control System for Reversing Winch of Battery # 3</a>
+                <a
+                    href="javascript:updateForm('Installation of Swarf Disposal facility in Block Cutting area of Wheel Plant, WAP')">Installation
+                    of Swarf Disposal facility in Block Cutting area of Wheel Plant, WAP</a>
+                <a
+                    href="javascript:updateForm('Replacement of Bucket Wheel Blender with Barrel Type Reclaimer in RMHP')">Replacement
+                    of Bucket Wheel Blender with Barrel Type Reclaimer in RMHP</a>
+                <a href="javascript:updateForm('Laying of Duplicate Line of CO Gas from Coke oven to Furnace Street')">Laying
+                    of Duplicate Line of CO Gas from Coke oven to Furnace Street</a>
+                <a
+                    href="javascript:updateForm('Recirculation of Clean Pit Water from W&A Plant to Rolling Mill Filtration Plant')">Recirculation
+                    of Clean Pit Water from W&A Plant to Rolling Mill Filtration Plant</a>
+                <a href="javascript:updateForm('Supply and Installation of 15 nos Gysers for DSP Main Hospital')">Supply
+                    and Installation of 15 nos Gysers for DSP Main Hospital</a>
+                <a href="javascript:updateForm('Soil Investigation & Survey report for BOO Oxy Plant (PKG-2)')">Soil
+                    Investigation & Survey report for BOO Oxy Plant (PKG-2)</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of 2 Nos. of Tanks in Coal Chemicals Plant, Coke Oven')">Supply
+                    and Installation of 2 Nos. of Tanks in Coal Chemicals Plant, Coke Oven</a>
+                <a
+                    href="javascript:updateForm('Laying Duplicate line of CO Gas from Furnace street to rest of the Plant')">Laying
+                    Duplicate line of CO Gas from Furnace street to rest of the Plant</a>
+                <a href="javascript:updateForm('Underground Mapping (Package -3) for New Oxygen Plant')">Underground
+                    Mapping (Package -3) for New Oxygen Plant</a>
+                <a
+                    href="javascript:updateForm('Diversion of Power & Control Cables in the proposed construction area of new BOO Oxygen Plant')">Diversion
+                    of Power & Control Cables in the proposed construction area of new BOO Oxygen Plant</a>
+                <a href="javascript:updateForm('Underground Mapping (Package -3) for New Oxygen Plant')">Underground
+                    Mapping (Package -3) for New Oxygen Plant</a>
+                <a
+                    href="javascript:updateForm('Diversion of Power & Control Cables in the proposed construction area of new BOO Oxygen Plant')">Diversion
+                    of Power & Control Cables in the proposed construction area of new BOO Oxygen Plant</a>
+                <a
+                    href="javascript:updateForm('Underground Mapping for complete waste water treatment at outfall #1 2 3')">Underground
+                    Mapping for complete waste water treatment at outfall #1 2 3</a>
+                <a
+                    href="javascript:updateForm('Supply & Installation of continuous ambient air quality monitoring station in DSP (re-tendered scheme)')">Supply
+                    & Installation of continuous ambient air quality monitoring station in DSP (re-tendered scheme)</a>
+                <a href="javascript:updateForm('Replacement of 2400/1800/1200 NB BF Gas line in Coke Street')">Replacement
+                    of 2400/1800/1200 NB BF Gas line in Coke Street</a>
+                <a
+                    href="javascript:updateForm('Conversion of Centre Lathe Machine to CNC Machine in Roll and Die Shop in WAP')">Conversion
+                    of Centre Lathe Machine to CNC Machine in Roll and Die Shop in WAP</a>
+                <a
+                    href="javascript:updateForm('Enhancement of Storage Capacity of ground water reservoir of Durgapur Steel Plant')">Enhancement
+                    of Storage Capacity of ground water reservoir of Durgapur Steel Plant</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of a 33KV 25 MVA 2.5 MVA Series Reactor at New Sajara')">Supply
+                    and Installation of a 33KV 25 MVA 2.5 MVA Series Reactor at New Sajara</a>
+                <a
+                    href="javascript:updateForm('Supply & installation of 10 No Syringe infusion Pump in DSP Main Hospital')">Supply
+                    & installation of 10 No Syringe infusion Pump in DSP Main Hospital</a>
+                <a href="javascript:updateForm('Supply & Installation of new RI-RDI Testing instruments')">Supply &
+                    Installation of new RI-RDI Testing instruments</a>
+                <a href="javascript:updateForm('Enabling job for 1250 TPD New Oxygen Plant (Combined Package)')">Enabling
+                    job for 1250 TPD New Oxygen Plant (Combined Package)</a>
+                <a href="javascript:updateForm('Supply of 6 nos of Pick up Vans')">Supply of 6 nos of Pick up Vans</a>
+                <a
+                    href="javascript:updateForm('Procurement of 2 nos water cum foam Fire Tender of Fire Services Deptt')">Procurement
+                    of 2 nos water cum foam Fire Tender of Fire Services Deptt</a>
+                <a href="javascript:updateForm('Upgradation of Axios advanced XRF machine at BF Lab')">Upgradation of
+                    Axios advanced XRF machine at BF Lab</a>
+                <a href="javascript:updateForm('Supply and Installation of 1 no TMT machine for DSP Main Hospital')">Supply
+                    and Installation of 1 no TMT machine for DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Soil Investigation & Survey (Package-1A) for Complete Waste Water Treatment at Outfall # 1, 2 & 3')">Soil
+                    Investigation & Survey (Package-1A) for Complete Waste Water Treatment at Outfall # 1, 2 & 3</a>
+                <a
+                    href="javascript:updateForm('Area Survey and Soil Investigation Work (Package-1) for Installation of New Wagon Tipplers/ Track Hopper in RMHP at DSP')">Area
+                    Survey and Soil Investigation Work (Package-1) for Installation of New Wagon Tipplers/ Track Hopper
+                    in RMHP at DSP</a>
+                <a
+                    href="javascript:updateForm('Underground Mapping (Package-2) for Installation of New Wagon Tipplers/ Track Hopper in RMHP at DSP')">Underground
+                    Mapping (Package-2) for Installation of New Wagon Tipplers/ Track Hopper in RMHP at DSP</a>
+                <a
+                    href="javascript:updateForm('Procurement of new Phaco-Emulsifier Machine for Eye Department of M&HS, DSP')">Procurement
+                    of new Phaco-Emulsifier Machine for Eye Department of M&HS, DSP</a>
+                <a
+                    href="javascript:updateForm('Supply & Installation of one no. fully automated Coagulation Analyser for Pathology Department of DSP Main Hospital')">Supply
+                    & Installation of one no. fully automated Coagulation Analyser for Pathology Department of DSP Main
+                    Hospital</a>
+                <a
+                    href="javascript:updateForm('Supply & Installation of one no. of refrigerator for Blood Bank of DSP Main Hospital')">Supply
+                    & Installation of one no. of refrigerator for Blood Bank of DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of 305 Aquaflow machines at various depts of DSP')">Supply
+                    and Installation of 305 Aquaflow machines at various depts of DSP</a>
+                <a href="javascript:updateForm('Procurement of ABG Analyser MC for ICU and NICU in DSP main Hospital')">Procurement
+                    of ABG Analyser MC for ICU and NICU in DSP main Hospital</a>
+                <a href="javascript:updateForm('Soil Investigation Survey - Parallel Conveyor to Conveyor 5A in CHP')">Soil
+                    Investigation Survey - Parallel Conveyor to Conveyor 5A in CHP</a>
+                <a
+                    href="javascript:updateForm('Soil investigation, Survey, Underground Mapping for Extension of F'G' Bay in CCP')">Soil
+                    investigation, Survey, Underground Mapping for Extension of F'G' Bay in CCP</a>
+                <a
+                    href="javascript:updateForm('Soil investigation and Survey Work for Laying 2100NB duplicate BF gas line from BF to BF Gas holder')">Soil
+                    investigation and Survey Work for Laying 2100NB duplicate BF gas line from BF to BF Gas holder</a>
+                <a
+                    href="javascript:updateForm('Soil investigation, Survey and underground mapping for New CO Gas Holder')">Soil
+                    investigation, Survey and underground mapping for New CO Gas Holder</a>
+                <a href="javascript:updateForm('Replacement of Surface Grinding Machine TR-9 in CEM.(Pkg-I Supply)')">Replacement
+                    of Surface Grinding Machine TR-9 in CEM.(Pkg-I Supply)</a>
+                <a href="javascript:updateForm('Replacement of Groove Cutting Lathe/Notch Milling M/c(Supply-Pkg-I)')">Replacement
+                    of Groove Cutting Lathe/Notch Milling M/c(Supply-Pkg-I)</a>
+                <a
+                    href="javascript:updateForm('Refurbishment of Electrics for 2 nos. CNC - Vertical Turning & Boring machine (m/c no. 3 & 13)')">Refurbishment
+                    of Electrics for 2 nos. CNC - Vertical Turning & Boring machine (m/c no. 3 & 13)</a>
+                <a href="javascript:updateForm('Procurement of Universal Testing machine for PT Lab.')">Procurement of
+                    Universal Testing machine for PT Lab.</a>
+                <a href="javascript:updateForm('Supply of 1 No of Plastometer at RCL')">Supply of 1 No of Plastometer at
+                    RCL</a>
+                <a
+                    href="javascript:updateForm('Procurement of one no Hydraulic Excavator along with Rock breaker attachment for Plant Garage')">Procurement
+                    of one no Hydraulic Excavator along with Rock breaker attachment for Plant Garage</a>
+                <a href="javascript:updateForm('General Purpose Wagon Investment Scheme (GPWIS)')">General Purpose Wagon
+                    Investment Scheme (GPWIS)</a>
+                <a href="javascript:updateForm('Installation of 4th stove in BF-4')">Installation of 4th stove in
+                    BF-4</a>
+                <a href="javascript:updateForm('Installation of NDT facilities for Testing of Wheels in WAP')">Installation
+                    of NDT facilities for Testing of Wheels in WAP</a>
+                <a href="javascript:updateForm('Power Augmentation Scheme for New Oxygen Plant on BOO basis')">Power
+                    Augmentation Scheme for New Oxygen Plant on BOO basis</a>
+                <a href="javascript:updateForm('Installation of 2 Nos. Ladle Tilters in BOF shop')">Installation of 2
+                    Nos. Ladle Tilters in BOF shop</a>
+                <a href="javascript:updateForm('Replacement / renovation of old GCP Cooling Tower of BF Dept.')">Replacement
+                    / renovation of old GCP Cooling Tower of BF Dept.</a>
+                <a
+                    href="javascript:updateForm('Installation of one Dynamic Balancing Machine for Railway Wheels in Wheel and Axle Plant of DSP. (DO - RKV)')">Installation
+                    of one Dynamic Balancing Machine for Railway Wheels in Wheel and Axle Plant of DSP. (DO - RKV)</a>
+                <a
+                    href="javascript:updateForm('Replacement of Cast House Tap Hole Drilling Machine & Mud Guns in BF#4.')">Replacement
+                    of Cast House Tap Hole Drilling Machine & Mud Guns in BF#4.</a>
+                <a
+                    href="javascript:updateForm('Installation of one Wheel Handling System for Dynamic Wheel Balancing Machine at Wheel and Axle Plant of DSP.')">Installation
+                    of one Wheel Handling System for Dynamic Wheel Balancing Machine at Wheel and Axle Plant of DSP.</a>
+                <a
+                    href="javascript:updateForm('Installation of Additional Drinking Water Supply Lines in DSP Township')">Installation
+                    of Additional Drinking Water Supply Lines in DSP Township</a>
+                <a
+                    href="javascript:updateForm('Rebuilding of Salt Handling Section in Ammonia Sulphate Plant of Coal Chemical Plant.')">Rebuilding
+                    of Salt Handling Section in Ammonia Sulphate Plant of Coal Chemical Plant.</a>
+                <a
+                    href="javascript:updateForm('Procurement of 160 nos Sinter Car Assemblies to replace existing Sinter Car Assemblies of Sinter machine of Sinter Plant - II')">Procurement
+                    of 160 nos Sinter Car Assemblies to replace existing Sinter Car Assemblies of Sinter machine of
+                    Sinter Plant - II</a>
+                <a href="javascript:updateForm('Recirculation of Recovery Pit Water at SGP of BF#3')">Recirculation of
+                    Recovery Pit Water at SGP of BF#3</a>
+                <a href="javascript:updateForm('Restoration of Structure for SGP of BF4 (Pkg-2) -Main Package')">Restoration
+                    of Structure for SGP of BF4 (Pkg-2) -Main Package</a>
+                <a href="javascript:updateForm('Replacement of Automation PLC System in Blast Furnace No 2 of DSP')">Replacement
+                    of Automation PLC System in Blast Furnace No 2 of DSP</a>
+                <a href="javascript:updateForm('Installation of 3rd BF Gas Flare Stack')">Installation of 3rd BF Gas
+                    Flare Stack</a>
+                <a href="javascript:updateForm('Implementation of Zero Liquid Discharge at Coke Ovens,DSP')">Implementation
+                    of Zero Liquid Discharge at Coke Ovens,DSP</a>
+                <a
+                    href="javascript:updateForm('Implementation of Land Records and Information Management System (LRIMS) in DSP')">Implementation
+                    of Land Records and Information Management System (LRIMS) in DSP</a>
+                <a href="javascript:updateForm('Replacement of 11KV Switchboard of Bulk Supply Substation')">Replacement
+                    of 11KV Switchboard of Bulk Supply Substation</a>
+                <a href="javascript:updateForm('Replacement of ASP gas booster no.2 at DSP.')">Replacement of ASP gas
+                    booster no.2 at DSP.</a>
+                <a href="javascript:updateForm('Replacement of Plate Bending Machine at Structural Shop of CEM.')">Replacement
+                    of Plate Bending Machine at Structural Shop of CEM.</a>
+                <a href="javascript:updateForm('Modification/Strengthening of Emergency water tank of Pump House#3')">Modification/Strengthening
+                    of Emergency water tank of Pump House#3</a>
+                <a href="javascript:updateForm('Upgradation of Stack Emission Control for Lime Kilns of NLCP')">Upgradation
+                    of Stack Emission Control for Lime Kilns of NLCP</a>
+                <a href="javascript:updateForm('Replacement of 2 nos Elect Loco(EL 9 &13)')">Replacement of 2 nos Elect
+                    Loco(EL 9 &13)</a>
+                <a href="javascript:updateForm('Refurbishment of 63/12 MN Press at Wheel & Axle Plant, DSP')">Refurbishment
+                    of 63/12 MN Press at Wheel & Axle Plant, DSP</a>
+                <a
+                    href="javascript:updateForm('Installation of Two Nos additional Pressure reducing and De-Superheating(PRDU) Unit in PP in DSP')">Installation
+                    of Two Nos additional Pressure reducing and De-Superheating(PRDU) Unit in PP in DSP</a>
+                <a href="javascript:updateForm('Stack Emission Control for Ladle Furnace 1&2 of SMS')">Stack Emission
+                    Control for Ladle Furnace 1&2 of SMS</a>
+                <a
+                    href="javascript:updateForm('Installation of a new 80MVA transformer(MX-7) with associated outdoor bay equipment in (MRS),PMD')">Installation
+                    of a new 80MVA transformer(MX-7) with associated outdoor bay equipment in (MRS),PMD</a>
+                <a
+                    href="javascript:updateForm('Replacement of W&S Strands and associated works at Billet Caster No 2 of CCP,SMS,DSP')">Replacement
+                    of W&S Strands and associated works at Billet Caster No 2 of CCP,SMS,DSP</a>
+                <a href="javascript:updateForm('Installation of a new CO Gas Flare Stack at DSP')">Installation of a new
+                    CO Gas Flare Stack at DSP</a>
+                <a
+                    href="javascript:updateForm('Renovation of cooling tower (cell 1-6) in 1 MT PCID CO&CC chemical plant')">Renovation
+                    of cooling tower (cell 1-6) in 1 MT PCID CO&CC chemical plant</a>
+                <a
+                    href="javascript:updateForm('Upgradation of automation system of conveyor control system in CHP area of COCC')">Upgradation
+                    of automation system of conveyor control system in CHP area of COCC</a>
+                <a
+                    href="javascript:updateForm('Installation of Reverse Osmosis Plant for make-up Boiler Feed Water at Power Plant in DSP')">Installation
+                    of Reverse Osmosis Plant for make-up Boiler Feed Water at Power Plant in DSP</a>
+                <a href="javascript:updateForm('New Gas Booster House for Rolling Mills')">New Gas Booster House for
+                    Rolling Mills</a>
+                <a
+                    href="javascript:updateForm('Procurement of 1 No Turbo Blower Rotor Shaft Assembly alongwith casing Seal')">Procurement
+                    of 1 No Turbo Blower Rotor Shaft Assembly alongwith casing Seal</a>
+                <a
+                    href="javascript:updateForm('Replacement of existing air relief valve with actuator and mechanical type governing system for Turbo-Blower No 5 AT OPP, DSP')">Replacement
+                    of existing air relief valve with actuator and mechanical type governing system for Turbo-Blower No
+                    5 AT OPP, DSP</a>
+                <a href="javascript:updateForm('Preparation of Digital Map of DSP & ASP')">Preparation of Digital Map of
+                    DSP & ASP</a>
+                <a
+                    href="javascript:updateForm('Procurement of high speed conventional Lathe M/C with accessories for COCC deptt')">Procurement
+                    of high speed conventional Lathe M/C with accessories for COCC deptt</a>
+                <a href="javascript:updateForm('Upgradation of PLC for Process Control at Sinter Plant-1')">Upgradation
+                    of PLC for Process Control at Sinter Plant-1</a>
+                <a href="javascript:updateForm('Emergency power back-up for Magnet cranes of SMS complex')">Emergency
+                    power back-up for Magnet cranes of SMS complex</a>
+                <a
+                    href="javascript:updateForm('Replacement of 2 nos Primary Coolers(No B &D) of 1.8 MT coal Chemical Plant of COCC')">Replacement
+                    of 2 nos Primary Coolers(No B &D) of 1.8 MT coal Chemical Plant of COCC</a>
+                <a href="javascript:updateForm('Procurement of new 190 nos pallet frame for SP-I')">Procurement of new
+                    190 nos pallet frame for SP-I</a>
+                <a
+                    href="javascript:updateForm('Refurbishment of Electrics of 2 nos CNC vertical Turning and Boring machine at WAP (m/c no. 4 & 14)')">Refurbishment
+                    of Electrics of 2 nos CNC vertical Turning and Boring machine at WAP (m/c no. 4 & 14)</a>
+                <a
+                    href="javascript:updateForm('Replacement of Primary Gas Coolers #2 & 3 in 1.6 MT Coal Chemical Plant')">Replacement
+                    of Primary Gas Coolers #2 & 3 in 1.6 MT Coal Chemical Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of 11 KV switch boards with oil ckt breakers at different sub-station of PMD(Ph-I)')">Replacement
+                    of 11 KV switch boards with oil ckt breakers at different sub-station of PMD(Ph-I)</a>
+                <a
+                    href="javascript:updateForm('Provision of fire-detection, alarm and suppression system in sub-stations & cable tunnels')">Provision
+                    of fire-detection, alarm and suppression system in sub-stations & cable tunnels</a>
+                <a href="javascript:updateForm('Upgradation of Tundish Car Weighing System in Billet Caster')">Upgradation
+                    of Tundish Car Weighing System in Billet Caster</a>
+                <a
+                    href="javascript:updateForm('Enabling Package for Installation of New Gas Fired Boiler at Durgapur Steel Plant')">Enabling
+                    Package for Installation of New Gas Fired Boiler at Durgapur Steel Plant</a>
+                <a href="javascript:updateForm('Supply and Installation of 2 no Benzol Storage Tank in COCC')">Supply
+                    and Installation of 2 no Benzol Storage Tank in COCC</a>
+                <a href="javascript:updateForm('Supply and Installation of 2 no Hemodialysis for Main Hospital')">Supply
+                    and Installation of 2 no Hemodialysis for Main Hospital</a>
+                <a href="javascript:updateForm('Procurement of one ENT Endoscope set in DSP Main Hospital')">Procurement
+                    of one ENT Endoscope set in DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Erection of one no. Hydraulic Plate Bending Machine for Structural Shop of CEM, DSP')">Erection
+                    of one no. Hydraulic Plate Bending Machine for Structural Shop of CEM, DSP</a>
+                <a
+                    href="javascript:updateForm('Laying of a 2100 NB duplicate BF gas line from BF building to BF gas Holder, DSP')">Laying
+                    of a 2100 NB duplicate BF gas line from BF building to BF gas Holder, DSP</a>
+                <a
+                    href="javascript:updateForm('Upgradation of one number Ultrasonic Rail Wheel Inspection System at Wheel & Axle Plant (Re-tender)')">Upgradation
+                    of one number Ultrasonic Rail Wheel Inspection System at Wheel & Axle Plant (Re-tender)</a>
+                <a href="javascript:updateForm('Modification and renovation of DSP Main Hospital')">Modification and
+                    renovation of DSP Main Hospital</a>
+                <a href="javascript:updateForm('Face-lifting of Buildings in Ispat Bhawan Complex and CHRD')">Face-lifting
+                    of Buildings in Ispat Bhawan Complex and CHRD</a>
+                <a href="javascript:updateForm('Supply & lnstallation of IOT based sensors at DSP')">Supply &
+                    lnstallation of IOT based sensors at DSP</a>
+                <a href="javascript:updateForm('Replacement of 25 Ton EOT Crane in Sinter Fan House, Sinter Plant-1')">Replacement
+                    of 25 Ton EOT Crane in Sinter Fan House, Sinter Plant-1</a>
+                <a href="javascript:updateForm('Replacement of 5 nos Lifts/Elevators at DSP Main Hospital')">Replacement
+                    of 5 nos Lifts/Elevators at DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Extension of 3.3kV Switchboard at HT-13 Substation of Power Management Department, DSP')">Extension
+                    of 3.3kV Switchboard at HT-13 Substation of Power Management Department, DSP</a>
+                <a
+                    href="javascript:updateForm('Procurement of New Laproscopy set forDeptt of Surgery of DSP Main Hospital')">Procurement
+                    of New Laproscopy set forDeptt of Surgery of DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Revamping of Cell no 2&3 in 1.8 MT PCID Cooling Tower of Coal Chemical Plant,CO&CC,DSP')">Revamping
+                    of Cell no 2&3 in 1.8 MT PCID Cooling Tower of Coal Chemical Plant,CO&CC,DSP</a>
+                <a href="javascript:updateForm('Procurement of 562 nos Computers for DSP')">Procurement of 562 nos
+                    Computers for DSP</a>
+                <a
+                    href="javascript:updateForm('Upgradation of mill stand motor PLC system and Thermax Process PLC System at Merchant Mill')">Upgradation
+                    of mill stand motor PLC system and Thermax Process PLC System at Merchant Mill</a>
+                <a href="javascript:updateForm('Replacement of 3 nos. ETP (detarrer) in 1.6 MT Coal Chemical Plant')">Replacement
+                    of 3 nos. ETP (detarrer) in 1.6 MT Coal Chemical Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of 11kv & 3.3kv Switch Board at Old Sinter Substation of PMD,DSP')">Replacement
+                    of 11kv & 3.3kv Switch Board at Old Sinter Substation of PMD,DSP</a>
+                <a href="javascript:updateForm('Replacement of 1 no track chain mounted / track type loader of PG')">Replacement
+                    of 1 no track chain mounted / track type loader of PG</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of 3 nos 125 KVA Gensets for Town Services Deptt')">Supply
+                    and Installation of 3 nos 125 KVA Gensets for Town Services Deptt</a>
+                <a href="javascript:updateForm('Implementation of Contactless Biometric System DSP')">Implementation of
+                    Contactless Biometric System DSP</a>
+                <a href="javascript:updateForm('Reconstruction of drain in DSP Township')">Reconstruction of drain in
+                    DSP Township</a>
+                <a href="javascript:updateForm('Construction of surface drain in CISF Bhiringi Complex')">Construction
+                    of surface drain in CISF Bhiringi Complex</a>
+                <a
+                    href="javascript:updateForm('Re-construction of street road in steel township and CISF Bhirangi Complex')">Re-construction
+                    of street road in steel township and CISF Bhirangi Complex</a>
+                <a
+                    href="javascript:updateForm('Modification/ Rebuilding of Houses including plastering of walls, Painting, Tiling work in Toilets and Kitchen in category-3 & above Houses in DSP Township')">Modification/
+                    Rebuilding of Houses including plastering of walls, Painting, Tiling work in Toilets and Kitchen in
+                    category-3 & above Houses in DSP Township</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of 1 No Operating Microscope for Eye OT for DSP Main Hospital')">Supply
+                    and Installation of 1 No Operating Microscope for Eye OT for DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Upgradatin of Controller and Software for Instrom UTM 5594 of Physical testing Lab,DSP')">Upgradatin
+                    of Controller and Software for Instrom UTM 5594 of Physical testing Lab,DSP</a>
+                <a href="javascript:updateForm('Supply and Installation of ONH Analyser with Accessories for BOF Lab')">Supply
+                    and Installation of ONH Analyser with Accessories for BOF Lab</a>
+                <a
+                    href="javascript:updateForm('Replacement of AO Size Color Plotter cum Scanner for Archive and Replacement of Color Plotter for CAD Room of Design Department, DSP')">Replacement
+                    of AO Size Color Plotter cum Scanner for Archive and Replacement of Color Plotter for CAD Room of
+                    Design Department, DSP</a>
+                <a href="javascript:updateForm('Procurement of 1 no of Dozer for Plant Garage Department')">Procurement
+                    of 1 no of Dozer for Plant Garage Department</a>
+                <a href="javascript:updateForm('Replacement of 03 Nos of Dumper for Plant Garage ,DSP')">Replacement of
+                    03 Nos of Dumper for Plant Garage ,DSP</a>
+                <a href="javascript:updateForm('Replacement of SCADA System of Power Network of DSP')">Replacement of
+                    SCADA System of Power Network of DSP</a>
+                <a
+                    href="javascript:updateForm('Procurement of 10 Nos Platform Car & 8 Nos BOXN Wagons in Trafic Deptt')">Procurement
+                    of 10 Nos Platform Car & 8 Nos BOXN Wagons in Trafic Deptt</a>
+                <a
+                    href="javascript:updateForm('Development of Badminton Practice Hall at Nehru Stadium along with Allied jobs')">Development
+                    of Badminton Practice Hall at Nehru Stadium along with Allied jobs</a>
+                <a
+                    href="javascript:updateForm('Non Destructive Testing (NDT) (Package – II B) for Upgradation of BF-3 at DSP')">Non
+                    Destructive Testing (NDT) (Package – II B) for Upgradation of BF-3 at DSP</a>
+                <a
+                    href="javascript:updateForm('Soil Investigation survey & Underground mapping for Upgradation of BF-3 at DSP')">Soil
+                    Investigation survey & Underground mapping for Upgradation of BF-3 at DSP</a>
+                <a
+                    href="javascript:updateForm('Modification/ Rebuilding of Houses including plastering of walls, Painting, Tiling work in Toilets and Kitchen in category-1 Houses in DSP Township')">Modification/
+                    Rebuilding of Houses including plastering of walls, Painting, Tiling work in Toilets and Kitchen in
+                    category-1 Houses in DSP Township</a>
+                <a
+                    href="javascript:updateForm('MODIFICATION / REBUILDING OF HOUSES INCLUDING PLASTERING OF WALLS, PAINTING, TILING WORK IN TOILETS & KITCHEN IN CATEGORY-2 HOUSES IN DSP TOWNSHIP')">MODIFICATION
+                    / REBUILDING OF HOUSES INCLUDING PLASTERING OF WALLS, PAINTING, TILING WORK IN TOILETS & KITCHEN IN
+                    CATEGORY-2 HOUSES IN DSP TOWNSHIP</a>
+                <a
+                    href="javascript:updateForm('Procurement of 1 no. Portable UltraSound Machine for Anaesthesiology Department of DSP Main Hospital, DSP')">Procurement
+                    of 1 no. Portable UltraSound Machine for Anaesthesiology Department of DSP Main Hospital, DSP</a>
+
+                <a
+                    href="javascript:updateForm('Procurement of Three (03) numbers of Anaesthesia Machines for DSP Main Hospital')">Procurement
+                    of Three (03) numbers of Anaesthesia Machines for DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Procurement of 1 no. new USG Machine for Radiology Deptt. of DSP Main Hospital')">Procurement
+                    of 1 no. new USG Machine for Radiology Deptt. of DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Non Destructive Testing (NDT) for Revamping of Mixer Secondary De-Dusting System in SMS, Durgapur Steel Plant')">Non
+                    Destructive Testing (NDT) for Revamping of Mixer Secondary De-Dusting System in SMS, Durgapur Steel
+                    Plant</a>
+                <a href="javascript:updateForm('Miscellaneous Non-Plan & Others')">Miscellaneous Non-Plan & Others</a>
+                <a href="javascript:updateForm('Installation of Coke Oven Gas Holder')">Installation of Coke Oven Gas
+                    Holder</a>
+                <a href="javascript:updateForm('Installation of New Bar Mill')">Installation of New Bar Mill</a>
+                <a href="javascript:updateForm('Installation of new Gas fired Boiler (7th)')">Installation of new Gas
+                    fired Boiler (7th)</a>
+                <a
+                    href="javascript:updateForm('Installation of New Oxygen Plant on BOO basis (Block cost Rs.500 Cr.)')">Installation
+                    of New Oxygen Plant on BOO basis (Block cost Rs.500 Cr.)</a>
+                <a href="javascript:updateForm('Upgradation of Blast Furnace No.3')">Upgradation of Blast Furnace
+                    No.3</a>
+                <a
+                    href="javascript:updateForm('Installation of New Electric driven Exhauster in 1.0 MT Coal Chemical Plant')">Installation
+                    of New Electric driven Exhauster in 1.0 MT Coal Chemical Plant</a>
+                <a href="javascript:updateForm('Replacement of existing 33kv MRS indoor switchboard by GIS,PMD')">Replacement
+                    of existing 33kv MRS indoor switchboard by GIS,PMD</a>
+                <a href="javascript:updateForm('Complete waste water treatment at Outfall#1,2&3')">Complete waste water
+                    treatment at Outfall#1,2&3</a>
+                <a href="javascript:updateForm('REVAMPING OF AIR POLLUTION CONTROL SYSTEMS OF SP-1')">REVAMPING OF AIR
+                    POLLUTION CONTROL SYSTEMS OF SP-1</a>
+                <a href="javascript:updateForm('Rebuilding of COB # 4')">Rebuilding of COB # 4</a>
+                <a
+                    href="javascript:updateForm('Replacement of cooling water pipe lines in settled water system in BOF')">Replacement
+                    of cooling water pipe lines in settled water system in BOF</a>
+                <a href="javascript:updateForm('Service Culvert for rising mains at Gandhi More at Durgapur')">Service
+                    Culvert for rising mains at Gandhi More at Durgapur</a>
+                <a
+                    href="javascript:updateForm('Provision of Emergency Brakes in Main Hoist Drives in 7 nos EOT cranes,BOF')">Provision
+                    of Emergency Brakes in Main Hoist Drives in 7 nos EOT cranes,BOF</a>
+                <a href="javascript:updateForm('Separate Gas Mixing Station for New Dolomite Plant')">Separate Gas
+                    Mixing Station for New Dolomite Plant</a>
+                <a href="javascript:updateForm('Replacement of Tuyere Stock Assy in BF')">Replacement of Tuyere Stock
+                    Assy in BF</a>
+                <a
+                    href="javascript:updateForm('Replacement of two nos. heat treatment Chargers (E & H Chargers) in Wheel & Axle Plant of DSP.')">Replacement
+                    of two nos. heat treatment Chargers (E & H Chargers) in Wheel & Axle Plant of DSP.</a>
+
+                <a
+                    href="javascript:updateForm('Replacement of 2 nos Diesel Engine driven Pump sets in Works Pump House')">Replacement
+                    of 2 nos Diesel Engine driven Pump sets in Works Pump House</a>
+                <a href="javascript:updateForm('Supply & Installation of NGFW in C&IT Deptt,DSP')">Supply & Installation
+                    of NGFW in C&IT Deptt,DSP</a>
+                <a href="javascript:updateForm('Supply and Installation of Laser Scanning Machine in Converter Shop')">Supply
+                    and Installation of Laser Scanning Machine in Converter Shop</a>
+                <a
+                    href="javascript:updateForm('Replacement and Upgradation of existing Hydraulic System A at Merchant Mill, DSP')">Replacement
+                    and Upgradation of existing Hydraulic System A at Merchant Mill, DSP</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of Liners and Air Blasters in Bunkers in RMHP (Retendered)')">Supply
+                    and Installation of Liners and Air Blasters in Bunkers in RMHP (Retendered)</a>
+                <a href="javascript:updateForm('Relining of Stoves of BF#3')">Relining of Stoves of BF#3</a>
+                <a
+                    href="javascript:updateForm('Construction of Structural Shed in Old Bay of Wagon repair Shop (WRS) (Bay#2)')">Construction
+                    of Structural Shed in Old Bay of Wagon repair Shop (WRS) (Bay#2)</a>
+                <a
+                    href="javascript:updateForm('Replacement of 3 nos vertical turbine Pump sets in Canal and works Pump House')">Replacement
+                    of 3 nos vertical turbine Pump sets in Canal and works Pump House</a>
+                <a href="javascript:updateForm('Procurement of 3 sets universal and Convertible Stands for MSM')">Procurement
+                    of 3 sets universal and Convertible Stands for MSM</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of Roll change equipment for Universal Stand Assembly for MSM,MSM')">Supply
+                    and Installation of Roll change equipment for Universal Stand Assembly for MSM,MSM</a>
+                <a href="javascript:updateForm('Installation of High Mast towers for plant and Township')">Installation
+                    of High Mast towers for plant and Township</a>
+                <a
+                    href="javascript:updateForm('Appointment of consultant for preparation of prefeasibility report and detailed project report for expansion of DSP')">Appointment
+                    of consultant for preparation of prefeasibility report and detailed project report for expansion of
+                    DSP</a>
+                <a href="javascript:updateForm('REPLACEMENT OF 08 NOS. TRUCKS FOR PLANT GARAGE')">REPLACEMENT OF 08 NOS.
+                    TRUCKS FOR PLANT GARAGE</a>
+                <a href="javascript:updateForm('Supply and Installation of 5 nos. lift/elevators at RMHP, DSP')">Supply
+                    and Installation of 5 nos. lift/elevators at RMHP, DSP</a>
+                <a href="javascript:updateForm('Replacement of 7.5 Ton EOT Crane in Sinter Plant, DSP')">Replacement of
+                    7.5 Ton EOT Crane in Sinter Plant, DSP</a>
+                <a href="javascript:updateForm('Reconstruction of main roads in DSP Township')">Reconstruction of main
+                    roads in DSP Township</a>
+                <a href="javascript:updateForm('Construction of Structural Shed For Open Gantry CEM Bay#1')">Construction
+                    of Structural Shed For Open Gantry CEM Bay#1</a>
+                <a
+                    href="javascript:updateForm('Upgradation of Internet Router for Data Centre(DC) & Disaster Recovery Centre(DRC) for C&IT Deptt. of DSP')">Upgradation
+                    of Internet Router for Data Centre(DC) & Disaster Recovery Centre(DRC) for C&IT Deptt. of DSP</a>
+
+                <a href="javascript:updateForm('Replacement of 50 nos. of water coolers')">Replacement of 50 nos. of
+                    water coolers</a>
+                <a
+                    href="javascript:updateForm('Procurement of 1 no CNC lathe Machine for replacing Lathe no 7 of Roll Design and Shop')">Procurement
+                    of 1 no CNC lathe Machine for replacing Lathe no 7 of Roll Design and Shop</a>
+                <a href="javascript:updateForm('PROCUREMENT OF 2 NEW WDS6ADT LOCOMOTIVES')">PROCUREMENT OF 2 NEW WDS6ADT
+                    LOCOMOTIVES</a>
+                <a
+                    href="javascript:updateForm('Replacement of 2 nos. Primary Gas Coolers of 1.0 M.T. ByProduct Plant of Coke Ovens, DSP')">Replacement
+                    of 2 nos. Primary Gas Coolers of 1.0 M.T. ByProduct Plant of Coke Ovens, DSP</a>
+                <a href="javascript:updateForm('Installation of 1 New Pusher Car for COb#3 in CO&CC')">Installation of 1
+                    New Pusher Car for COb#3 in CO&CC</a>
+                <a
+                    href="javascript:updateForm('Soil Investigation and Survey Works (Package-1) for Micro Pellet Plant')">Soil
+                    Investigation and Survey Works (Package-1) for Micro Pellet Plant</a>
+                <a
+                    href="javascript:updateForm('NEW FORGING, ROLLING AND ONLINE HEAT TREATMENT LINE AT WHEEL & AXLE PLANT')">NEW
+                    FORGING, ROLLING AND ONLINE HEAT TREATMENT LINE AT WHEEL & AXLE PLANT</a>
+                <a href="javascript:updateForm('Installation of Hot Metal De-Sulphurization (HMDS) unit at SMS')">Installation
+                    of Hot Metal De-Sulphurization (HMDS) unit at SMS</a>
+                <a href="javascript:updateForm('Extension of F\'G\' Bay and other associated facilities in CCP, DSP')">Extension
+                    of F'G' Bay and other associated facilities in CCP, DSP</a>
+                <a href="javascript:updateForm('Installation of New Wagon Tipplers / Track Hopper in RMHP')">Installation
+                    of New Wagon Tipplers / Track Hopper in RMHP</a>
+                <a href="javascript:updateForm('Upgradation of ESPs in Sinter Plant-2')">Upgradation of ESPs in Sinter
+                    Plant-2</a>
+                <a href="javascript:updateForm('Rebuilding of stove #4.1 of BF#4 in DSP')">Rebuilding of stove #4.1 of
+                    BF#4 in DSP</a>
+                <a href="javascript:updateForm('Installation of 0.4 - 0.5 MT mill at DSP on COM basis')">Installation of
+                    0.4 - 0.5 MT mill at DSP on COM basis</a>
+                <a
+                    href="javascript:updateForm('INSTALLATION OF BLAST FURNACE #5 (BF#5) AND ASSOCIATED FACILITIES FOR 3.2 MTPA HOT METAL')">INSTALLATION
+                    OF BLAST FURNACE #5 (BF#5) AND ASSOCIATED FACILITIES FOR 3.2 MTPA HOT METAL</a>
+                <a href="javascript:updateForm('Rebuilding of Battery No.6 / Stamp Charge Battery')">Rebuilding of
+                    Battery No.6 / Stamp Charge Battery</a>
+                <a href="javascript:updateForm('Pellet plant (Smaller Cap. ~ 1 Mtpa)')">Pellet plant (Smaller Cap. ~ 1
+                    Mtpa)</a>
+                <a href="javascript:updateForm('Installation of a new 5th Caster with allied facilities')">Installation
+                    of a new 5th Caster with allied facilities</a>
+                <a href="javascript:updateForm('Installation of 2nd Circular saw with allied facilities in WAP')">Installation
+                    of 2nd Circular saw with allied facilities in WAP</a>
+                <a href="javascript:updateForm('Upgrading of Turbo Blower #2 at Power Plant on STP Basis at DSP')">Upgrading
+                    of Turbo Blower #2 at Power Plant on STP Basis at DSP</a>
+                <a
+                    href="javascript:updateForm('Construction of dedicated new Storage Bay for Rolls of MSM adjacent to shop')">Construction
+                    of dedicated new Storage Bay for Rolls of MSM adjacent to shop</a>
+                <a href="javascript:updateForm('Installation of additional VAD unit at SMS')">Installation of additional
+                    VAD unit at SMS</a>
+                <a
+                    href="javascript:updateForm('Replacement of existing Stacker & Reclaimer and Enhancement of Conveyor Capacity at RMHP (Assgn no-04/DE/5037)')">Replacement
+                    of existing Stacker & Reclaimer and Enhancement of Conveyor Capacity at RMHP (Assgn
+                    no-04/DE/5037)</a>
+
+                <a
+                    href="javascript:updateForm('Installation of Parallel Conveyor to Conveyor 5A for stacking coal in coal bed of CHP')">Installation
+                    of Parallel Conveyor to Conveyor 5A for stacking coal in coal bed of CHP</a>
+                <a href="javascript:updateForm('Installation of 20 MWp Ground mounted Solar Plant at DSP Township')">Installation
+                    of 20 MWp Ground mounted Solar Plant at DSP Township</a>
+                <a
+                    href="javascript:updateForm('Refurbishment and Overhauling of Oxygen Compressor No 1, Oxygen Plant')">Refurbishment
+                    and Overhauling of Oxygen Compressor No 1, Oxygen Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of OCBs & upgradation of Merchant, CO(S), Foundry, Old SMS switchboards (11KV/3.3KV/415V)')">Replacement
+                    of OCBs & upgradation of Merchant, CO(S), Foundry, Old SMS switchboards (11KV/3.3KV/415V)</a>
+                <a
+                    href="javascript:updateForm('Installation of 15 MWp Floating Solar Plant at Raw Water Reservoir of DSP')">Installation
+                    of 15 MWp Floating Solar Plant at Raw Water Reservoir of DSP</a>
+                <a
+                    href="javascript:updateForm('Receiving sprocket of sinter machine in SP-2 & Discharge sprocket of sinter machine with curve track in SP-2')">Receiving
+                    sprocket of sinter machine in SP-2 & Discharge sprocket of sinter machine with curve track in
+                    SP-2</a>
+                <a href="javascript:updateForm('Creation of Emergency Raw Water Storage at DSP')">Creation of Emergency
+                    Raw Water Storage at DSP</a>
+                <a
+                    href="javascript:updateForm('Enrichment of BF Gas with Coke Oven Gas for heating of stoves in BF#2 & BF#3.')">Enrichment
+                    of BF Gas with Coke Oven Gas for heating of stoves in BF#2 & BF#3.</a>
+                <a
+                    href="javascript:updateForm('Procurement of Orthopaedic Instruments for Orthopaedic department of DSP Main Hospital')">Procurement
+                    of Orthopaedic Instruments for Orthopaedic department of DSP Main Hospital</a>
+                <a href="javascript:updateForm('Revamping of De-dusting system of Mixer at BOF shop in DSP')">Revamping
+                    of De-dusting system of Mixer at BOF shop in DSP</a>
+                <a
+                    href="javascript:updateForm('Installation of new flare Stacks- SMS, DSP (Capital cost Rs. 30.92 Cr net of ITC)')">Installation
+                    of new flare Stacks- SMS, DSP (Capital cost Rs. 30.92 Cr net of ITC)</a>
+                <a href="javascript:updateForm('Installing BoreWell at DSP Township and Water Treatment Plant')">Installing
+                    BoreWell at DSP Township and Water Treatment Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of C arm image intensifier in OT of Orthopaedic Department of DSP Main Hospital')">Replacement
+                    of C arm image intensifier in OT of Orthopaedic Department of DSP Main Hospital</a>
+                <a href="javascript:updateForm('Procurement of Laundry Machineries for M&HS of DSP Main Hospital')">Procurement
+                    of Laundry Machineries for M&HS of DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of Heavy duty CNC Lathe Machine for Roll Shop,MSM')">Supply
+                    and Installation of Heavy duty CNC Lathe Machine for Roll Shop,MSM</a>
+                <a
+                    href="javascript:updateForm('Construction of Rigid Pavement From NH2 To Plant Gate, Development Of Parking Space And Rest Room For Drivers/Operator And Khalasi At Tamla Gate')">Construction
+                    of Rigid Pavement From NH2 To Plant Gate, Development Of Parking Space And Rest Room For
+                    Drivers/Operator And Khalasi At Tamla Gate</a>
+                <a
+                    href="javascript:updateForm('Soil investigation, Survey and Underground Mapping (package- I) for upgradation of ESP-I in SP-I')">Soil
+                    investigation, Survey and Underground Mapping (package- I) for upgradation of ESP-I in SP-I</a>
+
+                <a
+                    href="javascript:updateForm('Replacement of 11 Kv Switchboard & ACSR conductor at WTP & APH for town services ,DSP')">Replacement
+                    of 11 Kv Switchboard & ACSR conductor at WTP & APH for town services ,DSP</a>
+                <a
+                    href="javascript:updateForm('Supply &Installation of 28 nos. Multi para monitor in DSP Main Hospital')">Supply
+                    &Installation of 28 nos. Multi para monitor in DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Procurement of ophthalmic ND YAG Laser Machine for Eye Dfeptt. Of DSP Main Hospital')">Procurement
+                    of ophthalmic ND YAG Laser Machine for Eye Dfeptt. Of DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Procurement of OCT (Optical Coherence omography) Machine for Eye Department of DSP Main Hospital')">Procurement
+                    of OCT (Optical Coherence omography) Machine for Eye Department of DSP Main Hospital</a>
+                <a href="javascript:updateForm('Procurement of Audiological Equipment dor ENT Department')">Procurement
+                    of Audiological Equipment dor ENT Department</a>
+                <a
+                    href="javascript:updateForm('Procurement of Table-Top Sterilizer for Surgery Department of DSP Main hospital')">Procurement
+                    of Table-Top Sterilizer for Surgery Department of DSP Main hospital</a>
+                <a
+                    href="javascript:updateForm('Reconstruction of road network in Central Avenue,Coke Street,By Product Street and RMHP Flux Yard inside Durgapur Steel Plant')">Reconstruction
+                    of road network in Central Avenue,Coke Street,By Product Street and RMHP Flux Yard inside Durgapur
+                    Steel Plant</a>
+                <a href="javascript:updateForm('Replacement of 33 kV old XLPE/PILC cables Phase-2 of DSP')">Replacement
+                    of 33 kV old XLPE/PILC cables Phase-2 of DSP</a>
+                <a href="javascript:updateForm('Development of Infrastructure at Project Building')">Development of
+                    Infrastructure at Project Building</a>
+                <a href="javascript:updateForm('Supply and installation of IT Products for Project Engg Deptt')">Supply
+                    and installation of IT Products for Project Engg Deptt</a>
+                <a href="javascript:updateForm('Supply and installation of office furniture for Project Engg Deptt')">Supply
+                    and installation of office furniture for Project Engg Deptt</a>
+                <a
+                    href="javascript:updateForm('Procurement of 2 Nos High Flow Nasal Cannula(HFNC) Therapy Device for paediatric Department of DSP Main Hospital,DSP')">Procurement
+                    of 2 Nos High Flow Nasal Cannula(HFNC) Therapy Device for paediatric Department of DSP Main
+                    Hospital,DSP</a>
+                <a
+                    href="javascript:updateForm('Procurement of Autoclinical Chemistry Analyzer for Biochemistry Department of DSP lVlain Hospital, DSP')">Procurement
+                    of Autoclinical Chemistry Analyzer for Biochemistry Department of DSP lVlain Hospital, DSP</a>
+                <a
+                    href="javascript:updateForm('Replacement of Withdrawal & Straightener Strands and associated works at Billet Caster #1 in CCP, SMS DSP')">Replacement
+                    of Withdrawal & Straightener Strands and associated works at Billet Caster #1 in CCP, SMS DSP</a>
+                <a
+                    href="javascript:updateForm('Procurement of 1. no. lntubation Fiberscope for Anaesthesiology Department of DSP Main Hospital')">Procurement
+                    of 1. no. lntubation Fiberscope for Anaesthesiology Department of DSP Main Hospital</a>
+                <a href="javascript:updateForm('Procurement of fully aitomated HbA1C analyser for DSP Main Hospital')">Procurement
+                    of fully aitomated HbA1C analyser for DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of Modified Roller Conveyor in Band Saw Area, WAP')">Supply
+                    and Installation of Modified Roller Conveyor in Band Saw Area, WAP</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of one no X-Ray Fluorescence (XRF) Spectrometer &accessories at BOF Laboratory of RCL, DSP.')">Supply
+                    and Installation of one no X-Ray Fluorescence (XRF) Spectrometer &accessories at BOF Laboratory of
+                    RCL, DSP.</a>
+
+                <a href="javascript:updateForm('Procurement of 12 nos. of slag pots in Blast Furnace.')">Procurement of
+                    12 nos. of slag pots in Blast Furnace.</a>
+                <a href="javascript:updateForm('Procurement of 5 nos. of Hot metal ladle in Blast Furnace.')">Procurement
+                    of 5 nos. of Hot metal ladle in Blast Furnace.</a>
+                <a
+                    href="javascript:updateForm('Replacement of Centralised A.C System at eight location of Durgapur Steel Plant.')">Replacement
+                    of Centralised A.C System at eight location of Durgapur Steel Plant.</a>
+                <a href="javascript:updateForm('RETROFITTING OF PLASMA CUTTING FACILITY ON CNC MACHINE AT CEM SHOP')">RETROFITTING
+                    OF PLASMA CUTTING FACILITY ON CNC MACHINE AT CEM SHOP</a>
+                <a
+                    href="javascript:updateForm('Construction of RCC drain for prevention of water logging in Ispat Bhawan Complex of DSP')">Construction
+                    of RCC drain for prevention of water logging in Ispat Bhawan Complex of DSP</a>
+                <a
+                    href="javascript:updateForm('Up-gradation of Multi Channel Ultrasonic Rail Wheel Inspection system of WAP')">Up-gradation
+                    of Multi Channel Ultrasonic Rail Wheel Inspection system of WAP</a>
+                <a
+                    href="javascript:updateForm('Procurement of New equipment (Pressure Washing Machine, Vacuum Pressure Impregnation System and Mobile Hydraulic Press) for ERS,DSP.')">Procurement
+                    of New equipment (Pressure Washing Machine, Vacuum Pressure Impregnation System and Mobile Hydraulic
+                    Press) for ERS,DSP.</a>
+                <a
+                    href="javascript:updateForm('Replacement of 3 nos. detarrer (ETP) in 1.6 MT Coal Chemical Plant (Recd. 10.01.18)')">Replacement
+                    of 3 nos. detarrer (ETP) in 1.6 MT Coal Chemical Plant (Recd. 10.01.18)</a>
+                <a href="javascript:updateForm('Replacement of 1 no track chain mountrd/track type loader of PG')">Replacement
+                    of 1 no track chain mountrd/track type loader of PG</a>
+                <a href="javascript:updateForm('Installation of Radar based Oven identification system in COB#3')">Installation
+                    of Radar based Oven identification system in COB#3</a>
+                <a href="javascript:updateForm('Replacement of Drives and Motors of 12 nos of cranes in SMS,DSP')">Replacement
+                    of Drives and Motors of 12 nos of cranes in SMS,DSP</a>
+                <a href="javascript:updateForm('Replacement of Payroll production and Development System')">Replacement
+                    of Payroll production and Development System</a>
+                <a href="javascript:updateForm('Enhancement of Oxygen Enrichment Capacity in BF No 3')">Enhancement of
+                    Oxygen Enrichment Capacity in BF No 3</a>
+                <a
+                    href="javascript:updateForm('Measurement & Display of gas generation & consumption at Gas Control.')">Measurement
+                    & Display of gas generation & consumption at Gas Control.</a>
+                <a
+                    href="javascript:updateForm('Installation of Submerged Arc Welding Machine for hard facing of Coke Crusher Rolls of RMHP, DSP.')">Installation
+                    of Submerged Arc Welding Machine for hard facing of Coke Crusher Rolls of RMHP, DSP.</a>
+                <a href="javascript:updateForm('Capital Repairs/Spares')">Capital Repairs/Spares</a>
+                <a href="javascript:updateForm('Upgradation of Stand PLC System of Billet Casters of SMS')">Upgradation
+                    of Stand PLC System of Billet Casters of SMS</a>
+                <a
+                    href="javascript:updateForm('Installation of oversized coke screening facilities at pre -crushing stage in RMHP')">Installation
+                    of oversized coke screening facilities at pre -crushing stage in RMHP</a>
+                <a
+                    href="javascript:updateForm('Retrofitting of 3.3 Kv contactor in GCB cubicle for reversible crusher drives of HT-3, HT-10, HT-11 and Lime Plant, RMHP Sub Stns.')">Retrofitting
+                    of 3.3 Kv contactor in GCB cubicle for reversible crusher drives of HT-3, HT-10, HT-11 and Lime
+                    Plant, RMHP Sub Stns.</a>
+
+                <a
+                    href="javascript:updateForm('Replacement of Mercury Arc Rectifier with Thyristor Controlled Rectfier (DO-ABB)')">Replacement
+                    of Mercury Arc Rectifier with Thyristor Controlled Rectfier (DO-ABB)</a>
+                <a href="javascript:updateForm('Replacement of Liner Breaking Machine no.1 of BOF Shop')">Replacement of
+                    Liner Breaking Machine no.1 of BOF Shop</a>
+                <a href="javascript:updateForm('Rebuilding of Stove # 4.3 of BF #4')">Rebuilding of Stove # 4.3 of BF
+                    #4</a>
+                <a href="javascript:updateForm('Upgradation of PLC-2 and PLC-3 of Billet Caster')">Upgradation of PLC-2
+                    and PLC-3 of Billet Caster</a>
+                <a href="javascript:updateForm('Provision of Duplicate Overhead HEC & SST Pipelines in CCP')">Provision
+                    of Duplicate Overhead HEC & SST Pipelines in CCP</a>
+                <a href="javascript:updateForm('Installation of casting facility of 150/300 section in BRC (CCP)')">Installation
+                    of casting facility of 150/300 section in BRC (CCP)</a>
+                <a
+                    href="javascript:updateForm('Installation of additional CCTV Cameras in DSP Periphery, Gates & Slag Bank area')">Installation
+                    of additional CCTV Cameras in DSP Periphery, Gates & Slag Bank area</a>
+                <a href="javascript:updateForm('Enhancement of oxygen enrichment at BF # 2, DSP')">Enhancement of oxygen
+                    enrichment at BF # 2, DSP</a>
+                <a href="javascript:updateForm('Replacement of 1000T splicing machine of Heavy Maintenance.')">Replacement
+                    of 1000T splicing machine of Heavy Maintenance.</a>
+                <a
+                    href="javascript:updateForm('Up-gradation of Human Machine Interface (HMI) system of Level-1 Automation in BOF, SMS.')">Up-gradation
+                    of Human Machine Interface (HMI) system of Level-1 Automation in BOF, SMS.</a>
+                <a
+                    href="javascript:updateForm('Replacement of secondary ventilation suction duct of Mixers in BOF Shop of DSP')">Replacement
+                    of secondary ventilation suction duct of Mixers in BOF Shop of DSP</a>
+                <a href="javascript:updateForm('Procurement of 1 no Steam turbine rotor assembly for turbo blower')">Procurement
+                    of 1 no Steam turbine rotor assembly for turbo blower</a>
+                <a href="javascript:updateForm('Replacement of Cantileaver Crane of BOF Dept')">Replacement of
+                    Cantileaver Crane of BOF Dept</a>
+                <a href="javascript:updateForm('Replacement of 4 nos. Detarrer in 1.0 MT Coal & Chemicals Plant')">Replacement
+                    of 4 nos. Detarrer in 1.0 MT Coal & Chemicals Plant</a>
+                <a href="javascript:updateForm('Renovation of Door Thickeners of Blast Furnace (DO-SC)')">Renovation of
+                    Door Thickeners of Blast Furnace (DO-SC)</a>
+                <a
+                    href="javascript:updateForm('Modernisation & Refurbishing of existing 3 nos. of OTIS make elevators at SMS & NLCP Complex of DSP (DO-RKV)')">Modernisation
+                    & Refurbishing of existing 3 nos. of OTIS make elevators at SMS & NLCP Complex of DSP (DO-RKV)</a>
+                <a
+                    href="javascript:updateForm('Replacement of 3.3 KV Switch Board at Arjunpur of DSP Township - ELECTRICAL Pkg')">Replacement
+                    of 3.3 KV Switch Board at Arjunpur of DSP Township - ELECTRICAL Pkg</a>
+                <a
+                    href="javascript:updateForm('Replacement of 3.3 KV Switch Board at Arjunpur of DSP Township - CIVIL Pkg')">Replacement
+                    of 3.3 KV Switch Board at Arjunpur of DSP Township - CIVIL Pkg</a>
+                <a
+                    href="javascript:updateForm('Replacement of Air conditioning system for charging car No.15 in CO&CC.')">Replacement
+                    of Air conditioning system for charging car No.15 in CO&CC.</a>
+                <a href="javascript:updateForm('Waste Gas-COCC')">Waste Gas-COCC</a>
+
+                <a href="javascript:updateForm('Procurement of Door Frames for COB 3 (Package-I)-Globe/Shalimar')">Procurement
+                    of Door Frames for COB 3 (Package-I)-Globe/Shalimar</a>
+                <a
+                    href="javascript:updateForm('Application of Refractory Lining for 160 Nos. Door body Assembly (Package-IV)')">Application
+                    of Refractory Lining for 160 Nos. Door body Assembly (Package-IV)</a>
+                <a
+                    href="javascript:updateForm('Procurement of Door Bodies for COB 3 (without brick lining)(Package-II)')">Procurement
+                    of Door Bodies for COB 3 (without brick lining)(Package-II)</a>
+                <a
+                    href="javascript:updateForm('Supply of Refractory Lining for 160 Nos. Door body Assembly (Package-III)')">Supply
+                    of Refractory Lining for 160 Nos. Door body Assembly (Package-III)</a>
+                <a
+                    href="javascript:updateForm('Replacement of surface grinding machine TR-9 in CEM.(Pkg-II erection of M/c)')">Replacement
+                    of surface grinding machine TR-9 in CEM.(Pkg-II erection of M/c)</a>
+                <a
+                    href="javascript:updateForm('Replacement of groove cutting lathe/ notch milling machine at Roll Shop (Pkg-2)')">Replacement
+                    of groove cutting lathe/ notch milling machine at Roll Shop (Pkg-2)</a>
+                <a href="javascript:updateForm('Replacement of Fork Lift - VF#10 & VF#13 to be used at BOF,SMS')">Replacement
+                    of Fork Lift - VF#10 & VF#13 to be used at BOF,SMS</a>
+                <a href="javascript:updateForm('Procurement of 5 sets of OT Monitors for Anaesthesia Deptt. Of M&HS.')">Procurement
+                    of 5 sets of OT Monitors for Anaesthesia Deptt. Of M&HS.</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of Endoscopy Units for ENT Department in Main Hospital of DSP')">Supply
+                    and Installation of Endoscopy Units for ENT Department in Main Hospital of DSP</a>
+                <a
+                    href="javascript:updateForm('Upgradation of SAP Software and Oracle database of ERP System through Max-attention support service')">Upgradation
+                    of SAP Software and Oracle database of ERP System through Max-attention support service</a>
+                <a href="javascript:updateForm('Replacement of 4T Battery operated Platform Truck of WAP')">Replacement
+                    of 4T Battery operated Platform Truck of WAP</a>
+                <a
+                    href="javascript:updateForm('Non Destructive Testing of RCC pedestal of 2 nos. 1.6MT Primary Gas Cooler in Coal Chemical Plant')">Non
+                    Destructive Testing of RCC pedestal of 2 nos. 1.6MT Primary Gas Cooler in Coal Chemical Plant</a>
+                <a href="javascript:updateForm('Replacement of three small loaders by two medium loaders')">Replacement
+                    of three small loaders by two medium loaders</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of 2 nos 125 KVA Gensets for DSP Main Hospital')">Supply
+                    and Installation of 2 nos 125 KVA Gensets for DSP Main Hospital</a>
+                <a href="javascript:updateForm('Supply and Installation of 60 nos AC for DSP Main Hospital')">Supply and
+                    Installation of 60 nos AC for DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Supply & Installation of 5 nos. ICU Ventilators at Durgapur Steel Plant Main Hospital')">Supply
+                    & Installation of 5 nos. ICU Ventilators at Durgapur Steel Plant Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Supply & Installation of 10 nos. ICU Ventilators in Durgapur Steel Plant Main Hospital')">Supply
+                    & Installation of 10 nos. ICU Ventilators in Durgapur Steel Plant Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Development of existing medical facility fot COVID19 in DSP Main Hospital')">Development
+                    of existing medical facility fot COVID19 in DSP Main Hospital</a>
+                <a href="javascript:updateForm('Procurement of 5 Set I PAD for DSP/ASP')">Procurement of 5 Set I PAD for
+                    DSP/ASP</a>
+                <a href="javascript:updateForm('Installation of Stamp Charge Coke Oven Battery')">Installation of Stamp
+                    Charge Coke Oven Battery</a>
+                <a href="javascript:updateForm('Installation of Wheel Rolling Mill')">Installation of Wheel Rolling
+                    Mill</a>
+                <a
+                    href="javascript:updateForm('Procurement of a new X-Ray Fluorescence (XRF) Spectrometer & accessories at BF Laboratory of RCL, DSP')">Procurement
+                    of a new X-Ray Fluorescence (XRF) Spectrometer & accessories at BF Laboratory of RCL, DSP</a>
+
+                <a
+                    href="javascript:updateForm('Supply and Installation of 2 nos 500 KVA Transformers for DSP Main Hospital')">Supply
+                    and Installation of 2 nos 500 KVA Transformers for DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Upgradation of Internet Router for Data Centre(DC) & Disaster Recovery Centre(DRC) for C&IT Deptt. of DSP')">Upgradation
+                    of Internet Router for Data Centre(DC) & Disaster Recovery Centre(DRC) for C&IT Deptt. of DSP</a>
+                <a
+                    href="javascript:updateForm('Installation of Oxy-Fuel Gas Cutting Torches for Billet Caster#1 in CCP')">Installation
+                    of Oxy-Fuel Gas Cutting Torches for Billet Caster#1 in CCP</a>
+                <a
+                    href="javascript:updateForm('Procurement of Multifunctional Photocopier cum Scanner cum Printer for (IPM-MM) department')">Procurement
+                    of Multifunctional Photocopier cum Scanner cum Printer for (IPM-MM) department</a>
+                <a
+                    href="javascript:updateForm('Camera/Sensor based Automation for Billet Length measurement in Merchant MIll of DSP')">Camera/Sensor
+                    based Automation for Billet Length measurement in Merchant MIll of DSP</a>
+                <a href="javascript:updateForm('Procurement of 4 no of OT Tables for OT Complex of DSP Main Hospital')">Procurement
+                    of 4 no of OT Tables for OT Complex of DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Replacement of conventional lights by energy effieceint LED Luminaries for Durgapur Steel Plant')">Replacement
+                    of conventional lights by energy effieceint LED Luminaries for Durgapur Steel Plant</a>
+                <a
+                    href="javascript:updateForm('Procurement of Dental Digital X-ray System for Dental Department DSP Main Hospital, DSP')">Procurement
+                    of Dental Digital X-ray System for Dental Department DSP Main Hospital, DSP</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation Hydraulic Power Unit for Cooling bed appron mechanism for MSM')">Supply
+                    and Installation Hydraulic Power Unit for Cooling bed appron mechanism for MSM</a>
+                <a href="javascript:updateForm('Supply of Primary and Secondary Screens in Flux Yard Of RMHP')">Supply
+                    of Primary and Secondary Screens in Flux Yard Of RMHP</a>
+                <a
+                    href="javascript:updateForm('Provision of Gas Line Loop Water Seals on existing BF Gas Branch Lines of Boiler No. 1 & 2 in Power Plant')">Provision
+                    of Gas Line Loop Water Seals on existing BF Gas Branch Lines of Boiler No. 1 & 2 in Power Plant</a>
+                <a
+                    href="javascript:updateForm('Renovation and Modification job for Medical Ward, Radiology wing, Geriatric wing, Biochemistry, Medical store, Public Health Office & Pathology area in Main Hospital, DSP')">Renovation
+                    and Modification job for Medical Ward, Radiology wing, Geriatric wing, Biochemistry, Medical store,
+                    Public Health Office & Pathology area in Main Hospital, DSP</a>
+                <a
+                    href="javascript:updateForm('Renovation and Modification job for Surgical Ward, Chest ward, Psycho ward, Laundry Bldg, Maint. offices in Main Hospital, DSP')">Renovation
+                    and Modification job for Surgical Ward, Chest ward, Psycho ward, Laundry Bldg, Maint. offices in
+                    Main Hospital, DSP</a>
+                <a
+                    href="javascript:updateForm('Replacement of old Energy meters with wireless Communicable type Energy Meters of power Management Department in Durgapur Steel plant')">Replacement
+                    of old Energy meters with wireless Communicable type Energy Meters of power Management Department in
+                    Durgapur Steel plant</a>
+                <a
+                    href="javascript:updateForm('Construction of Boundary Wall for vacant land beside Surya Sen Sarani Road and parallel to ASP Plant')">Construction
+                    of Boundary Wall for vacant land beside Surya Sen Sarani Road and parallel to ASP Plant</a>
+
+                <a
+                    href="javascript:updateForm('Replacement of canteen furniture items in DSP Model Canteens for Personnel Department')">Replacement
+                    of canteen furniture items in DSP Model Canteens for Personnel Department</a>
+                <a href="javascript:updateForm('COAL DUST INJECTION UNIT (CDI) IN BF-2')">COAL DUST INJECTION UNIT (CDI)
+                    IN BF-2</a>
+                <a
+                    href="javascript:updateForm('Underground Mapping (Package No. IIA) for Installation of New Wagon tippler/ Track Hopper in RMHP at DSP')">Underground
+                    Mapping (Package No. IIA) for Installation of New Wagon tippler/ Track Hopper in RMHP at DSP</a>
+                <a href="javascript:updateForm('Engagement of Mecon as a consultant for amendment of EC')">Engagement of
+                    Mecon as a consultant for amendment of EC</a>
+                <a href="javascript:updateForm('Procurement of 3 nos. Trippers for Plant Garage')">Procurement of 3 nos.
+                    Trippers for Plant Garage</a>
+                <a
+                    href="javascript:updateForm('Installation of Unified Maintenance Center for Automation Systems in CO&CC (Coke Ovens & Coal Chemicals) of DSP')">Installation
+                    of Unified Maintenance Center for Automation Systems in CO&CC (Coke Ovens & Coal Chemicals) of
+                    DSP</a>
+                <a
+                    href="javascript:updateForm('Computerised Heating Control System Along With Radar Based Oven Identification System In COB#3’')">Computerised
+                    Heating Control System Along With Radar Based Oven Identification System In COB#3’</a>
+                <a href="javascript:updateForm('Refurbishment of Lining Breaking Machine (Lbm-05) of Plant Garage')">Refurbishment
+                    of Lining Breaking Machine (Lbm-05) of Plant Garage</a>
+                <a href="javascript:updateForm('Procurement of 2 nos. Trailers for Plant Garage')">Procurement of 2 nos.
+                    Trailers for Plant Garage</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of Lathe Machines MS-46 ,47, 50, 93 and TR 16 for CEM')">Supply
+                    and Installation of Lathe Machines MS-46 ,47, 50, 93 and TR 16 for CEM</a>
+                <a href="javascript:updateForm('OPD Q Management System for DSP Main Hospital, DSP')">OPD Q Management
+                    System for DSP Main Hospital, DSP</a>
+                <a
+                    href="javascript:updateForm('Procurement of 11 no. Water Cooler cum purifier in Model Canteens for DSP')">Procurement
+                    of 11 no. Water Cooler cum purifier in Model Canteens for DSP</a>
+                <a
+                    href="javascript:updateForm('UPGRADATION OF CNC SIEMENS 8O2DSL NC CONTROLLER WITH SIEMENS 828D CONTROLLER OF ROLL & DIE SHOP, WAP')">UPGRADATION
+                    OF CNC SIEMENS 8O2DSL NC CONTROLLER WITH SIEMENS 828D CONTROLLER OF ROLL & DIE SHOP, WAP</a>
+                <a
+                    href="javascript:updateForm('Soil Investigation Survey & UG Mapping of New Forging, Rolling and Online Heat Treatment Line at Wheel & Axle Plant')">Soil
+                    Investigation Survey & UG Mapping of New Forging, Rolling and Online Heat Treatment Line at Wheel &
+                    Axle Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of high pressure steam Mains of Coal Chemicals plant in CO&CC')">Replacement
+                    of high pressure steam Mains of Coal Chemicals plant in CO&CC</a>
+                <a
+                    href="javascript:updateForm('Soil Investigation Survey & Underground Mapping (Package-1) for Dedicated Storage Bay for Rolls adjacent to MSM-RS')">Soil
+                    Investigation Survey & Underground Mapping (Package-1) for Dedicated Storage Bay for Rolls adjacent
+                    to MSM-RS</a>
+                <a
+                    href="javascript:updateForm('Construction of Boundary Wall and Fencing Job for vacant land between ISPAT Bhawan to DSTPS Plant , Andal')">Construction
+                    of Boundary Wall and Fencing Job for vacant land between ISPAT Bhawan to DSTPS Plant , Andal</a>
+                <a
+                    href="javascript:updateForm('Construction of Boundary Wall and Fencing Job for vacant land beside Surya Sen Sarani Road and parallel to MSM upto CHRD')">Construction
+                    of Boundary Wall and Fencing Job for vacant land beside Surya Sen Sarani Road and parallel to MSM
+                    upto CHRD</a>
+                <a href="javascript:updateForm('Replacement of Coke Oven Gas Pipelines in Coal Chemicals Plant')">Replacement
+                    of Coke Oven Gas Pipelines in Coal Chemicals Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of 3 nos. GE Locomotives with 3 nos. New 700 Horsepower BHEL Locomotives of Durgapur Steel Plant')">Replacement
+                    of 3 nos. GE Locomotives with 3 nos. New 700 Horsepower BHEL Locomotives of Durgapur Steel Plant</a>
+
+                <a
+                    href="javascript:updateForm('Procurement of Licenses for Oracle Database Management System software for C&IT')">Procurement
+                    of Licenses for Oracle Database Management System software for C&IT</a>
+                <a
+                    href="javascript:updateForm('Supply & lnstallation of Electronic Display Board and accessories for implementation of Q-Management system in DSP Main Hospital.')">Supply
+                    & lnstallation of Electronic Display Board and accessories for implementation of Q-Management system
+                    in DSP Main Hospital.</a>
+                <a href="javascript:updateForm('Replacement of 119 nos. of Acs for buildings under Town Services.')">Replacement
+                    of 119 nos. of Acs for buildings under Town Services.</a>
+                <a href="javascript:updateForm('Renovation and Modification of Tagore House in DSP Township')">Renovation
+                    and Modification of Tagore House in DSP Township</a>
+                <a
+                    href="javascript:updateForm('Replacement of BF#3 Hot Stove PLC, SGP PLC and associated HMI Systems at Blast Furnace of DSP')">Replacement
+                    of BF#3 Hot Stove PLC, SGP PLC and associated HMI Systems at Blast Furnace of DSP</a>
+                <a
+                    href="javascript:updateForm('Enhancement of storage capacity of Ground Water Reservoir by deepening (Pkg-II) and Hydrographic survey of Ground Water Reservoir (Pkg.-I)')">Enhancement
+                    of storage capacity of Ground Water Reservoir by deepening (Pkg-II) and Hydrographic survey of
+                    Ground Water Reservoir (Pkg.-I)</a>
+                <a href="javascript:updateForm('Supply and Installation of One no Lathe Machines for SP')">Supply and
+                    Installation of One no Lathe Machines for SP</a>
+                <a
+                    href="javascript:updateForm('UPGRADATION OF CONTROLLER AND SOFTWARE FOR INSTRON 8801 FTT MACHINE for RCL Dept.')">UPGRADATION
+                    OF CONTROLLER AND SOFTWARE FOR INSTRON 8801 FTT MACHINE for RCL Dept.</a>
+                <a
+                    href="javascript:updateForm('Replacement of 1 nos. Pick & Carry Crane by higher capacity equipment')">Replacement
+                    of 1 nos. Pick & Carry Crane by higher capacity equipment</a>
+                <a href="javascript:updateForm('Revamping of BOF Gas Holder at Durgapur Steel Plant')">Revamping of BOF
+                    Gas Holder at Durgapur Steel Plant</a>
+                <a
+                    href="javascript:updateForm('Soil Investigation and Underground Survey for Installation of Electric Driven Exhauster in 1.0 MT Coal Chemical Plant')">Soil
+                    Investigation and Underground Survey for Installation of Electric Driven Exhauster in 1.0 MT Coal
+                    Chemical Plant</a>
+                <a
+                    href="javascript:updateForm('Development and Maintenance of SAIL’s “Digital Project Management Solution” at Durgapur Steel Plant DPMS')">Development
+                    and Maintenance of SAIL’s “Digital Project Management Solution” at Durgapur Steel Plant DPMS</a>
+                <a
+                    href="javascript:updateForm('Area Survey and Soil Investigation Work (Package-1) for Installation of New Wagon Tipplers/ Track Hopper in RMHP at DSP (Re-ordered for new loaction)')">Area
+                    Survey and Soil Investigation Work (Package-1) for Installation of New Wagon Tipplers/ Track Hopper
+                    in RMHP at DSP (Re-ordered for new loaction)</a>
+                <a
+                    href="javascript:updateForm('Replacement of 12 Nos. of Computers with Auto-CAD Software for Cad Room of Design Department')">Replacement
+                    of 12 Nos. of Computers with Auto-CAD Software for Cad Room of Design Department</a>
+                <a
+                    href="javascript:updateForm('Soil Investigation, Survey & Underground Mapping for Installation of new Flare Stack for BOF Converters at SMS (PACKAGE No. 1)')">Soil
+                    Investigation, Survey & Underground Mapping for Installation of new Flare Stack for BOF Converters
+                    at SMS (PACKAGE No. 1)</a>
+                <a
+                    href="javascript:updateForm('supply of oil Air Lubrication system in wsU and IRT of Bloorn Caster and BRC in CCp, DSp.')">supply
+                    of oil Air Lubrication system in wsU and IRT of Bloorn Caster and BRC in CCp, DSp.</a>
+                <a
+                    href="javascript:updateForm('REPLACEMENT OF 2 NOS. COLDWELL PUMP SETS IN ROLLING MILLS PUMP HOUSE (Pkg.-1- Supply)')">REPLACEMENT
+                    OF 2 NOS. COLDWELL PUMP SETS IN ROLLING MILLS PUMP HOUSE (Pkg.-1- Supply)</a>
+                <a
+                    href="javascript:updateForm('Replacement of one no. of Slag Bank Crane of Plant Garage Department of Durgapur Steel Plant.')">Replacement
+                    of one no. of Slag Bank Crane of Plant Garage Department of Durgapur Steel Plant.</a>
+
+                <a
+                    href="javascript:updateForm('Supply and lnstallation of High Precision Multi Product Calibrator for ETL of DSP')">Supply
+                    and lnstallation of High Precision Multi Product Calibrator for ETL of DSP</a>
+                <a
+                    href="javascript:updateForm('Underground Mapping (Package No. IB) for Installation of BF#5 & Associated Facilities for 3.2 MTPA Hot Metal')">Underground
+                    Mapping (Package No. IB) for Installation of BF#5 & Associated Facilities for 3.2 MTPA Hot Metal</a>
+                <a
+                    href="javascript:updateForm('Area Survey & Soil Investigation Work (Package No. IA) for Installation of BF#5 & Associated Facilities for 3.2 MTPA Hot Metal')">Area
+                    Survey & Soil Investigation Work (Package No. IA) for Installation of BF#5 & Associated Facilities
+                    for 3.2 MTPA Hot Metal</a>
+                <a
+                    href="javascript:updateForm('Erection of high speed conventional Lathe M/C with accessories for COCC deptt-Package-II')">Erection
+                    of high speed conventional Lathe M/C with accessories for COCC deptt-Package-II</a>
+                <a
+                    href="javascript:updateForm('Provision of additional Launder for Converter 1, 2 and 3 of SMS of Durgapur Steel Plant')">Provision
+                    of additional Launder for Converter 1, 2 and 3 of SMS of Durgapur Steel Plant</a>
+                <a
+                    href="javascript:updateForm('REPLACEMENT OF TWO NO. ROUGH TERRAIN CRANES OF PLANT GARAGE DEPARTMENT')">REPLACEMENT
+                    OF TWO NO. ROUGH TERRAIN CRANES OF PLANT GARAGE DEPARTMENT</a>
+                <a href="javascript:updateForm('REPLACEMENT OF 2 NOS. SMALL LOADERS OF PLANT GARAGE DEPARTMENT')">REPLACEMENT
+                    OF 2 NOS. SMALL LOADERS OF PLANT GARAGE DEPARTMENT</a>
+                <a
+                    href="javascript:updateForm('Replacement of existing DX Type Chiller Plant for OT, ICU and Blood Bank at DSP Main Hospital')">Replacement
+                    of existing DX Type Chiller Plant for OT, ICU and Blood Bank at DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Construction of an Incident Command Centre and a Conference Hall for CISF at Main Gate')">Construction
+                    of an Incident Command Centre and a Conference Hall for CISF at Main Gate</a>
+                <a
+                    href="javascript:updateForm('Renovation and modification of substation buildings of PMD inside DSP plant')">Renovation
+                    and modification of substation buildings of PMD inside DSP plant</a>
+                <a
+                    href="javascript:updateForm('Appointment of consultant fro the propossed gas boosting and mixing station in COB#2 , CO&CC.')">Appointment
+                    of consultant fro the propossed gas boosting and mixing station in COB#2 , CO&CC.</a>
+                <a href="javascript:updateForm('SUPPLY AND INSTALLATION OF INDUSTRIAL VACUUM CLEANING SYSTEM IN RMHP')">SUPPLY
+                    AND INSTALLATION OF INDUSTRIAL VACUUM CLEANING SYSTEM IN RMHP</a>
+                <a
+                    href="javascript:updateForm('Upgradation of Hydraulic Wagon Tippler # 3 along with Side Arm Charger in RMHP of DSP.')">Upgradation
+                    of Hydraulic Wagon Tippler # 3 along with Side Arm Charger in RMHP of DSP.</a>
+                <a
+                    href="javascript:updateForm('Appointment of Consultant for preparing Detail Project Report for Up-gradation of existing Railway Track in hot metal circuit of Durgapur Steel Plant.')">Appointment
+                    of Consultant for preparing Detail Project Report for Up-gradation of existing Railway Track in hot
+                    metal circuit of Durgapur Steel Plant.</a>
+                <a href="javascript:updateForm('Replacement of cooling stack of Converter 1,2&3 of DSP')">Replacement of
+                    cooling stack of Converter 1,2&3 of DSP</a>
+                <a href="javascript:updateForm('Replacement of 18 nos. of weigh Feeders in SP#1')">Replacement of 18
+                    nos. of weigh Feeders in SP#1</a>
+                <a href="javascript:updateForm('SUPPLY AND INSTALLATION OF DYNAMIC BALANCING MACHINE IN CEM')">SUPPLY
+                    AND INSTALLATION OF DYNAMIC BALANCING MACHINE IN CEM</a>
+                <a
+                    href="javascript:updateForm('Replacement of one no of old inspection/monitoring vehicle of MRD of DSP')">Replacement
+                    of one no of old inspection/monitoring vehicle of MRD of DSP</a>
+                <a
+                    href="javascript:updateForm('Replacement of 2 nos. Clay Guns and 1 no. Central Drilling Machine in Cast House of Blast Furnace #3')">Replacement
+                    of 2 nos. Clay Guns and 1 no. Central Drilling Machine in Cast House of Blast Furnace #3</a>
+
+                <a
+                    href="javascript:updateForm('Upgradation of Ammonium Sulphate Plant Electrics at CO&CC department of Durgapur Steel Plant')">Upgradation
+                    of Ammonium Sulphate Plant Electrics at CO&CC department of Durgapur Steel Plant</a>
+                <a
+                    href="javascript:updateForm('Construction of structural shed for Equipment storage yard of SP#2 in Sinter plant')">Construction
+                    of structural shed for Equipment storage yard of SP#2 in Sinter plant</a>
+                <a
+                    href="javascript:updateForm('Area survey, soil investigation and underground mapping - Installation of new Wagon Tippler with 15 nos. new coal blending silos')">Area
+                    survey, soil investigation and underground mapping - Installation of new Wagon Tippler with 15 nos.
+                    new coal blending silos</a>
+                <a
+                    href="javascript:updateForm('Appointment of Consultant for preparing Feasibility Report and Detail Project Report for laying of Railway Track in connection with installation of New RMHP Wagon Tippler # 4 of Durgapur Steel Plant.')">Appointment
+                    of Consultant for preparing Feasibility Report and Detail Project Report for laying of Railway Track
+                    in connection with installation of New RMHP Wagon Tippler # 4 of Durgapur Steel Plant.</a>
+                <a href="javascript:updateForm('Replacement of one no. Lathe Machine for Electrical Repair shop')">Replacement
+                    of one no. Lathe Machine for Electrical Repair shop</a>
+                <a
+                    href="javascript:updateForm('UP-GRADATION OF CONTINUOUS AMBIENT AIR QUALITY MONITORING STATION (CAAQMS) AT DSP TOWNSHIP')">UP-GRADATION
+                    OF CONTINUOUS AMBIENT AIR QUALITY MONITORING STATION (CAAQMS) AT DSP TOWNSHIP</a>
+                <a
+                    href="javascript:updateForm('INSTALLATION OF IMPROVED HEATING CONTROL SYSTEM IN HEAT TREATMENT FURNACES C2 & C3 OF WHEEL & AXLE PLANT, D.S.P')">INSTALLATION
+                    OF IMPROVED HEATING CONTROL SYSTEM IN HEAT TREATMENT FURNACES C2 & C3 OF WHEEL & AXLE PLANT,
+                    D.S.P</a>
+                <a href="javascript:updateForm('Replacement of Drives and Motors of 5 nos. Cranes in CCP of DSP')">Replacement
+                    of Drives and Motors of 5 nos. Cranes in CCP of DSP</a>
+                <a href="javascript:updateForm('Upgradation of power supply arrangement of Merchant Mill')">Upgradation
+                    of power supply arrangement of Merchant Mill</a>
+                <a
+                    href="javascript:updateForm('Installation of new wagon tippler with 15 nos. New coal blending silos in coal handling plant')">Installation
+                    of new wagon tippler with 15 nos. New coal blending silos in coal handling plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of primary and secondary screens in Flux yard of RMHP- Package 2 (Erection)')">Replacement
+                    of primary and secondary screens in Flux yard of RMHP- Package 2 (Erection)</a>
+                <a
+                    href="javascript:updateForm('Replacement of EP8 Despatcher Control PLC and associated HMI system at SMS of DSP')">Replacement
+                    of EP8 Despatcher Control PLC and associated HMI system at SMS of DSP</a>
+                <a
+                    href="javascript:updateForm('Construction of structural shed and allied jobs for Refractory Store-PKG I')">Construction
+                    of structural shed and allied jobs for Refractory Store-PKG I</a>
+                <a
+                    href="javascript:updateForm('Electrical and illumination work for structural shed of the Refractory Store-PKG II')">Electrical
+                    and illumination work for structural shed of the Refractory Store-PKG II</a>
+                <a href="javascript:updateForm('Replacement of 50 nos. Water Coolers at Durgafur Steel plant')">Replacement
+                    of 50 nos. Water Coolers at Durgafur Steel plant</a>
+                <a
+                    href="javascript:updateForm('Construction of structural Lift-well and installation of Passenger Lift beside MCR Building in SMS')">Construction
+                    of structural Lift-well and installation of Passenger Lift beside MCR Building in SMS</a>
+                <a
+                    href="javascript:updateForm('Procurement of Miscellaneous items for Conference Hall of Vigilance Department')">Procurement
+                    of Miscellaneous items for Conference Hall of Vigilance Department</a>
+                <a
+                    href="javascript:updateForm('Supply & Installation of IOT (INTERNET of things) based sensors at Medium Structural Mill (MSM) of Durgapur Steel Plant')">Supply
+                    & Installation of IOT (INTERNET of things) based sensors at Medium Structural Mill (MSM) of Durgapur
+                    Steel Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of one no. Portable Universal Radial Drilling Machine for CEM')">Replacement
+                    of one no. Portable Universal Radial Drilling Machine for CEM</a>
+                <a
+                    href="javascript:updateForm('Revamping and Extension of existing building of Blood Bank at DSP Main Hospital')">Revamping
+                    and Extension of existing building of Blood Bank at DSP Main Hospital</a>
+                <a
+                    href="javascript:updateForm('Supply & Installation of Remote Flame Monitoring System in BF Bleeder-1, 2 & BOF Flare Stack using Thermal Imaging Camera')">Supply
+                    & Installation of Remote Flame Monitoring System in BF Bleeder-1, 2 & BOF Flare Stack using Thermal
+                    Imaging Camera</a>
+                <a
+                    href="javascript:updateForm('Renovation and Modification of Non Executive Club (B-Zone) at Sobhapur Road in DSP Township')">Renovation
+                    and Modification of Non Executive Club (B-Zone) at Sobhapur Road in DSP Township</a>
+
+                <a href="javascript:updateForm('Automation of Paddle Feeders in Track Hopper Area in RMHP of DSP')">Automation
+                    of Paddle Feeders in Track Hopper Area in RMHP of DSP</a>
+                <a
+                    href="javascript:updateForm('Renovation & Modification of Durgapur Club and Steel Club in DSP Township.')">Renovation
+                    & Modification of Durgapur Club and Steel Club in DSP Township.</a>
+                <a
+                    href="javascript:updateForm('Supply and Installation of Auto Couplers in Ladle and Ladle Transfer Car in BOF at Durgapur Steel Plant')">Supply
+                    and Installation of Auto Couplers in Ladle and Ladle Transfer Car in BOF at Durgapur Steel Plant</a>
+                <a
+                    href="javascript:updateForm('Procurement of equipments / instruments for setting up of a Component Laboratory in Blood Bank Premises of DSP Main Hospital.')">Procurement
+                    of equipments / instruments for setting up of a Component Laboratory in Blood Bank Premises of DSP
+                    Main Hospital.</a>
+                <a
+                    href="javascript:updateForm('Procurement of Twelve Nos. Hot Metal Carriages for Blast Furnace of Durgapur Steel Plant')">Procurement
+                    of Twelve Nos. Hot Metal Carriages for Blast Furnace of Durgapur Steel Plant</a>
+                <a
+                    href="javascript:updateForm('Procurement of twelve nos. Slag Pots carriages for Blast Furnace of Durgapur Steel Plant')">Procurement
+                    of twelve nos. Slag Pots carriages for Blast Furnace of Durgapur Steel Plant</a>
+                <a
+                    href="javascript:updateForm('REPLACEMENT OF 2 NOS HOT COKE QUENCHING CARS AND SUPPLY OF 4 NOS. BOGIES IN COKE OVEN')">REPLACEMENT
+                    OF 2 NOS HOT COKE QUENCHING CARS AND SUPPLY OF 4 NOS. BOGIES IN COKE OVEN</a>
+                <a href="javascript:updateForm('Provision of Canteen facility at COCC, SMS and Rolling Mill')">Provision
+                    of Canteen facility at COCC, SMS and Rolling Mill</a>
+                <a href="javascript:updateForm('Construction of structural shed for coal storage yard beside CDI')">Construction
+                    of structural shed for coal storage yard beside CDI</a>
+                <a
+                    href="javascript:updateForm('Detailed Geotechnical Investigation Work’ for Gas Mixing & Boosting Station of COB-2')">Detailed
+                    Geotechnical Investigation Work’ for Gas Mixing & Boosting Station of COB-2</a>
+                <a
+                    href="javascript:updateForm('Supply & lnstallation of Additional 2 nos. 11KV outgoing feeders from Bulk Supply substation to Township')">Supply
+                    & lnstallation of Additional 2 nos. 11KV outgoing feeders from Bulk Supply substation to
+                    Township</a>
+                <a href="javascript:updateForm('Replacement of 4 nos. of Lift at Ispat Bhawan')">Replacement of 4 nos.
+                    of Lift at Ispat Bhawan</a>
+                <a
+                    href="javascript:updateForm('Renovation of old admin building and GM office building of Sinter Plant')">Renovation
+                    of old admin building and GM office building of Sinter Plant</a>
+                <a
+                    href="javascript:updateForm('Replacement of old Computers,Procurement of new computers with network connectivity & accessories for CISF unit of DSP')">Replacement
+                    of old Computers,Procurement of new computers with network connectivity & accessories for CISF unit
+                    of DSP</a>
+                <a href="javascript:updateForm('Integration of all energy parameters under EMD Gas Control')">Integration
+                    of all energy parameters under EMD Gas Control</a>
+                <a
+                    href="javascript:updateForm('Soil Investigation, Survey & Underground Mapping - Upgradation of Billet Caster including Augmentation of Power Supply at CCP (Package No. 1)')">Soil
+                    Investigation, Survey & Underground Mapping - Upgradation of Billet Caster including Augmentation of
+                    Power Supply at CCP (Package No. 1)</a>
+                <a
+                    href="javascript:updateForm('‘Soil Investigation, Survey & Underground Mapping’ for Power Supply Upgradation of Merchant Mill (Package No.1)')">‘Soil
+                    Investigation, Survey & Underground Mapping’ for Power Supply Upgradation of Merchant Mill (Package
+                    No.1)</a>
+                <a
+                    href="javascript:updateForm('Non-Destructive Testing (NDT) for Assessment and Refurbishment of Coal Tower #3, COCC, DSP (Package No. 1)')">Non-Destructive
+                    Testing (NDT) for Assessment and Refurbishment of Coal Tower #3, COCC, DSP (Package No. 1)</a>
+                <a
+                    href="javascript:updateForm('Replacement of Projector with LED Video wall for Synergy Hall at CHRD')">Replacement
+                    of Projector with LED Video wall for Synergy Hall at CHRD</a>
+                <a
+                    href="javascript:updateForm('Appointment of Consultant for the Pre-Feasibility Study Report for DRI-EAF route for 2.5 MTPA GREEN FIELD EXPANSION at DSP')">Appointment
+                    of Consultant for the Pre-Feasibility Study Report for DRI-EAF route for 2.5 MTPA GREEN FIELD
+                    EXPANSION at DSP</a>
+                <a
+                    href="javascript:updateForm('Appointment of consultant for environment clearance for 0.4 MTPA New Bar Mill on COM basis.')">Appointment
+                    of consultant for environment clearance for 0.4 MTPA New Bar Mill on COM basis.</a>
+
+                <a
+                    href="javascript:updateForm('Construction of dedicated new Storage Bay for Rolls of MSM adjacent to shop')">Construction
+                    of dedicated new Storage Bay for Rolls of MSM adjacent to shop</a>
+                <a
+                    href="javascript:updateForm('Upgradation of Billet Casters including Augmentation of Power Supply at CCP')">Upgradation
+                    of Billet Casters including Augmentation of Power Supply at CCP</a>
+                <a
+                    href="javascript:updateForm('SUPPLY AND INSTALLATION OF INDUSTRIAL VACUUM CLEANING SYSTEM IN COAL HANDLING PLANT (CO&CC)')">SUPPLY
+                    AND INSTALLATION OF INDUSTRIAL VACUUM CLEANING SYSTEM IN COAL HANDLING PLANT (CO&CC)</a>
+                <a
+                    href="javascript:updateForm('SUPPLY AND INSTALLATION OF SPEED MONITORING SYSTEM OF WORKS AREA AT DURGAPUR STEEL PLANT')">SUPPLY
+                    AND INSTALLATION OF SPEED MONITORING SYSTEM OF WORKS AREA AT DURGAPUR STEEL PLANT</a>
+                <a href="javascript:updateForm('Installation of 1285 KWp Capacity GCRT (Grid Connected Roof Top) Solar Plant at Various Buildings"
+                    of Durgapur Steel Plant')">Installation of 1285 KWp Capacity GCRT (Grid Connected Roof Top) Solar
+                    Plant at Various Buildings" of Durgapur Steel Plant</a>
+                <a
+                    href="javascript:updateForm('Camera/Sensor Based Automation scheme for Billet Length measurement in Merchant Mill of Durgapur Steel Plant-Fresh Stage I')">Camera/Sensor
+                    Based Automation scheme for Billet Length measurement in Merchant Mill of Durgapur Steel Plant-Fresh
+                    Stage I</a>
+                <a
+                    href="javascript:updateForm('Modification of long conveyor for Amada Band Saw Machine (1 to 6) of Mill Providing Section in WAP')">Modification
+                    of long conveyor for Amada Band Saw Machine (1 to 6) of Mill Providing Section in WAP</a>
+                <a href="javascript:updateForm('Re-Construction of Main Roads in DSP Township(Retendered post RPN)')">Re-Construction
+                    of Main Roads in DSP Township(Retendered post RPN)</a>
+                <a
+                    href="javascript:updateForm('Construction of Service Culvert to accommodate proposed Rising Mains at Gandhi More crossing of NH-2(Retendered post RPN)')">Construction
+                    of Service Culvert to accommodate proposed Rising Mains at Gandhi More crossing of NH-2(Retendered
+                    post RPN)</a>
+                <a href="javascript:updateForm('Up-gradation of Wagon Tippler # 1&2 in RMHP')">Up-gradation of Wagon
+                    Tippler # 1&2 in RMHP</a>
+                <a
+                    href="javascript:updateForm('Replacement of NLCP Kiln PLCs and associated HMI System at SMS of DSP')">Replacement
+                    of NLCP Kiln PLCs and associated HMI System at SMS of DSP</a>
+                <a
+                    href="javascript:updateForm('Appointment of Consultant for Carrying out EIA/ EMP Studies for Capacity Enhancement of DSP from 2.7 to 3.42 MTPA Hot Metal')">Appointment
+                    of Consultant for Carrying out EIA/ EMP Studies for Capacity Enhancement of DSP from 2.7 to 3.42
+                    MTPA Hot Metal</a>
+                <a href="javascript:updateForm('SUPPLY AND INSTALLATION OF TWO NOS RADIAL DRILLING MACHINE FOR CEM')">SUPPLY
+                    AND INSTALLATION OF TWO NOS RADIAL DRILLING MACHINE FOR CEM</a>
+                <a
+                    href="javascript:updateForm('REPLACEMENT OF 2 NOS. COLDWELL PUMP SETS IN ROLLING MILLS PUMP HOUSE(PKg. II erection )')">REPLACEMENT
+                    OF 2 NOS. COLDWELL PUMP SETS IN ROLLING MILLS PUMP HOUSE(PKg. II erection )</a>
+                <a href="javascript:updateForm('REPLACEMENT OF 110 NOS. WTNDOW AIR-CONDITIONERS for ACVS DPT.')">REPLACEMENT
+                    OF 110 NOS. WTNDOW AIR-CONDITIONERS for ACVS DPT.</a>
+                <a
+                    href="javascript:updateForm('Mapping of Underground Utilities / Foundations / Objects, using Ground Penetrating Radar (GPR) and supporting Geophysical Techniques' for Gas Mixing & Boosting Station of COB-2')">Mapping
+                    of Underground Utilities / Foundations / Objects, using Ground Penetrating Radar (GPR) and
+                    supporting Geophysical Techniques' for Gas Mixing & Boosting Station of COB-2</a>
+
+            </div>
+
+            <button onclick="addNewScheme()">Add New Scheme</button>
+            <button onclick="deleteScheme()">Delete Selected Scheme</button>
+        </div>
+    </div>
+
+    <script>
+        function updateForm(selectedScheme) {
+            localStorage.setItem("selectedScheme", selectedScheme); // Store selected scheme in localStorage
+            window.location.href = "form.html"; // Redirect to form.html
+        }
+    
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+    
+        function filterFunction() {
+            var input, filter, div, a, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            div = document.getElementById("myDropdown");
+            a = div.getElementsByTagName("a");
+            for (i = 0; i < a.length; i++) {
+                txtValue = a[i].textContent || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    a[i].style.display = "";
+                } else {
+                    a[i].style.display = "none";
+                }
+            }
+        }
+    
+        function addNewScheme() {
+            var schemeName = prompt("Enter the name of the new scheme:");
+            if (schemeName) {
+                var a = document.createElement("a");
+                a.href = "#";
+                a.onclick = function () { updateForm(schemeName); };
+                a.appendChild(document.createTextNode(schemeName));
+                document.getElementById("myDropdown").appendChild(a);
+            }
+        }
+    
+        function deleteScheme() {
+            var dropdown = document.getElementById("myDropdown");
+            var activeElement = dropdown.querySelector("a.active");
+            if (activeElement) {
+                activeElement.parentNode.removeChild(activeElement);
+            } else {
+                alert("Please select a scheme to delete.");
+            }
+        }
+    
+        // Optional: Code to handle selection highlighting
+        document.addEventListener('click', function(event) {
+            var dropdown = document.getElementById("myDropdown");
+            var target = event.target;
+            if (target.tagName === 'A' && dropdown.contains(target)) {
+                var links = dropdown.getElementsByTagName("a");
+                for (var i = 0; i < links.length; i++) {
+                    links[i].classList.remove("active");
+                }
+                target.classList.add("active");
+            }
+        });
+    
+    </script>
+</body>
+
+</html>
