@@ -458,7 +458,7 @@ app.delete("/admin/delete/:id", authenticateToken, (req, res) => {
 });
 
 // Route to handle form data submission for Module 1
-app.post("/submit-module1", authenticateToken, (req, res) => {
+app.post("http://127.0.0.1:5500/submit-module1", authenticateToken, (req, res) => {
   const {
     Sl1,
     previousSl1,
@@ -548,7 +548,7 @@ app.post("/submit-module1", authenticateToken, (req, res) => {
 });
 
 // Route to handle form data submission for Module 2
-app.post("/submit-module2", authenticateToken, (req, res) => {
+app.post("http://127.0.0.1:5500/submit-module2", authenticateToken, (req, res) => {
   const {
     Sl2,
     previousSl2,
