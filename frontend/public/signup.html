@@ -7,7 +7,8 @@
     <title>Sign Up - WebPortalHub</title>
     <!-- Favicons -->
     <link href="/frontend/images/site_logo.png" rel="icon">
-    <link rel="stylesheet" href="/frontend/public/styles.css"> <!-- Assuming this file exists and contains your CSS styles -->
+    <link rel="stylesheet" href="/frontend/public/styles.css">
+    <!-- Assuming this file exists and contains your CSS styles -->
 </head>
 
 <body>
@@ -25,7 +26,9 @@
 
             <label for="phone">Phone:</label>
             <input type="tel" id="phone" name="phone" placeholder="Phone" required>
-            <button type="button" onclick="handleVerifyPhone()" style="background-color: chocolate; font-size: 14px;transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;">Verify Phone</button>
+            <button type="button" onclick="handleVerifyPhone()"
+                style="background-color: chocolate; font-size: 14px;transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;">Verify
+                Phone</button>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Password" required>
@@ -34,8 +37,9 @@
             <input type="datetime-local" id="dt" name="dt" placeholder="Date-Time" required>
 
             <label for="role">Role:</label>
-            <select id="role" name="role" style="background-color: chocolate; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;"">
-                <option value="user">User</option>
+            <select id="role" name="role"
+                style="background-color: chocolate; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;"">
+                <option value=" user">User</option>
                 <option value="admin">Admin</option>
             </select><br>
 
@@ -68,6 +72,30 @@
 
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
+
+        // function for send OTP
+        function phoneAuth() {
+            var number = document.getElementById('number').value;
+            firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function (confirmationResult) {
+                window.confirmationResult = confirmationResult;
+                coderesult = confirmationResult;
+                console.log('OTP Sent');
+            }).catch(function (error) {
+                // error in sending OTP
+                alert(error.message);
+            });
+        }
+
+        // function for OTP verify
+        function codeverify() {
+            var code = document.getElementById('verificationcode').value;
+            coderesult.confirm(code).then(function () {
+                console.log('OTP Verified');
+            }).catch(function () {
+                console.log('OTP Not correct');
+            })
+        }
+
     </script>
 
 </body>

@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to fetch data from API
   async function fetchData() {
     try {
-      const response = await fetch("http://localhost:5500/data", {
+      const response = await fetch("http://localhost:5000/data", {
         headers: {
           Authorization: "Bearer " + accessToken,
         },
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = passwordInput.value.trim();
 
     try {
-      const response = await fetch("http://localhost:5500/login", {
+      const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const newContent = prompt("Enter new content:");
 
     try {
-      const response = await fetch(`http://localhost:5500/data/${id}`, {
+      const response = await fetch(`http://localhost:5000/data/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const role = e.target.role.value;
 
       try {
-        const response = await fetch("http://localhost:5500/signup", {
+        const response = await fetch("http://localhost:5000/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ username, email, phone, password, dt, role }),
