@@ -241,10 +241,11 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 5000;
 
 // CORS Middleware
 app.use(
@@ -260,7 +261,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
 // MySQL connection for 'users' database
 const connection = mysql.createConnection({
@@ -458,7 +459,9 @@ app.delete("/admin/delete/:id", authenticateToken, (req, res) => {
 });
 
 // Route to handle form data submission for Module 1
-app.post("http://127.0.0.1:5500/submit-module1", authenticateToken, (req, res) => {
+app.post("/submit-module_1", (req, res) => {
+  console.log("Submit MOdule1");
+  console.log(req.body);
   const {
     Sl1,
     previousSl1,
@@ -537,10 +540,10 @@ app.post("http://127.0.0.1:5500/submit-module1", authenticateToken, (req, res) =
     project_delay_trend,
   };
 
-  const sql = "INSERT INTO module1 SET ?";
+  const sql = "INSERT INTO module_1 SET ?";
   connectionFormData.query(sql, data, (err, results) => {
     if (err) {
-      console.error("Error inserting module1 data:", err);
+      console.error("Error inserting module_1 data:", err);
       return res.status(500).send(err);
     }
     res.send("Module 1 data saved successfully");
@@ -548,7 +551,9 @@ app.post("http://127.0.0.1:5500/submit-module1", authenticateToken, (req, res) =
 });
 
 // Route to handle form data submission for Module 2
-app.post("http://127.0.0.1:5500/submit-module2", authenticateToken, (req, res) => {
+app.post("/submit-module2", (req, res) => {
+  console.log("Submit Module2");
+  console.log(req.body);
   const {
     Sl2,
     previousSl2,
@@ -571,35 +576,35 @@ app.post("http://127.0.0.1:5500/submit-module2", authenticateToken, (req, res) =
     stageII_approval_qtr,
     stageII_approval_trend,
     award_trend_stage2,
-    project_delay_trend
+    project_delay_trend,
   } = req.body;
 
-  if (
-    !Sl2 ||
-    !previousSl2 ||
-    !nitdate ||
-    !tod ||
-    !tc_recomendation_date ||
-    !stageII_pagdate ||
-    !stageII_approval ||
-    !stageII_gross ||
-    !stageII_net ||
-    !stage1_approval_trend ||
-    !ttime_taken_in_issuing_nIT_after_StageI ||
-    !nit ||
-    !award_trend_nit ||
-    !time_taken_StageIIPAG_after_TC_Recommendation ||
-    !TC_Recommendation ||
-    !stageII_plant_pag ||
-    !stage2_pag_trend ||
-    !time_taken_StageII_Approval_from_PAGII ||
-    !stageII_approval_qtr ||
-    !stageII_approval_trend ||
-    !award_trend_stage2 ||
-    !project_delay_trend
-  ) {
-    return res.status(400).send("Missing required fields");
-  }
+  // if (
+  //   !Sl2 ||
+  //   !previousSl2 ||
+  //   !nitdate ||
+  //   !tod ||
+  //   !tc_recomendation_date ||
+  //   !stageII_pagdate ||
+  //   !stageII_approval ||
+  //   !stageII_gross ||
+  //   !stageII_net ||
+  //   !stage1_approval_trend ||
+  //   !ttime_taken_in_issuing_nIT_after_StageI ||
+  //   !nit ||
+  //   !award_trend_nit ||
+  //   !time_taken_StageIIPAG_after_TC_Recommendation ||
+  //   !TC_Recommendation ||
+  //   !stageII_plant_pag ||
+  //   !stage2_pag_trend ||
+  //   !time_taken_StageII_Approval_from_PAGII ||
+  //   !stageII_approval_qtr ||
+  //   !stageII_approval_trend ||
+  //   !award_trend_stage2 ||
+  //   !project_delay_trend
+  // ) {
+  //   return res.status(400).send("Missing required fields");
+  // }
 
   const data = {
     Sl2,
@@ -623,7 +628,7 @@ app.post("http://127.0.0.1:5500/submit-module2", authenticateToken, (req, res) =
     stageII_approval_qtr,
     stageII_approval_trend,
     award_trend_stage2,
-    project_delay_trend
+    project_delay_trend,
   };
 
   const sql = "INSERT INTO module2 SET ?";

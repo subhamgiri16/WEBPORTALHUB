@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/frontend/public/app.css" />
+    <!-- Favicons -->
+    <link href="/frontend/images/site_logo.png" rel="icon">
+
+
+    <!-- <script src="./script/app_1.js" defer></script> -->
+    <title>User Form</title>
+</head>
+<body>  <!-- capex data form -->
+    <form method="POST" id="capexForm" class="form" action="http://localhost:5500/submit-capex">
+
+        <h3 class="text-center">Please Fill out the form</h3>
+        <!-- Progress bar -->
+        <div class="progressbar">
+            <div class="progress" id="progress"></div>
+
+            <div class="progress-step progress-step-active" data-title="capex" data-step="4"></div>
+        </div>
+
+        <div class="form-step" data-step="4">
+            <h1 class="text-center">Capex</h1>
+            <h1 class="text-center schemeName"></h1>
+            <div class="input-group">
+                <label for="Sl">SL. (FY2023-24):</label>
+                <input type="number" id="Sl" name="Sl" required>
+            </div>
+            <div class="input-group">
+                <label for="previousSl">Sl. (FY 2022-23):</label>
+                <input type="number" id="previousSl" name="previousSl" required>
+            </div>
+            <div class="input-group">
+                <label for="actualupto">Actual upto 31.03.21:</label>
+                <input type="number" name="actualupto" id="actualupto" />
+            </div>
+            <div class="input-group">
+                <label for="2021-22 BE">2021-22 BE:</label>
+                <input type="number" name="2021-22 BE" id="2021-22 BE" />
+            </div>
+            <div class="input-group">
+                <label for="2021-22 RE">2021-22 RE:</label>
+                <input type="number" name="2021-22 RE" id="2021-22 RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual Aprl-Mar'22">Actual Aprl-Mar'22:</label>
+                <input type="number" name="Actual Aprl-Mar'22" id="Actual Aprl-Mar'22" />
+            </div>
+            <div class="input-group">
+                <label for="2022-23 BE">2022-23 BE:</label>
+                <input type="number" name="2022-23 BE" id="2022-23 BE" />
+            </div>
+            <div class="input-group">
+                <label for="2022-23 RE">2022-23 RE:</label>
+                <input type="number" name="2022-23 RE" id="2022-23 RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual Capex 2022-23">Actual Capex 2022-23:</label>
+                <input type="number" name="Actual Capex 2022-23" id="Actual Capex 2022-23" />
+            </div>
+            <div>
+                <label for="STATUS on 31.03.2023"> STATUS on 31.03.2023:</label>
+                <select id="STATUS on 31.03.2023" name="STATUS on 31.03.2023" required>
+            </div>
+            <div class="input-group">
+                <label for="2023-24 BE">2023-24 BE:</label>
+                <input type="number" name="2023-24 BE" id="2023-24 BE" />
+            </div>
+            <div>
+                <label for="STATUS as per Annual Plan 23-24"> STATUS
+                    as per Annual Plan 23-24:</label>
+                <select id="STATUS as per Annual Plan 23-24" name="STATUS as per Annual Plan 23-24" required>
+            </div>
+            <div class="input-group">
+                <label for="2023-24 RE">2023-24 RE:</label>
+                <input type="number" name="2023-24 RE" id="2023-24 RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual Capex 2023-24">Actual Capex 2023-24:</label>
+                <input type="number" name="Actual Capex 2023-24" id="Actual Capex 2023-24" />
+            </div>
+            <div class="input-group">
+                <label for="Actual Capex Upto 31.03.2024">Actual Capex Upto 31.03.2024:</label>
+                <input type="number" name="Actual Capex Upto 31.03.2024" id="Actual Capex Upto 31.03.2024" />
+            </div>
+            <div>
+                <label for="STATUS on 31.03.24"> STATUS on 31.03.24:</label>
+                <select id="STATUS on 31.03.24" name="STATUS on 31.03.24" required>
+            </div>
+            <div class="input-group">
+                <label for="2024-25 (BE)">2024-25 (BE):</label>
+                <input type="number" name="2024-25 (BE)" id="2024-25 (BE)" />
+            </div>
+            <div class="input-group">
+                <label for="2024-25 (RE)">2024-25 (RE):</label>
+                <input type="number" name="2024-25 (RE)" id="2024-25 (RE)" />
+            </div>
+            <div>
+                <label for="STATUS as per Annual Plan 24-25">STATUS as per Annual Plan 24-25:</label>
+                <select id="STATUS as per Annual Plan 24-25" name="STATUS as per Annual Plan 24-25" required>
+            </div>
+            <div class="input-group">
+                <label for="Actual Capex 2024-25(TILL DATE)">Actual Capex 2024-25(TILL DATE):</label>
+                <input type="number" name="Actual Capex 2024-25(TILL DATE)" id="Actual Capex 2024-25(TILL DATE)" />
+            </div>
+            <div>
+                <label for="stage1_approval_trend">Stage-I Approval Trend (Actual/ likely):</label>
+                <select id="stage1_approval_trend" name="stage1_approval_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+
+            <div>
+                <label for="award_trend_nit">Award Trend from NIT (Actual/Likely):</label>
+                <select id="award_trend_nit_select" name="award_trend_nit" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+
+
+            <div>
+                <label for="stage2_pag_trend">Stage-II PAG Trend (Actual/ likely):</label>
+                <select id="stage2_pag_trend" name="stage2_pag_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="award_trend_stage2">Award Trend from Stage-II Approval (Actual/ likely):</label>
+                <select id="award_trend_stage2" name="award_trend_stage2" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div>
+                <label for="project_delay_trend">Project Delay Trend (Actual / Likely):</label>
+                <select id="project_delay_trend" name="project_delay_trend" required>
+                    <option value="">Select Status</option>
+                    <option value="status1">Closed</option>
+                    <option value="status2">Completed</option>
+                    <option value="status3">Ongoing</option>
+                    <option value="status1">Under Tendering</option>
+                    <option value="status2">Under Stage-II approval</option>
+                    <option value="status3">Under Stage-II PAG</option>
+                    <option value="status1">Under Stage-I approval</option>
+                    <option value="status2">Under Stage-I PAG</option>
+                    <option value="status3">Under Formulation</option>
+                    <option value="status2">Dropped / Cancelled</option>
+                    <option value="status3">Capital Repair / Spares</option>
+                </select>
+            </div><br>
+            <div class="input-group">
+                <label for="Bill at Cash, Current Month">Bill at Cash, Current Month:</label>
+                <input type="number" name="Bill at Cash, Current Month" id="Bill at Cash, Current Month" />
+            </div>
+            <div class="input-group">
+                <label for="Bill at Fin, Current Month">Bill at Fin, Current Month:</label>
+                <input type="number" name="Bill at Fin, Current Month" id="Bill at Fin, Current Month" />
+            </div>
+            <div class="input-group">
+                <label for="Likely Capex in current month incl. Bill at Fin, Cash">Likely Capex in current month incl.
+                    Bill at Fin, Cash:</label>
+                <input type="number" name="Likely Capex in current month incl. Bill at Fin, Cash"
+                    id="Likely Capex in current month incl. Bill at Fin, Cash" />
+            </div>
+            <div class="input-group">
+                <label for="Shortfall (-) / Excess (+) Current Month">Shortfall (-) / Excess (+) Current Month:</label>
+                <input type="number" name="Shortfall (-) / Excess (+) Current Month"
+                    id="Shortfall (-) / Excess (+) Current Month" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex plan 1st F/N
+                                                                                        (10 cr.)">APR 24 Capex plan 1st
+                    F/N
+                    (10 cr.):</label>
+                <input type="number" name="APR 24 Capex plan 1st F/N
+                                                                                        (10 cr.)" id="APR 24 Capex plan 1st F/N
+                                                                                        (10 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Actual Capex 1st F/N">APR 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="APR 24 Actual Capex 1st F/N" id="APR 24 Actual Capex 1st F/N" />
+            </div>
+
+            <div class="input-group">
+                <label for="APR 24 Capex plan 2nd F/N (25 cr.)">APR 24 Capex plan 2nd F/N (25 cr.):</label>
+                <input type="number" name="APR 24 Capex plan 2nd F/N (25 cr.)"
+                    id="APR 24 Capex plan 2nd F/N (25 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Actual Capex 2nd F/N upd 30.04.24">APR 24 Actual Capex 2nd F/N upd 30.04.24:</label>
+                <input type="number" name="APR 24 Actual Capex 2nd F/N upd 30.04.24"
+                    id="APR 24 Actual Capex 2nd F/N upd 30.04.24" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex Plan BE (34.81 cr.)">APR 24 Capex Plan BE (34.81 cr.):</label>
+                <input type="number" name="APR 24 Capex Plan BE (34.81 cr.)" id="APR 24 Capex Plan BE (34.81 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex Plan RE (34.81 cr.)">APR 24 Capex Plan RE (34.81 cr.):</label>
+                <input type="number" name="APR 24 Capex Plan RE (34.81 cr.)" id="APR 24 Capex Plan RE (34.81 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex Plan PM 01.04.24">APR 24 Capex Plan PM 01.04.24:</label>
+                <input type="number" name="APR 24 Capex Plan PM 01.04.24" id="APR 24 Capex Plan PM 01.04.24" />
+            </div>
+            <div class="input-group">
+                <label for="APR 24 Capex Plan PM 24.04.24">APR 24 Capex Plan PM 24.04.24:</label>
+                <input type="number" name="APR 24 Capex Plan PM 24.04.24" id="APR 24 Capex Plan PM 24.04.24" />
+            </div>
+            <div class="input-group">
+                <label for="Apr'24 Actual Capex">Apr'24 Actual Capex:</label>
+                <input type="number" name="Apr'24 Actual Capex" id="Apr'24 Actual Capex" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex plan 1st F/N (14 cr.)">MAY 24 Capex plan 1st F/N (14 cr.):</label>
+                <input type="number" name="MAY 24 Capex plan 1st F/N (14 cr.)"
+                    id="MAY 24 Capex plan 1st F/N (14 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Actual Capex 1st F/N">MAY 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="MAY 24 Actual Capex 1st F/N" id="MAY 24 Actual Capex 1st F/N" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex plan 2nd F/N (34 cr.)">MAY 24 Capex plan 2nd F/N (34 cr.):</label>
+                <input type="number" name="MAY 24 Capex plan 2nd F/N (34 cr.)"
+                    id="MAY 24 Capex plan 2nd F/N (34 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Actual Capex 2nd F/N">MAY 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="MAY 24 Actual Capex 2nd F/N" id="MAY 24 Actual Capex 2nd F/N" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex Plan BE (48.02 cr.)">MAY 24 Capex Plan BE (48.02 cr.):</label>
+                <input type="number" name="MAY 24 Capex Plan BE (48.02 cr.)" id="MAY 24 Capex Plan BE (48.02 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex Plan RE (48.02 cr.)">MAY 24 Capex Plan RE (48.02 cr.):</label>
+                <input type="number" name="MAY 24 Capex Plan RE (48.02 cr.)" id="MAY 24 Capex Plan RE (48.02 cr.)" />
+            </div>
+            <div class="input-group">
+                <label for="MAY 24 Capex Plan PM 24.04.23">MAY 24 Capex Plan - PM 24.04.23:</label>
+                <input type="number" name="MAY 24 Capex Plan PM 24.04.23" id="MAY 24 Capex Plan PM 24.04.23" />
+            </div>
+            <div class="input-group">
+                <label for="MAY_24_Actual_Capex">MAY 24 Actual Capex:</label>
+                <input type="number" name="MAY_24_Actual_Capex" id="MAY_24_Actual_Capex" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_plan_1st_FN">JUN 24 Capex plan 1st F/N (26 cr):</label>
+                <input type="number" name="JUN_24_Capex_plan_1st_FN" id="JUN_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Actual_Capex_1st_FN">JUN 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="JUN_24_Actual_Capex_1st_FN" id="JUN_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_plan_2nd_FN">JUN 24 Capex plan 2nd F/N (36 cr.):</label>
+                <input type="number" name="JUN_24_Capex_plan_2nd_FN" id="JUN_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Actual_Capex_2nd_FN">JUN 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="JUN_24_Actual_Capex_2nd_FN" id="JUN_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_Plan_BE">JUN 24 Capex Plan BE (61.9 cr.):</label>
+                <input type="number" name="JUN_24_Capex_Plan_BE" id="JUN_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_Plan_RE">JUN 24 Capex Plan RE (61.9 cr.):</label>
+                <input type="number" name="JUN_24_Capex_Plan_RE" id="JUN_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Capex_Plan_PM">JUN 24 Capex Plan - PM:</label>
+                <input type="text" name="JUN_24_Capex_Plan_PM" id="JUN_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="JUN_24_Actual_Capex">JUN'24 Actual Capex:</label>
+                <input type="number" name="JUN_24_Actual_Capex" id="JUN_24_Actual_Capex" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q1_BE_24_25">Capex Plan Q1 BE 24-25 (145 cr.):</label>
+                <input type="number" name="Capex_Plan_Q1_BE_24_25" id="Capex_Plan_Q1_BE_24_25" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q1_RE_24_25">Capex Plan Q1 RE 24-25 (145 cr.):</label>
+                <input type="number" name="Capex_Plan_Q1_RE_24_25" id="Capex_Plan_Q1_RE_24_25" />
+            </div>
+            <div class="input-group">
+                <label for="Actual_Capex_Exp_Q1_BE_24_25">Actual Capex Exp Q1 BE 24-25:</label>
+                <input type="number" name="Actual_Capex_Exp_Q1_BE_24_25" id="Actual_Capex_Exp_Q1_BE_24_25" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_plan_1st_FN">JUL 24 Capex plan 1st F/N:</label>
+                <input type="number" name="JUL_24_Capex_plan_1st_FN" id="JUL_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Actual_Capex_1st_FN">JUL 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="JUL_24_Actual_Capex_1st_FN" id="JUL_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_plan_2nd_FN">JUL 24 Capex plan 2nd F/N 36Cr:</label>
+                <input type="number" name="JUL_24_Capex_plan_2nd_FN" id="JUL_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Actual_Capex_2nd_FN">JUL 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="JUL_24_Actual_Capex_2nd_FN" id="JUL_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_Plan_BE">JUL 24 Capex Plan BE (56.79 cr.):</label>
+                <input type="number" name="JUL_24_Capex_Plan_BE" id="JUL_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_Plan_RE">JUL 24 Capex Plan RE (56.79 cr.):</label>
+                <input type="number" name="JUL_24_Capex_Plan_RE" id="JUL_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Capex_Plan_PM">JUL 24 Capex Plan - PM:</label>
+                <input type="text" name="JUL_24_Capex_Plan_PM" id="JUL_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="JUL_24_Actual_Capex">JUL 24 Actual Capex:</label>
+                <input type="number" name="JUL_24_Actual_Capex" id="JUL_24_Actual_Capex" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_plan_1st_FN">AUG 24 Capex plan 1st F/N 38Cr.:</label>
+                <input type="number" name="AUG_24_Capex_plan_1st_FN" id="AUG_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Actual_Capex_1st_FN">AUG 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="AUG_24_Actual_Capex_1st_FN" id="AUG_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_plan_2nd_FN">AUG 24 Capex plan 2nd F/N 88Cr.:</label>
+                <input type="number" name="AUG_24_Capex_plan_2nd_FN" id="AUG_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Actual_Capex_2nd_FN">AUG 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="AUG_24_Actual_Capex_2nd_FN" id="AUG_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_Plan_BE">AUG 24 Capex Plan BE (126.10 cr.):</label>
+                <input type="number" name="AUG_24_Capex_Plan_BE" id="AUG_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_Plan_RE">AUG 24 Capex Plan RE (126.10 cr.):</label>
+                <input type="number" name="AUG_24_Capex_Plan_RE" id="AUG_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Capex_Plan_PM">AUG 24 Capex Plan - PM:</label>
+                <input type="text" name="AUG_24_Capex_Plan_PM" id="AUG_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="AUG_24_Actual_Capex">AUG'24 Actual Capex:</label>
+                <input type="number" name="AUG_24_Actual_Capex" id="AUG_24_Actual_Capex" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_plan_1st_FN">SEP 24 Capex plan 1st F/N 20Cr:</label>
+                <input type="number" name="SEP_24_Capex_plan_1st_FN" id="SEP_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Actual_Capex_1st_FN">SEP 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="SEP_24_Actual_Capex_1st_FN" id="SEP_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_plan_2nd_FN">SEP 24 Capex plan 2nd F/N 48Cr:</label>
+                <input type="number" name="SEP_24_Capex_plan_2nd_FN" id="SEP_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Actual_Capex_2nd_FN">SEP 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="SEP_24_Actual_Capex_2nd_FN" id="SEP_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_Plan_BE">SEP 24 Capex Plan BE (67.85 cr.):</label>
+                <input type="number" name="SEP_24_Capex_Plan_BE" id="SEP_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_Plan_RE">SEP 24 Capex Plan RE (67.85 cr.):</label>
+                <input type="number" name="SEP_24_Capex_Plan_RE" id="SEP_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Capex_Plan_PM">SEP 24 Capex Plan - PM:</label>
+                <input type="text" name="SEP_24_Capex_Plan_PM" id="SEP_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="SEP_24_Actual_Capex">SEP'24 Actual Capex:</label>
+                <input type="number" name="SEP_24_Actual_Capex" id="SEP_24_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="Capex_Plan_Q2_BE">Capex Plan Q2 BE 24-25 (251 cr.):</label>
+                <input type="number" name="Capex_Plan_Q2_BE" id="Capex_Plan_Q2_BE" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q2_RE">Capex Plan Q2 RE 24-25 (251 cr.):</label>
+                <input type="number" name="Capex_Plan_Q2_RE" id="Capex_Plan_Q2_RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual_Capex_Exp_Q2_BE">Actual Capex Exp Q2 BE 24-25:</label>
+                <input type="number" name="Actual_Capex_Exp_Q2_BE" id="Actual_Capex_Exp_Q2_BE" />
+            </div>
+
+            <div class="input-group">
+                <label for="OCT_24_Capex_plan_1st_FN">OCT 24 Capex plan 1st F/N 20Cr:</label>
+                <input type="number" name="OCT_24_Capex_plan_1st_FN" id="OCT_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Actual_Capex_1st_FN">OCT 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="OCT_24_Actual_Capex_1st_FN" id="OCT_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Capex_plan_2nd_FN">OCT 24 Capex plan 2nd F/N 44Cr:</label>
+                <input type="number" name="OCT_24_Capex_plan_2nd_FN" id="OCT_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Actual_Capex_2nd_FN">OCT 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="OCT_24_Actual_Capex_2nd_FN" id="OCT_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Capex_Plan_BE">OCT 24 Capex Plan BE (63.83 cr.):</label>
+                <input type="number" name="OCT_24_Capex_Plan_BE" id="OCT_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Capex_Plan_RE">OCT 24 Capex Plan RE (63.83 cr.):</label>
+                <input type="number" name="OCT_24_Capex_Plan_RE" id="OCT_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Capex_Plan_PM">OCT 24 Capex Plan - PM:</label>
+                <input type="text" name="OCT_24_Capex_Plan_PM" id="OCT_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="OCT_24_Actual_Capex">OCT 24 Actual Capex:</label>
+                <input type="number" name="OCT_24_Actual_Capex" id="OCT_24_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="NOV_24_Capex_plan_1st_FN">NOV 24 Capex plan 1st F/N 24Cr:</label>
+                <input type="number" name="NOV_24_Capex_plan_1st_FN" id="NOV_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Actual_Capex_1st_FN">NOV 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="NOV_24_Actual_Capex_1st_FN" id="NOV_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Capex_plan_2nd_FN">NOV 24 Capex plan 2nd F/N 60Cr:</label>
+                <input type="number" name="NOV_24_Capex_plan_2nd_FN" id="NOV_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Actual_Capex_2nd_FN">NOV 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="NOV_24_Actual_Capex_2nd_FN" id="NOV_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Capex_Plan_BE">NOV 24 Capex Plan BE (83.55 cr.):</label>
+                <input type="number" name="NOV_24_Capex_Plan_BE" id="NOV_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Capex_Plan_RE">NOV 24 Capex Plan RE (83.55 cr.):</label>
+                <input type="number" name="NOV_24_Capex_Plan_RE" id="NOV_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Capex_Plan_PM">NOV 24 Capex Plan - PM:</label>
+                <input type="text" name="NOV_24_Capex_Plan_PM" id="NOV_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="NOV_24_Actual_Capex">NOV'24 Actual Capex:</label>
+                <input type="number" name="NOV_24_Actual_Capex" id="NOV_24_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="DEC_24_Capex_plan_1st_FN">DEC 24 Capex plan 1st F/N 25Cr:</label>
+                <input type="number" name="DEC_24_Capex_plan_1st_FN" id="DEC_24_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Actual_Capex_1st_FN">DEC 24 Actual Capex 1st F/N:</label>
+                <input type="number" name="DEC_24_Actual_Capex_1st_FN" id="DEC_24_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Capex_plan_2nd_FN">DEC 24 Capex plan 2nd F/N 68Cr:</label>
+                <input type="number" name="DEC_24_Capex_plan_2nd_FN" id="DEC_24_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Actual_Capex_2nd_FN">DEC 24 Actual Capex 2nd F/N:</label>
+                <input type="number" name="DEC_24_Actual_Capex_2nd_FN" id="DEC_24_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Capex_Plan_BE">DEC 24 Capex Plan BE (94.62 cr.):</label>
+                <input type="number" name="DEC_24_Capex_Plan_BE" id="DEC_24_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Capex_Plan_RE">DEC 24 Capex Plan RE (94.62 cr.):</label>
+                <input type="number" name="DEC_24_Capex_Plan_RE" id="DEC_24_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Capex_Plan_PM">DEC 24 Capex Plan - PM:</label>
+                <input type="text" name="DEC_24_Capex_Plan_PM" id="DEC_24_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="DEC_24_Actual_Capex">DEC '24 Actual Capex:</label>
+                <input type="number" name="DEC_24_Actual_Capex" id="DEC_24_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="Capex_Plan_Q3_BE">Capex Plan Q3 BE 24-25 (241 cr.):</label>
+                <input type="number" name="Capex_Plan_Q3_BE" id="Capex_Plan_Q3_BE" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q3_RE">Capex Plan Q3 RE 24-25 (241 cr.):</label>
+                <input type="number" name="Capex_Plan_Q3_RE" id="Capex_Plan_Q3_RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual_Capex_Exp_Q3_BE">Actual Capex Exp Q3 BE 24-25:</label>
+                <input type="number" name="Actual_Capex_Exp_Q3_BE" id="Actual_Capex_Exp_Q3_BE" />
+            </div>
+
+            <div class="input-group">
+                <label for="JAN_25_Capex_plan_1st_FN">JAN 25 Capex plan 1st F/N 20Cr:</label>
+                <input type="number" name="JAN_25_Capex_plan_1st_FN" id="JAN_25_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Actual_Capex_1st_FN">JAN 25 Actual Capex 1st F/N:</label>
+                <input type="number" name="JAN_25_Actual_Capex_1st_FN" id="JAN_25_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Capex_plan_2nd_FN">JAN 25 Capex plan 2nd F/N 45Cr:</label>
+                <input type="number" name="JAN_25_Capex_plan_2nd_FN" id="JAN_25_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Actual_Capex_2nd_FN">JAN 25 Actual Capex 2nd F/N:</label>
+                <input type="number" name="JAN_25_Actual_Capex_2nd_FN" id="JAN_25_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Capex_Plan_BE">JAN 25 Capex Plan BE (64.9 cr.):</label>
+                <input type="number" name="JAN_25_Capex_Plan_BE" id="JAN_25_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Capex_Plan_RE">JAN 25 Capex Plan RE (64.9 cr.):</label>
+                <input type="number" name="JAN_25_Capex_Plan_RE" id="JAN_25_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Capex_Plan_PM">JAN 25 Capex Plan - PM:</label>
+                <input type="text" name="JAN_25_Capex_Plan_PM" id="JAN_25_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="JAN_25_Actual_Capex">JAN 25 Actual Capex:</label>
+                <input type="number" name="JAN_25_Actual_Capex" id="JAN_25_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="FEB_25_Capex_plan_1st_FN">FEB 25 Capex plan 1st F/N 30Cr:</label>
+                <input type="number" name="FEB_25_Capex_plan_1st_FN" id="FEB_25_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Actual_Capex_1st_FN">FEB 25 Actual Capex 1st F/N:</label>
+                <input type="number" name="FEB_25_Actual_Capex_1st_FN" id="FEB_25_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Capex_plan_2nd_FN">FEB 25 Capex plan 2nd F/N 66Cr:</label>
+                <input type="number" name="FEB_25_Capex_plan_2nd_FN" id="FEB_25_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Actual_Capex_2nd_FN">FEB 25 Actual Capex 2nd F/N:</label>
+                <input type="number" name="FEB_25_Actual_Capex_2nd_FN" id="FEB_25_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Capex_Plan_BE">FEB 25 Capex Plan BE (95.91 cr.):</label>
+                <input type="number" name="FEB_25_Capex_Plan_BE" id="FEB_25_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Capex_Plan_RE">FEB 25 Capex Plan RE (95.91 cr.):</label>
+                <input type="number" name="FEB_25_Capex_Plan_RE" id="FEB_25_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Capex_Plan_PM">FEB 25 Capex Plan - PM:</label>
+                <input type="text" name="FEB_25_Capex_Plan_PM" id="FEB_25_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="FEB_25_Actual_Capex">FEB 25 Actual Capex:</label>
+                <input type="number" name="FEB_25_Actual_Capex" id="FEB_25_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="MAR_25_Capex_plan_1st_FN">MAR 25 Capex plan 1st F/N 14Cr:</label>
+                <input type="number" name="MAR_25_Capex_plan_1st_FN" id="MAR_25_Capex_plan_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Actual_Capex_1st_FN">MAR 25 Actual Capex 1st F/N:</label>
+                <input type="number" name="MAR_25_Actual_Capex_1st_FN" id="MAR_25_Actual_Capex_1st_FN" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Capex_plan_2nd_FN">MAR 25 Capex plan 2nd F/N 38Cr:</label>
+                <input type="number" name="MAR_25_Capex_plan_2nd_FN" id="MAR_25_Capex_plan_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Actual_Capex_2nd_FN">MAR 25 Actual Capex 2nd F/N:</label>
+                <input type="number" name="MAR_25_Actual_Capex_2nd_FN" id="MAR_25_Actual_Capex_2nd_FN" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Capex_Plan_BE">MAR 25 Capex Plan BE (51.62 cr.):</label>
+                <input type="number" name="MAR_25_Capex_Plan_BE" id="MAR_25_Capex_Plan_BE" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Capex_Plan_RE">MAR 25 Capex Plan RE (51.62 cr.):</label>
+                <input type="number" name="MAR_25_Capex_Plan_RE" id="MAR_25_Capex_Plan_RE" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Capex_Plan_PM">MAR 25 Capex Plan - PM:</label>
+                <input type="text" name="MAR_25_Capex_Plan_PM" id="MAR_25_Capex_Plan_PM" />
+            </div>
+            <div class="input-group">
+                <label for="MAR_25_Actual_Capex">MAR 25 Actual Capex:</label>
+                <input type="number" name="MAR_25_Actual_Capex" id="MAR_25_Actual_Capex" />
+            </div>
+
+            <div class="input-group">
+                <label for="Capex_Plan_Q4_BE">Capex Plan Q4 BE 24-25 (213 cr.):</label>
+                <input type="number" name="Capex_Plan_Q4_BE" id="Capex_Plan_Q4_BE" />
+            </div>
+            <div class="input-group">
+                <label for="Capex_Plan_Q4_RE">Capex Plan Q4 RE 24-25 (204 cr.):</label>
+                <input type="number" name="Capex_Plan_Q4_RE" id="Capex_Plan_Q4_RE" />
+            </div>
+            <div class="input-group">
+                <label for="Actual_Capex_Exp_Q4_BE">Actual Capex Exp Q4 BE 24-25:</label>
+                <input type="number" name="Actual_Capex_Exp_Q4_BE" id="Actual_Capex_Exp_Q4_BE" />
+            </div>
+
+            <div class="btns-group">
+                <a href="module3.html" class="btn btn-prev"
+                    style="background-color:lightskyblue; border-radius: 30px; border-color: lightskyblue;">Previous</a>
+                <!-- Save Button -->
+                <button type="button" onclick="saveData(1)"
+                    style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Submit
+                    Capex</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve selected scheme from localStorage and update scheme name elements
+            var selectedScheme = localStorage.getItem("selectedScheme");
+            var schemeNameElements = document.getElementsByClassName("schemeName");
+            if (selectedScheme) {
+                for (var i = 0; i < schemeNameElements.length; i++) {
+                    schemeNameElements[i].innerText = "Selected Scheme: " + selectedScheme;
+                }
+            } else {
+                for (var i = 0; i < schemeNameElements.length; i++) {
+                    schemeNameElements[i].innerText = "No scheme selected";
+                }
+            }
+
+            // Retrieve current step from localStorage, default to 0 if not set
+            var currentStep = parseInt(localStorage.getItem("currentStep")) || 0;
+            showStep(currentStep);
+
+            const progress = document.getElementById('progress');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const formSteps = document.querySelectorAll('.form-step');
+
+            progressSteps.forEach((step, index) => {
+                step.addEventListener('click', () => {
+                    showStep(index);
+                });
+            });
+        });
+
+        function showStep(stepIndex) {
+            const progress = document.getElementById('progress');
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const formSteps = document.querySelectorAll('.form-step');
+
+            // Remove active class from all steps
+            progressSteps.forEach(step => step.classList.remove('progress-step-active'));
+
+            // Add active class to clicked step and all previous steps
+            for (let i = 0; i <= stepIndex; i++) {
+                progressSteps[i].classList.add('progress-step-active');
+            }
+
+            // Update progress bar width
+            const progressWidth = (stepIndex + 1) / progressSteps.length * 100;
+            progress.style.width = progressWidth + '%';
+
+            // Show the corresponding form section
+            formSteps.forEach(section => section.classList.remove('form-step-active'));
+            formSteps[stepIndex].classList.add('form-step-active');
+
+            // Save current step to localStorage
+            localStorage.setItem("currentStep", stepIndex);
+        }
+
+        // const form = document.getElementById('multiStepForm');
+        // const formSteps = document.querySelectorAll('.form-step');
+        // const progress = document.getElementById('progress');
+        // const progressSteps = document.querySelectorAll('.progress-step');
+
+        // let formStepIndex = parseInt(localStorage.getItem("currentStep")) || 0;
+
+        // function nextStep() {
+        //     if (formStepIndex < formSteps.length - 1) {
+        //         formSteps[formStepIndex].classList.remove('form-step-active');
+        //         formStepIndex++;
+        //         formSteps[formStepIndex].classList.add('form-step-active');
+        //         updateProgressBar();
+        //     }
+        // }
+
+        // function updateProgressBar() {
+        //     progressSteps.forEach((progressStep, idx) => {
+        //         if (idx <= formStepIndex) {
+        //             progressStep.classList.add('progress-step-active');
+        //         } else {
+        //             progressStep.classList.remove('progress-step-active');
+        //         }
+        //     });
+        //     const progressActive = document.querySelectorAll('.progress-step-active');
+        //     progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + '%';
+        // }
+
+        async function saveData(step) {
+            let jsonData ;
+            if (step == 1) {
+                const form = document.getElementById('module1Form');
+                const data = new FormData(form);
+                jsonData = Object.fromEntries(data.entries());
+            }
+            else {
+                const form = document.getElementById('module2Form');
+                const data = new FormData(form);
+                jsonData = Object.fromEntries(data.entries());
+            }
+            // const form = document.getElementById('module1Form');
+            // const data = new FormData(form);
+            // const jsonData = Object.fromEntries(data.entries());
+            const url = step === 1 ? '/submit-module1' : '/submit-module2';
+
+            try {
+                const response = await fetch(`http://127.0.0.1:5000${url}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + (localStorage.getItem('accessToken') || '')
+                    },
+                    body: JSON.stringify(jsonData),
+                });
+                const result = await response.text();
+                alert(result);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to save data');
+            }
+        }
+
+        async function submitData() {
+            await saveData(2);
+            alert('Form submitted successfully');
+        }
+
+        // Console.log the access token
+        console.log(localStorage.getItem('accessToken'));
+
+    </script>
+</body>
+</html>

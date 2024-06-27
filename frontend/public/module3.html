@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/frontend/public/app.css" />
+    <!-- Favicons -->
+    <link href="/frontend/images/site_logo.png" rel="icon">
+
+
+    <!-- <script src="./script/app_1.js" defer></script> -->
+    <title>User Form</title>
+</head>
+<body>
+        <!-- module-3 form -->
+        <form method="POST" id="module3Form" class="form" action="http://localhost:5500/submit-module3">
+
+            <h3 class="text-center">Please Fill out the form</h3>
+            <!-- Progress bar -->
+            <div class="progressbar">
+                <div class="progress" id="progress"></div>
+    
+                <div class="progress-step progress-step-active" data-title="Module-3" data-step="3"></div>
+            </div>
+    
+            <div class="form-step" data-step="3">
+                <h1 class="text-center">Module-3</h1>
+                <h1 class="text-center schemeName"></h1>
+                <div class="input-group">
+                    <label for="Sl3">SL. (FY2023-24):</label>
+                    <input type="number" id="Sl3" name="Sl3" required>
+                </div>
+                <div class="input-group">
+                    <label for="previousSl3">Sl. (FY 2022-23):</label>
+                    <input type="number" id="previousSl3" name="previousS3" required>
+                </div>
+                <div>
+                    <label for="award_date">Award Date (Qtr/FY):</label>
+                    <input type="date" id="award_date_input" name="award_date" required placeholder="Select date">
+                </div>
+    
+    
+                <div class="input-group">
+                    <label for="order_cost">Order Cost (Gross Rs Cr):</label>
+                    <input type="number" id="order_cost" name="order_cost" required>
+                </div>
+                <div class="input-group">
+                    <label for="order_cost_net">Order Cost (Net Rs Cr):</label>
+                    <input type="number" id="order_cost_net" name="order_cost_net" required>
+                </div>
+                <div>
+                    <label for="party_name">Name of the Party:</label>
+                    <input type="text" id="party_name" name="party_name"><br>
+                </div>
+                <div>
+                    <label for="email">Email No:</label>
+                    <input type="email" id="email" name="email"><br>
+                </div>
+                <div>
+                    <label for="contact_no">Contact No:</label>
+                    <input type="number" id="contact_no" name="contact_no"><br>
+                </div>
+                <div>
+                    <label for="pan_no">PAN NO:</label>
+                    <input type="text" id="pan_no" name="pan_no"><br>
+                </div>
+                <div class="input-group">
+                    <label for="contract_date">Effective Date of Contract:</label>
+                    <input type="date" id="contract_date" name="contract_date" required>
+                </div>
+                <div>
+                    <label for="completion_period">Completion period from effective date of contract (months):</label>
+                    <input type="number" id="completion_period" name="completion_period"><br>
+                </div>
+                <div class="input-group">
+                    <label for="completion_date">Schedule Completion Date:</label>
+                    <input type="date" id="completion_date" name="completion_date" required>
+                </div>
+                <div class="input-group">
+                    <label for="actual_completion_date">Actual / Likely Completion Date :</label>
+                    <input type="date" id="actual_completion_date" name="actual_completion_date" required>
+                </div>
+                <div class="input-group">
+                    <label for="delay_reason">Reason for Delay:</label>
+                    <input type="text" id="delay_reason" name="delay_reason" required>
+                </div>
+                <div class="input-group">
+                    <label for="action_taken">Issues / Action taken:</label>
+                    <input type="text" id="action_taken" name="action_taken" required>
+                </div>
+                <div class="input-group">
+                    <label for="status_scheme">Progress Status of the Scheme :</label>
+                    <input type="text" id="status_scheme" name="status_scheme" required>
+                </div>
+                <div>
+                    <label for="stage1_approval_trend">Stage-I Approval Trend (Actual/ likely):</label>
+                    <select id="stage1_approval_trend" name="stage1_approval_trend" required>
+                        <option value="">Select Status</option>
+                        <option value="status1">Closed</option>
+                        <option value="status2">Completed</option>
+                        <option value="status3">Ongoing</option>
+                        <option value="status1">Under Tendering</option>
+                        <option value="status2">Under Stage-II approval</option>
+                        <option value="status3">Under Stage-II PAG</option>
+                        <option value="status1">Under Stage-I approval</option>
+                        <option value="status2">Under Stage-I PAG</option>
+                        <option value="status3">Under Formulation</option>
+                        <option value="status2">Dropped / Cancelled</option>
+                        <option value="status3">Capital Repair / Spares</option>
+                    </select>
+                </div><br>
+                <div>
+                    <label for="award_nit">Time taken in Award from NIT (Actual / Likely):</label>
+                    <input type="number" id="award_nit" name="award_nit"><br>
+                </div>
+                <div>
+                    <label for="award_date">Award Date (Qtr/FY):</label>
+                    <input type="date" id="award_date_input" name="award_date_qtr" required placeholder="Select date">
+                </div>
+    
+                <div>
+                    <label for="award_trend_nit">Award Trend from NIT (Actual/Likely):</label>
+                    <select id="award_trend_nit_select" name="award_trend_nit" required>
+                        <option value="">Select Status</option>
+                        <option value="status1">Closed</option>
+                        <option value="status2">Completed</option>
+                        <option value="status3">Ongoing</option>
+                        <option value="status1">Under Tendering</option>
+                        <option value="status2">Under Stage-II approval</option>
+                        <option value="status3">Under Stage-II PAG</option>
+                        <option value="status1">Under Stage-I approval</option>
+                        <option value="status2">Under Stage-I PAG</option>
+                        <option value="status3">Under Formulation</option>
+                        <option value="status2">Dropped / Cancelled</option>
+                        <option value="status3">Capital Repair / Spares</option>
+                    </select>
+                </div><br>
+                <div>
+                    <label for="stage2_pag_trend">Stage-II PAG Trend (Actual/ likely):</label>
+                    <select id="stage2_pag_trend" name="stage2_pag_trend" required>
+                        <option value="">Select Status</option>
+                        <option value="status1">Closed</option>
+                        <option value="status2">Completed</option>
+                        <option value="status3">Ongoing</option>
+                        <option value="status1">Under Tendering</option>
+                        <option value="status2">Under Stage-II approval</option>
+                        <option value="status3">Under Stage-II PAG</option>
+                        <option value="status1">Under Stage-I approval</option>
+                        <option value="status2">Under Stage-I PAG</option>
+                        <option value="status3">Under Formulation</option>
+                        <option value="status2">Dropped / Cancelled</option>
+                        <option value="status3">Capital Repair / Spares</option>
+                    </select>
+                </div><br>
+                <div>
+                    <label for="time_taken_stage_approval">Time taken in Award from Stage-II Approval (Actual /
+                        Likely):</label>
+                    <input type="number" id="time_taken_stage_approval" name="time_taken_stage_approval"><br>
+                </div>
+                <div>
+                    <label for="award_trend_stage2">Award Trend from Stage-II Approval (Actual/ likely):</label>
+                    <select id="award_trend_stage2" name="award_trend_stage2" required>
+                        <option value="">Select Status</option>
+                        <option value="status1">Closed</option>
+                        <option value="status2">Completed</option>
+                        <option value="status3">Ongoing</option>
+                        <option value="status1">Under Tendering</option>
+                        <option value="status2">Under Stage-II approval</option>
+                        <option value="status3">Under Stage-II PAG</option>
+                        <option value="status1">Under Stage-I approval</option>
+                        <option value="status2">Under Stage-I PAG</option>
+                        <option value="status3">Under Formulation</option>
+                        <option value="status2">Dropped / Cancelled</option>
+                        <option value="status3">Capital Repair / Spares</option>
+                    </select>
+                </div><br>
+                <div>
+                    <label for="eff_contractdate">Eff Contract Date (Qtr./FY):</label>
+                    <input type="number" id="eff_contractdate" name="eff_contractdate"><br>
+                </div>
+                <div>
+                    <label for="schedule_completion">Schedule Completion (Qtr./FY):</label>
+                    <input type="number" id="schedule_completion" name="schedule_completion"><br>
+                </div>
+                <div>
+                    <label for="completion_qtr">(Likely / Actual) Completion (Qtr./FY):</label>
+                    <input type="number" id="completion_qtr" name="completion_qtr"><br>
+                </div>
+                <div>
+                    <label for="projectdelay">Project Delay (Actual / Likely) (Months):</label>
+                    <input type="number" id="projectdelay" name="projectdelay"><br>
+                </div>
+                <div>
+                    <label for="project_delay_trend">Project Delay Trend (Actual / Likely):</label>
+                    <select id="project_delay_trend" name="project_delay_trend" required>
+                        <option value="">Select Status</option>
+                        <option value="status1">Closed</option>
+                        <option value="status2">Completed</option>
+                        <option value="status3">Ongoing</option>
+                        <option value="status1">Under Tendering</option>
+                        <option value="status2">Under Stage-II approval</option>
+                        <option value="status3">Under Stage-II PAG</option>
+                        <option value="status1">Under Stage-I approval</option>
+                        <option value="status2">Under Stage-I PAG</option>
+                        <option value="status3">Under Formulation</option>
+                        <option value="status2">Dropped / Cancelled</option>
+                        <option value="status3">Capital Repair / Spares</option>
+                    </select>
+                </div><br>
+                <div class="btns-group">
+                    <a href="module2.html" class="btn btn-prev"
+                    style="background-color:lightskyblue; border-radius: 30px; border-color: lightskyblue;">Previous</a>
+
+                    <!-- Save Button -->
+                    <button type="button" onclick="saveData(1)"
+                        style="background-color:mistyrose; border-radius: 20px; border-color: mistyrose; border: 10% ;">Submit
+                        Module 3</button>
+        
+                        <a href="form.html" class="btn btn-prev"
+                        style="background-color:lightskyblue; border-radius: 30px; border-color: lightskyblue;">Module-1</a>
+                        <a href="capex.html" class="btn btn-prev"
+                        style="background-color:lightskyblue; border-radius: 30px; border-color: lightskyblue;">Capex</a>
+                </div>
+            </div>
+        </form>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Retrieve selected scheme from localStorage and update scheme name elements
+                var selectedScheme = localStorage.getItem("selectedScheme");
+                var schemeNameElements = document.getElementsByClassName("schemeName");
+                if (selectedScheme) {
+                    for (var i = 0; i < schemeNameElements.length; i++) {
+                        schemeNameElements[i].innerText = "Selected Scheme: " + selectedScheme;
+                    }
+                } else {
+                    for (var i = 0; i < schemeNameElements.length; i++) {
+                        schemeNameElements[i].innerText = "No scheme selected";
+                    }
+                }
+    
+                // Retrieve current step from localStorage, default to 0 if not set
+                var currentStep = parseInt(localStorage.getItem("currentStep")) || 0;
+                showStep(currentStep);
+    
+                const progress = document.getElementById('progress');
+                const progressSteps = document.querySelectorAll('.progress-step');
+                const formSteps = document.querySelectorAll('.form-step');
+    
+                progressSteps.forEach((step, index) => {
+                    step.addEventListener('click', () => {
+                        showStep(index);
+                    });
+                });
+            });
+    
+            function showStep(stepIndex) {
+                const progress = document.getElementById('progress');
+                const progressSteps = document.querySelectorAll('.progress-step');
+                const formSteps = document.querySelectorAll('.form-step');
+    
+                // Remove active class from all steps
+                progressSteps.forEach(step => step.classList.remove('progress-step-active'));
+    
+                // Add active class to clicked step and all previous steps
+                for (let i = 0; i <= stepIndex; i++) {
+                    progressSteps[i].classList.add('progress-step-active');
+                }
+    
+                // Update progress bar width
+                const progressWidth = (stepIndex + 1) / progressSteps.length * 100;
+                progress.style.width = progressWidth + '%';
+    
+                // Show the corresponding form section
+                formSteps.forEach(section => section.classList.remove('form-step-active'));
+                formSteps[stepIndex].classList.add('form-step-active');
+    
+                // Save current step to localStorage
+                localStorage.setItem("currentStep", stepIndex);
+            }
+    
+            // const form = document.getElementById('multiStepForm');
+            // const formSteps = document.querySelectorAll('.form-step');
+            // const progress = document.getElementById('progress');
+            // const progressSteps = document.querySelectorAll('.progress-step');
+    
+            // let formStepIndex = parseInt(localStorage.getItem("currentStep")) || 0;
+    
+            // function nextStep() {
+            //     if (formStepIndex < formSteps.length - 1) {
+            //         formSteps[formStepIndex].classList.remove('form-step-active');
+            //         formStepIndex++;
+            //         formSteps[formStepIndex].classList.add('form-step-active');
+            //         updateProgressBar();
+            //     }
+            // }
+    
+            // function updateProgressBar() {
+            //     progressSteps.forEach((progressStep, idx) => {
+            //         if (idx <= formStepIndex) {
+            //             progressStep.classList.add('progress-step-active');
+            //         } else {
+            //             progressStep.classList.remove('progress-step-active');
+            //         }
+            //     });
+            //     const progressActive = document.querySelectorAll('.progress-step-active');
+            //     progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + '%';
+            // }
+    
+            async function saveData(step) {
+                let jsonData ;
+                if (step == 1) {
+                    const form = document.getElementById('module1Form');
+                    const data = new FormData(form);
+                    jsonData = Object.fromEntries(data.entries());
+                }
+                else {
+                    const form = document.getElementById('module2Form');
+                    const data = new FormData(form);
+                    jsonData = Object.fromEntries(data.entries());
+                }
+                // const form = document.getElementById('module1Form');
+                // const data = new FormData(form);
+                // const jsonData = Object.fromEntries(data.entries());
+                const url = step === 1 ? '/submit-module1' : '/submit-module2';
+    
+                try {
+                    const response = await fetch(`http://127.0.0.1:5000${url}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer ' + (localStorage.getItem('accessToken') || '')
+                        },
+                        body: JSON.stringify(jsonData),
+                    });
+                    const result = await response.text();
+                    alert(result);
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Failed to save data');
+                }
+            }
+    
+            async function submitData() {
+                await saveData(2);
+                alert('Form submitted successfully');
+            }
+    
+            // Console.log the access token
+            console.log(localStorage.getItem('accessToken'));
+    
+        </script>
+</body>
