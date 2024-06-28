@@ -71,7 +71,7 @@ app.post("/signup", async (req, res) => {
   if (!phone || phone.length < 10) {
     return res.status(400).json({ error: 'Invalid phone number' });
   }
-  if (!password || password.length <= 12) {
+  if (!password || password.length <= 10) {
     return res.status(400).json({ error: 'Invalid password' });
   }
   if (!role || role.length < 1) {
