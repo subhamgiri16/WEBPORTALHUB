@@ -15,7 +15,7 @@
 </head>
 <body>
         <!-- module-3 form -->
-        <form method="POST" id="module3Form" class="form" action="http://localhost:5500/submit-module3">
+        <form method="POST" id="module3Form" class="form" action="http://localhost:5000/submit-module3">
 
             <h3 class="text-center">Please Fill out the form</h3>
             <!-- Progress bar -->
@@ -310,24 +310,26 @@
             // }
     
             async function saveData(step) {
-                let jsonData ;
-                if (step == 1) {
-                    const form = document.getElementById('module1Form');
-                    const data = new FormData(form);
-                    jsonData = Object.fromEntries(data.entries());
-                }
-                else {
-                    const form = document.getElementById('module2Form');
-                    const data = new FormData(form);
-                    jsonData = Object.fromEntries(data.entries());
-                }
-                // const form = document.getElementById('module1Form');
-                // const data = new FormData(form);
-                // const jsonData = Object.fromEntries(data.entries());
+                // let jsonData ;
+                // if (step == 1) {
+                //     const form = document.getElementById('module3Form');
+                //     console.log(form)
+                //     const data = new FormData(form);
+                //     jsonData = Object.fromEntries(data.entries());
+                // }
+                // else {
+                //     const form = document.getElementById('module2Form');
+                //     const data = new FormData(form);
+                //     jsonData = Object.fromEntries(data.entries());
+            // }
+                const form = document.getElementById('module3Form');
+                console.log(form)
+                const data = new FormData(form);
+                const jsonData = Object.fromEntries(data.entries());
                 const url = step === 1 ? '/submit-module1' : '/submit-module2';
     
                 try {
-                    const response = await fetch(`http://127.0.0.1:5000${url}`, {
+                    const response = await fetch(`http://127.0.0.1:5000/submit-module3`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
