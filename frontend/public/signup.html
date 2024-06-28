@@ -26,9 +26,15 @@
 
             <label for="phone">Phone:</label>
             <input type="tel" id="phone" name="phone" placeholder="Phone" required>
-            <input type="button" onclick="phoneAuth()"
-                style="background-color: chocolate; font-size: 14px;transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;">
-
+            <button type="button" onclick="phoneAuth()"
+                style="background-color: chocolate; font-size: 14px; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;">Send
+                OTP</button>
+            <br>
+            <label for="verificationcode">Enter OTP:</label>
+            <input type="text" id="verificationcode" name="verificationcode" placeholder="Enter OTP" required>
+            <button type="button" onclick="codeverify()"
+                style="background-color: chocolate; font-size: 14px; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;">Verify
+                OTP</button>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Password" required>
@@ -38,8 +44,8 @@
 
             <label for="role">Role:</label>
             <select id="role" name="role"
-                style="background-color: chocolate; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;"">
-                <option value=" user">User</option>
+                style="background-color: chocolate; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;">
+                <option value="user">User</option>
                 <option value="admin">Admin</option>
             </select><br>
 
@@ -48,7 +54,7 @@
         <p>Already have an account? <a href="login.html">Login</a></p>
     </main>
 
-    <!-- <script src="app.js"></script> -->
+    <script src="app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
@@ -73,27 +79,40 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-        // function for send OTP
+// Firebase phone authentication variables
+var phoneNumber = document.getElementById('phone');
+        var verificationCode = document.getElementById('verificationcode');
+        var confirmationResult;
+
+        // Function to send OTP
         function phoneAuth() {
-            var number = document.getElementById('number').value;
-            firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function (confirmationResult) {
-                window.confirmationResult = confirmationResult;
-                coderesult = confirmationResult;
-                console.log('OTP Sent');
-            }).catch(function (error) {
-                // error in sending OTP
-                alert(error.message);
-            });
+            var number = phoneNumber.value;
+            var appVerifier = new firebase.auth.RecaptchaVerifier('phone-sign-in-recaptcha');
+            firebase.auth().signInWithPhoneNumber(number, appVerifier)
+                .then(function (confirmationResult) {
+                    window.confirmationResult = confirmationResult;
+                    console.log('OTP Sent');
+                }).catch(function (error) {
+                    // Error in sending OTP
+                    console.error("Error sending OTP:", error);
+                    alert("Error sending OTP. Please try again.");
+                });
         }
 
-        // function for OTP verify
+        // Function to verify OTP
         function codeverify() {
-            var code = document.getElementById('verificationcode').value;
-            coderesult.confirm(code).then(function () {
-                console.log('OTP Verified');
-            }).catch(function () {
-                console.log('OTP Not correct');
-            })
+            var code = verificationCode.value;
+            confirmationResult.confirm(code)
+                .then(function (result) {
+                    // Successful verification
+                    console.log('OTP Verified');
+                    // Proceed with form submission or other actions
+                    document.getElementById('signupForm').submit();
+                }).catch(function (error) {
+                    // Invalid OTP
+                    console.error("Error verifying OTP:", error);
+                    alert("Invalid OTP. Please enter the correct OTP.");
+                });
         }
 
     </script>
