@@ -218,10 +218,10 @@ app.post("/submit-module1", (req, res) => {
     project_delay_trend,
   };
 
-  const sql = "INSERT INTO module_1 SET ?";
+  const sql = "INSERT INTO module1 SET ?";
   connectionFormData.query(sql, data, (err, results) => {
     if (err) {
-      console.error("Error inserting module_1 data:", err);
+      console.error("Error inserting module1 data:", err);
       return res.status(500).send(err);
     }
     return res.send("Module 1 data saved successfully");
@@ -241,7 +241,7 @@ app.post("/submit-module2", (req, res) => {
     stageII_gross,
     stageII_net,
     stage1_approval_trend,
-    ttime_taken_in_issuing_nIT_after_StageI,
+    time_taken_in_issuing_nIT_after_StageI,
     nit,
     award_trend_nit,
     time_taken_StageIIPAG_after_TC_Recommendation,
@@ -255,6 +255,32 @@ app.post("/submit-module2", (req, res) => {
     project_delay_trend,
   } = req.body;
 
+  // Validate required fields
+  if (!Sl2 ||
+      !previousSl2 ||
+      !nitdate ||
+      !tod ||
+      !tc_recomendation_date ||
+      !stageII_pagdate ||
+      !stageII_approval ||
+      !stageII_gross ||
+      !stageII_net ||
+      !stage1_approval_trend ||
+      !time_taken_in_issuing_nIT_after_StageI ||
+      !nit ||
+      !award_trend_nit ||
+      !time_taken_StageIIPAG_after_TC_Recommendation ||
+      !TC_Recommendation ||
+      !stageII_plant_pag ||
+      !stage2_pag_trend ||
+      !time_taken_StageII_Approval_from_PAGII ||
+      !stageII_approval_qtr ||
+      !stageII_approval_trend ||
+      !award_trend_stage2 ||
+      !project_delay_trend) {
+    return res.status(400).send("All fields are required");
+  }
+
   const data = {
     Sl2,
     previousSl2,
@@ -266,7 +292,7 @@ app.post("/submit-module2", (req, res) => {
     stageII_gross,
     stageII_net,
     stage1_approval_trend,
-    ttime_taken_in_issuing_nIT_after_StageI,
+    time_taken_in_issuing_nIT_after_StageI,
     nit,
     award_trend_nit,
     time_taken_StageIIPAG_after_TC_Recommendation,
@@ -287,6 +313,102 @@ app.post("/submit-module2", (req, res) => {
       return res.status(500).send(err);
     }
     return res.send("Module 2 data saved successfully");
+  });
+});
+
+// Route to handle form data submission for Module 3
+app.post("/submit-module3", (req, res) => {
+  const {
+    Sl3,
+    previousSl3,
+    award_date,
+    order_cost,
+    order_cost_net,
+    party_name,
+    email,
+    contact_no,
+    pan_no,
+    contract_date,
+    completion_period,
+    completion_date,
+    actual_completion_date,
+    delay_reason,
+    action_taken,
+    status_scheme,
+    stage1_approval_trend,
+    award_nit,
+    award_date_qtr,
+    award_trend_nit,
+    stage2_pag_trend,
+    time_taken_stage_approval,
+    award_trend_stage2,
+    eff_contractdate,
+    schedule_completion,
+    completion_qtr,
+    projectdelay,
+    project_delay_trend
+  } = req.body;
+
+  // Check for required fields
+  if (!Sl3 ||
+      !previousSl3 ||
+      !award_date ||
+      !order_cost ||
+      !order_cost_net ||
+      !contract_date ||
+      !completion_date ||
+      !actual_completion_date ||
+      !delay_reason ||
+      !action_taken ||
+      !status_scheme ||
+      !stage1_approval_trend ||
+      !award_trend_nit ||
+      !stage2_pag_trend ||
+      !award_trend_stage2 ||
+      !project_delay_trend) {
+    return res.status(400).send("Required fields are missing");
+  }
+
+  // Construct data object with all fields (optional fields may be empty)
+  const data = {
+    Sl3,
+    previousSl3,
+    award_date,
+    order_cost,
+    order_cost_net,
+    party_name,
+    email,
+    contact_no,
+    pan_no,
+    contract_date,
+    completion_period,
+    completion_date,
+    actual_completion_date,
+    delay_reason,
+    action_taken,
+    status_scheme,
+    stage1_approval_trend,
+    award_nit,
+    award_date_qtr,
+    award_trend_nit,
+    stage2_pag_trend,
+    time_taken_stage_approval,
+    award_trend_stage2,
+    eff_contractdate,
+    schedule_completion,
+    completion_qtr,
+    projectdelay,
+    project_delay_trend,
+  };
+
+  // Insert data into database
+  const sql = "INSERT INTO module3 SET ?";
+  connectionFormData.query(sql, data, (err, results) => {
+    if (err) {
+      console.error("Error inserting module3 data:", err);
+      return res.status(500).send(err);
+    }
+    return res.send("Module 3 data saved successfully");
   });
 });
 
