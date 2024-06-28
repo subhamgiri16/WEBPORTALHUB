@@ -62,7 +62,7 @@ app.post("/signup", async (req, res) => {
   const role = req.body.role ?? '';
 
   // Validate input data
-  if (!username || username.length < 6) {
+  if (!username || username.length > 6) {
     return res.status(400).json({ error: 'Invalid username' });
   }
   if (!email || email.length <= 5 || !email.includes('@')) {
@@ -71,7 +71,7 @@ app.post("/signup", async (req, res) => {
   if (!phone || phone.length < 10) {
     return res.status(400).json({ error: 'Invalid phone number' });
   }
-  if (!password || password.length <= 10) {
+  if (!password || password.length > 10) {
     return res.status(400).json({ error: 'Invalid password' });
   }
   if (!role || role.length < 1) {
@@ -399,6 +399,83 @@ app.post("/submit-module3", (req, res) => {
     completion_qtr,
     projectdelay,
     project_delay_trend,
+  };
+
+  // Insert data into database
+  const sql = "INSERT INTO module3 SET ?";
+  connectionFormData.query(sql, data, (err, results) => {
+    if (err) {
+      console.error("Error inserting module3 data:", err);
+      return res.status(500).send(err);
+    }
+    return res.send("Module 3 data saved successfully");
+  });
+});
+
+
+  //Route to handle form data submission for capex 
+app.post("/submit-capex", (req, res) => {
+  const {
+    Sl,
+    previousSl,
+    actualupto,
+    "2021-22 BE": be2021_22,
+    "2021-22 RE": re2021_22,
+    "Actual Aprl-Mar'22": actualAprMar22,
+    "2022-23 BE": be2022_23,
+    "2022-23 RE": re2022_23,
+    "Actual Capex 2022-23": actualCapex2022_23,
+    "STATUS on 31.03.2023": status_31_03_2023,
+    "2023-24 BE": be2023_24,
+    "STATUS as per Annual Plan 23-24": statusAnnualPlan23_24,
+    "2023-24 RE": re2023_24,
+    "Actual Capex 2023-24": actualCapex2023_24,
+    "Actual Capex Upto 31.03.2024": actualCapexUpto31_03_2024,
+    "STATUS on 31.03.24": status_31_03_24,
+    "2024-25 (BE)": be2024_25,
+    "2024-25 (RE)": re2024_25,
+    "STATUS as per Annual Plan 24-25": statusAnnualPlan24_25,
+    "Actual Capex 2024-25(TILL DATE)": actualCapex2024_25,
+    stage1_approval_trend,
+    award_trend_nit
+  } = req.body;
+
+  // Check for required fields
+  if (!Sl ||
+      !previousSl ||
+      !status_31_03_2023 ||
+      !statusAnnualPlan23_24 ||
+      !status_31_03_24 ||
+      !statusAnnualPlan24_25 ||
+      !stage1_approval_trend ||
+      !award_trend_nit) {
+    return res.status(400).send("Required fields are missing");
+  }
+
+  // Construct data object with all fields (optional fields may be empty)
+  const data = {
+    Sl,
+    previousSl,
+    actualupto,
+    "2021-22 BE": be2021_22,
+    "2021-22 RE": re2021_22,
+    "Actual Aprl-Mar'22": actualAprMar22,
+    "2022-23 BE": be2022_23,
+    "2022-23 RE": re2022_23,
+    "Actual Capex 2022-23": actualCapex2022_23,
+    "STATUS on 31.03.2023": status_31_03_2023,
+    "2023-24 BE": be2023_24,
+    "STATUS as per Annual Plan 23-24": statusAnnualPlan23_24,
+    "2023-24 RE": re2023_24,
+    "Actual Capex 2023-24": actualCapex2023_24,
+    "Actual Capex Upto 31.03.2024": actualCapexUpto31_03_2024,
+    "STATUS on 31.03.24": status_31_03_24,
+    "2024-25 (BE)": be2024_25,
+    "2024-25 (RE)": re2024_25,
+    "STATUS as per Annual Plan 24-25": statusAnnualPlan24_25,
+    "Actual Capex 2024-25(TILL DATE)": actualCapex2024_25,
+    stage1_approval_trend,
+    award_trend_nit
   };
 
   // Insert data into database
