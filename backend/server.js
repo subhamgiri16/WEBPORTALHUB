@@ -489,22 +489,31 @@ app.post("/submit-capex", (req, res) => {
   });
 });
 
-// Fetch all users
+//Get all users
 app.get('/api/users', (req, res) => {
   const sql = 'SELECT * FROM users';
-  db.query(sql, (err, result) => {
-      if (err) throw err;
-      res.json(result);
+  connection.query(sql, (err, results) => {
+      if (err) {
+          console.error('Error fetching users:', err);
+          res.status(500).send('Error fetching users data');
+          return;
+      }
+      res.json(results); // Send JSON response with fetched users data
   });
 });
+
 
 // Update a user
 app.put('/api/users/:id', (req, res) => {
   const id = req.params.id;
   const { username, email, phone, role } = req.body;
   const sql = `UPDATE users SET username=?, email=?, phone=?, role=? WHERE id=?`;
-  db.query(sql, [username, email, phone, role, id], (err, result) => {
-      if (err) throw err;
+  connection.query(sql, [username, email, phone, role, id], (err, result) => {
+      if (err) {
+          console.error('Error updating user:', err);
+          res.status(500).send('Error updating user');
+          return;
+      }
       res.send('User updated successfully');
   });
 });
@@ -513,11 +522,16 @@ app.put('/api/users/:id', (req, res) => {
 app.delete('/api/users/:id', (req, res) => {
   const id = req.params.id;
   const sql = 'DELETE FROM users WHERE id=?';
-  db.query(sql, id, (err, result) => {
-      if (err) throw err;
+  connection.query(sql, id, (err, result) => {
+      if (err) {
+          console.error('Error deleting user:', err);
+          res.status(500).send('Error deleting user');
+          return;
+      }
       res.send('User deleted successfully');
   });
 });
+
 
 
 // Start server
