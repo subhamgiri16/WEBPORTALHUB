@@ -72,7 +72,7 @@
             position: relative;
             width: 100%;
             max-width: 400px;
-            margin: 0 auto;
+            margin: 0 auto 20px;
         }
 
         .search-container i {
@@ -91,7 +91,6 @@
             border-radius: 5px;
             height: 36px;
         }
-
 
         table {
             width: 100%;
@@ -144,12 +143,62 @@
                 width: 95%;
             }
 
+            h1 {
+                font-size: 28px;
+            }
+
+            .search-container {
+                width: 90%;
+            }
+
             #searchInput {
-                width: 80%;
+                width: 100%;
+                font-size: 14px;
             }
 
             table {
                 font-size: 14px;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav {
+                padding: 5px;
+            }
+
+            .nav_logo img {
+                max-height: 50px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .search-container {
+                width: 100%;
+            }
+
+            #searchInput {
+                height: 32px;
+            }
+
+            table, th, td {
+                font-size: 12px;
+                padding: 5px;
+            }
+
+            button {
+                padding: 5px;
+                font-size: 12px;
             }
         }
     </style>
@@ -165,13 +214,12 @@
                 <li><a href="index.html">Home</a></li>
             </ul>
         </div>
-
     </nav>
     <div class="container">
         <h1>Admin Panel</h1>
         <div class="search-container">
             <i class='bx bx-search-alt-2'></i>
-            <input type="text" id="searchInput" placeholder="Search for users..." onkeyup="searchUsers()">
+            <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for users...">
         </div>
         <table id="userTable">
             <thead>
@@ -225,28 +273,55 @@
                 });
             }
 
-    window.updateUser = function (id) {
-        const username = document.querySelector(`td[data-id="${id}"][data-field="username"]`).innerText;
-        const email = document.querySelector(`td[data-id="${id}"][data-field="email"]`).innerText;
-        const phone = document.querySelector(`td[data-id="${id}"][data-field="phone"]`).innerText;
-        const role = document.querySelector(`td[data-id="${id}"][data-field="role"]`).innerText;
+            window.updateUser = function (id) {
+                const username = document.querySelector(`td[data-id="${id}"][data-field="username"]`).innerText;
+                const email = document.querySelector(`td[data-id="${id}"][data-field="email"]`).innerText;
+                const phone = document.querySelector(`td[data-id="${id}"][data-field="phone"]`).innerText;
+                const role = document.querySelector(`td[data-id="${id}"][data-field="role"]`).innerText;
 
-        fetch(`http://localhost:5000/api/users`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, email, phone, role })
-        }).then(() => fetchUsers());
-    };
+                fetch(`http://localhost:5000/api/users/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, email, phone, role })
+                }).then(() => fetchUsers());
+            };
 
-    window.deleteUser = function (id) {
-        fetch(`http://localhost:5000/api/users`, {
-            method: 'DELETE'
-        }).then(() => fetchUsers());
-    };
-});
+            window.deleteUser = function (id) {
+                fetch(`http://localhost:5000/api/users/${id}`, {
+                    method: 'DELETE'
+                }).then(() => fetchUsers());
+            };
+        });
 
+        function myFunction() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const table = document.getElementById("userTable");
+            const tr = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < tr.length; i++) {
+                const td = tr[i].getElementsByTagName('td');
+                let match = false;
+
+                for (let j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        const txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            match = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (match) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
     </script>
 </body>
 
