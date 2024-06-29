@@ -115,22 +115,22 @@
         }
 
         function sendOTP() {
-            var number = document.getElementById('number').value;
-            firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier)
-                .then(function (confirmationResult) {
-                    window.confirmationResult = confirmationResult;
-                    coderesult = confirmationResult;
-                    document.querySelector('.number-input').style.display = 'none';
-                    document.querySelector('.verification').style.display = 'block';
-                }).catch(function (error) {
-                    console.error('Error during sendOTP:', error);
-                    if (error.code === 'auth/captcha-check-failed') {
-                        alert('reCAPTCHA verification failed. Please try again.');
-                    } else {
-                        alert('Error: ' + error.message);
-                    }
-                });
-        }
+    var phoneNumber = document.getElementById('phone').value; // Corrected to 'phone'
+    firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
+        .then(function (confirmationResult) {
+            window.confirmationResult = confirmationResult;
+            coderesult = confirmationResult;
+            document.querySelector('.number-input').style.display = 'none';
+            document.querySelector('.verification').style.display = 'block';
+        }).catch(function (error) {
+            console.error('Error during sendOTP:', error);
+            if (error.code === 'auth/captcha-check-failed') {
+                alert('reCAPTCHA verification failed. Please try again.');
+            } else {
+                alert('Error: ' + error.message);
+            }
+        });
+}
 
         function verifyCode() {
             var code = document.getElementById('verificationCode').value;
