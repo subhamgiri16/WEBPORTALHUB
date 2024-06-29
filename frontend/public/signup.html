@@ -17,7 +17,7 @@
     </a>
     <main>
         <h1>Sign Up</h1>
-        <form id="signupForm" method="post">
+        <form id="signupForm" method="post" onsubmit="return false;">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" placeholder="Username" required>
 
@@ -25,16 +25,30 @@
             <input type="email" id="email" name="email" placeholder="Email" required>
 
             <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" placeholder="Phone" required>
-            <button type="button" onclick="phoneAuth()"
-                style="background-color: chocolate; font-size: 14px; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;">Send
-                OTP</button>
-            <br>
-            <label for="verificationcode">Enter OTP:</label>
-            <input type="text" id="verificationcode" name="verificationcode" placeholder="Enter OTP" required>
-            <button type="button" onclick="codeverify()"
-                style="background-color: chocolate; font-size: 14px; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; cursor: pointer;">Verify
-                OTP</button>
+            <input type="text" id="phone" name="phone" placeholder="Phone" placeholder="+639948621564" required>
+            <div class="number-input">
+                <div id="recaptcha-container" style="position: relative; align-items: center;"></div>
+                <button type="button" id="send" onclick="sendOTP()">Verify Number</button>
+            </div>
+            <div class="verification" style="display: none;">
+                <input type="text" id="verificationCode" placeholder="OTP Code">
+                <button type="button" id="verify" onclick="verifyCode()">Send OTP</button>
+                <a href="#" onclick="location.reload()">Didn't receive a code? Try Again!</a>
+            </div>
+
+            <div class="result" style="display: none;">
+                <div class="correct" style="display: none;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4315/4315445.png" alt="">
+                    <h3>Phone Number Verified!</h3>
+                    <button onclick="location.reload()">Confirm</button>
+                </div>
+
+                <div class="incorrect" style="display: none;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/14025/14025477.png" alt="">
+                    <h3>Phone Number Verified!</h3>
+                    <button onclick="location.reload()">Try Again!</button>
+                </div>
+            </div>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Password" required>
@@ -54,16 +68,10 @@
         <p>Already have an account? <a href="login.html">Login</a></p>
     </main>
 
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
     <script src="app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
-    <!-- Optional: if you plan to use Firestore -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js"></script>
-    <!-- Optional: if you plan to use Realtime Database -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js"></script>
-    <!-- Optional: if you want to use Analytics -->
-
+    
     <script>
         // Your Firebase config
         var firebaseConfig = {
@@ -79,44 +87,72 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
-// Firebase phone authentication variables
-var phoneNumber = document.getElementById('phone');
-        var verificationCode = document.getElementById('verificationcode');
-        var confirmationResult;
+        document.addEventListener('DOMContentLoaded', function () {
+            render();
+        });
 
-        // Function to send OTP
-        function phoneAuth() {
-            var number = phoneNumber.value;
-            var appVerifier = new firebase.auth.RecaptchaVerifier('phone-sign-in-recaptcha');
-            firebase.auth().signInWithPhoneNumber(number, appVerifier)
+        function render() {
+            window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                'size': 'normal', // or 'invisible'
+                'callback': function(response) {
+                    // reCAPTCHA solved, allow sendOTP to proceed.
+                    document.getElementById('send').disabled = false;
+                },
+                'expired-callback': function() {
+                    // Response expired. Ask user to solve reCAPTCHA again.
+                    alert('reCAPTCHA expired, please solve it again.');
+                },
+                'error-callback': function(error) {
+                    // Handle reCAPTCHA errors.
+                    console.error('reCAPTCHA error:', error);
+                    alert('reCAPTCHA verification failed. Please try again.');
+                }
+            });
+            recaptchaVerifier.render().catch(function(error) {
+                console.error('reCAPTCHA render failed: ', error);
+                alert('reCAPTCHA render failed. Please refresh the page and try again.');
+            });
+        }
+
+        function sendOTP() {
+            var number = document.getElementById('number').value;
+            firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier)
                 .then(function (confirmationResult) {
                     window.confirmationResult = confirmationResult;
-                    console.log('OTP Sent');
+                    coderesult = confirmationResult;
+                    document.querySelector('.number-input').style.display = 'none';
+                    document.querySelector('.verification').style.display = 'block';
                 }).catch(function (error) {
-                    // Error in sending OTP
-                    console.error("Error sending OTP:", error);
-                    alert("Error sending OTP. Please try again.");
+                    console.error('Error during sendOTP:', error);
+                    if (error.code === 'auth/captcha-check-failed') {
+                        alert('reCAPTCHA verification failed. Please try again.');
+                    } else {
+                        alert('Error: ' + error.message);
+                    }
                 });
         }
 
-        // Function to verify OTP
-        function codeverify() {
-            var code = verificationCode.value;
-            confirmationResult.confirm(code)
-                .then(function (result) {
-                    // Successful verification
+        function verifyCode() {
+            var code = document.getElementById('verificationCode').value;
+            coderesult.confirm(code)
+                .then(function () {
+                    document.querySelector('.verification').style.display = 'none';
+                    document.querySelector('.result').style.display = 'block';
+                    document.querySelector('.correct').style.display = 'block';
                     console.log('OTP Verified');
-                    // Proceed with form submission or other actions
-                    document.getElementById('signupForm').submit();
                 }).catch(function (error) {
-                    // Invalid OTP
-                    console.error("Error verifying OTP:", error);
-                    alert("Invalid OTP. Please enter the correct OTP.");
+                    console.error('Error during verifyCode:', error);
+                    if (error.code === 'auth/invalid-verification-code') {
+                        alert('Invalid OTP. Please try again.');
+                    } else {
+                        alert('Error: ' + error.message);
+                    }
+                    document.querySelector('.verification').style.display = 'none';
+                    document.querySelector('.result').style.display = 'block';
+                    document.querySelector('.incorrect').style.display = 'block';
                 });
         }
-
     </script>
-
 </body>
 
 </html>

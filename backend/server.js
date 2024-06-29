@@ -489,6 +489,37 @@ app.post("/submit-capex", (req, res) => {
   });
 });
 
+// Fetch all users
+app.get('/api/users', (req, res) => {
+  const sql = 'SELECT * FROM users';
+  db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.json(result);
+  });
+});
+
+// Update a user
+app.put('/api/users/:id', (req, res) => {
+  const id = req.params.id;
+  const { username, email, phone, role } = req.body;
+  const sql = `UPDATE users SET username=?, email=?, phone=?, role=? WHERE id=?`;
+  db.query(sql, [username, email, phone, role, id], (err, result) => {
+      if (err) throw err;
+      res.send('User updated successfully');
+  });
+});
+
+// Delete a user
+app.delete('/api/users/:id', (req, res) => {
+  const id = req.params.id;
+  const sql = 'DELETE FROM users WHERE id=?';
+  db.query(sql, id, (err, result) => {
+      if (err) throw err;
+      res.send('User deleted successfully');
+  });
+});
+
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
