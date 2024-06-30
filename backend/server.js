@@ -533,6 +533,19 @@ app.delete('/api/users/:id', (req, res) => {
 });
 
 
+// Get all schemes
+app.get('/api/form_data', (req, res) => {
+  const sql = 'SELECT * FROM module1'; 
+  connectionFormData.query(sql, (err, results) => {
+      if (err) {
+          console.error('Error fetching data:', err);
+          res.status(500).send('Error fetching data');
+          return;
+      }
+      res.json(results); // Send JSON response with fetched schemes data
+  });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

@@ -453,8 +453,15 @@ label .close_btn {
     display: flex;
     margin-bottom: 20px;
     overflow-x: auto; 
-}
+    position: relative;
+    top: 78px;
 
+}
+/* .row:nth-child(2){
+    border: 5px solid darkblue;
+    position: relative;
+    top: 100px;
+} */
 .column {
     background-color: #fff;
     padding: 20px;
@@ -483,7 +490,13 @@ label .close_btn {
     border-radius: 5px;
     cursor: pointer;
 }
-
+.row > .column > .button{
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+}
 .button:hover, .btn:hover, .clear-filter-button:hover {
     background-color: #f0f0f0;
 }
