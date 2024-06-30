@@ -301,34 +301,7 @@
 
 
     <script>
-        function myFunction() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toUpperCase();
-            const table = document.getElementById("userTable");
-            const tr = table.getElementsByTagName('tr');
 
-            for (let i = 1; i < tr.length; i++) {
-                const td = tr[i].getElementsByTagName('td');
-                let match = false;
-
-                for (let j = 0; j < td.length; j++) {
-                    if (td[j]) {
-                        const txtValue = td[j].textContent || td[j].innerText;
-                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                            match = true;
-                            break;
-                        }
-                    }
-                }
-
-                if (match) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
-    
     // Get the elements with class="column"
         var elements = document.getElementsByClassName("column");
 
@@ -399,7 +372,36 @@
             tbody.appendChild(tr);
         });
     }
+
+    function myFunction() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toUpperCase();
+        const table = document.getElementById("dataTable");
+        const tr = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < tr.length; i++) {
+            const td = tr[i].getElementsByTagName('td');
+            let match = false;
+
+            for (let j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    const txtValue = td[j].textContent || td[j].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        match = true;
+                        break;
+                    }
+                }
+            }
+
+            if (match) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
 });
+
         </script>
 </body>
 
