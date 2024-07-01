@@ -542,9 +542,121 @@ app.get('/api/form_data', (req, res) => {
           res.status(500).send('Error fetching data');
           return;
       }
-      res.json(results); // Send JSON response with fetched schemes data
+      res.json(results); 
   });
 });
+
+// Update a record
+app.put('/api/records/:Sl1', (req, res) => {
+  const Sl1 = req.params.Sl1;
+  const {
+    previousSl1,
+    wbsElement,
+    projectId,
+    schemeName,
+    sanctionedCost,
+    anticipatedCost,
+    ipmm,
+    dept,
+    proj_mgr,
+    current_status,
+    scheme_type,
+    stage1_approval,
+    stage1_approvaldate,
+    stage1_cost_gross,
+    stage1_cost_net,
+    stage1_approval_time,
+    stage1_pag_qtr,
+    stage1_approval_qtr,
+    stage1_approval_trend,
+    award_trend_nit,
+    stage2_pag_trend,
+    award_trend_stage2,
+    project_delay_trend
+  } = req.body;
+  
+  const sql = `
+    UPDATE module1 
+    SET 
+      previousSl1=?, 
+      wbsElement=?, 
+      projectId=?, 
+      schemeName=?, 
+      sanctionedCost=?, 
+      anticipatedCost=?, 
+      ipmm=?, 
+      dept=?, 
+      proj_mgr=?, 
+      current_status=?, 
+      scheme_type=?, 
+      stage1_approval=?, 
+      stage1_approvaldate=?, 
+      stage1_cost_gross=?, 
+      stage1_cost_net=?, 
+      stage1_approval_time=?, 
+      stage1_pag_qtr=?, 
+      stage1_approval_qtr=?, 
+      stage1_approval_trend=?, 
+      award_trend_nit=?, 
+      stage2_pag_trend=?, 
+      award_trend_stage2=?, 
+      project_delay_trend=?
+    WHERE Sl1=?
+  `;
+  
+  const values = [
+    previousSl1,
+    wbsElement,
+    projectId,
+    schemeName,
+    sanctionedCost,
+    anticipatedCost,
+    ipmm,
+    dept,
+    proj_mgr,
+    current_status,
+    scheme_type,
+    stage1_approval,
+    stage1_approvaldate,
+    stage1_cost_gross,
+    stage1_cost_net,
+    stage1_approval_time,
+    stage1_pag_qtr,
+    stage1_approval_qtr,
+    stage1_approval_trend,
+    award_trend_nit,
+    stage2_pag_trend,
+    award_trend_stage2,
+    project_delay_trend,
+    Sl1
+  ];
+  
+  connectionFormData.query(sql, values, (err, result) => {
+    if (err) {
+      console.error('Error updating record:', err);
+      res.status(500).send('Error updating record');
+      return;
+    }
+    res.send('Record updated successfully');
+  });
+});
+
+// Delete a record
+app.delete('/api/records/:Sl1', (req, res) => {
+  const Sl1 = req.params.Sl1;
+  const sql = `DELETE FROM module1 WHERE Sl1=?`;
+
+  connectionFormData.query(sql, [Sl1], (err, result) => {
+    if (err) {
+      console.error('Error deleting record:', err);
+      res.status(500).send('Error deleting record');
+      return;
+    }
+    res.send('Record deleted successfully');
+  });
+});
+
+
 
 // Start server
 app.listen(PORT, () => {

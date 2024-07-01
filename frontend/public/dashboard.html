@@ -14,6 +14,64 @@
     <!-- Box Icon Link for Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3b141c;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+        nav {
+            background-color: #3b141c;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .nav_logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav_logo img {
+            max-height: 70px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        .container {
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        h1 {
+            font-size: 35px;
+            font-weight: 600;
+            color: chartreuse;
+            margin-top: 8px;
+            text-align: center;
+        }
+
         .search-container {
             position: relative;
             width: 100%;
@@ -64,7 +122,6 @@
         td[contenteditable="true"] {
             background-color: #fff3e0;
         }
-
 
         @media (max-width: 768px) {
 
@@ -190,140 +247,50 @@
                 <button type="button" class="btn btn-secondary">B.8.26</button>
                 <button type="button" class="btn btn-secondary">B.8.29</button>
                 <button type="button" class="btn btn-secondary">B.8.30</button>
-                <button type="button" class="btn btn-secondary">B.8.32</button>
+                <button type="button" class="btn btn-secondary">B.8.31</button>
             </div><br>
-            <button type="button" class="clear-filter-button">Clear Filter</button>
-        </div>
-        <div class="column" style="background-color:#bbb;">
-            <h2>Project Manager :</h2>
-            <div class="scrollable-menu">
-                <button type="button" class="btn btn-secondary">C S Pant</button>
-                <button type="button" class="btn btn-secondary">Kailash Chand</button>
-                <button type="button" class="btn btn-secondary">Medical Org</button>
-                <button type="button" class="btn btn-secondary">Misc</button>
-                <button type="button" class="btn btn-secondary">P K Singh</button>
-                <button type="button" class="btn btn-secondary">P K Sinha</button>
-                <button type="button" class="btn btn-secondary">Sanjay Kar</button>
-                <button type="button" class="btn btn-secondary">Satish Kumar</button>
-
-            </div><br>
-
             <button type="button" class="clear-filter-button">Clear Filter</button>
         </div>
     </div>
 
-    <div class="row" style="background-color:#ccc;">
-        <div class="column">
-            <h2>Department :</h2>
-            <div class="scrollable-menu">
-                <button type="button" class="btn btn-secondary">BF</button>
-                <button type="button" class="btn btn-secondary">CEM</button>
-                <button type="button" class="btn btn-secondary">COCC</button>
-                <button type="button" class="btn btn-secondary">DD</button>
-                <button type="button" class="btn btn-secondary">EMD</button>
-                <button type="button" class="btn btn-secondary">ERS</button>
-                <button type="button" class="btn btn-secondary">M &HS</button>
-                <button type="button" class="btn btn-secondary">M ISC</button>
-                <button type="button" class="btn btn-secondary">MM</button>
-                <button type="button" class="btn btn-secondary">OXYPL</button>
-                <button type="button" class="btn btn-secondary">PERS</button>
-                <button type="button" class="btn btn-secondary">PG</button>
-                <button type="button" class="btn btn-secondary">PMD</button>
-                <button type="button" class="btn btn-secondary">PP</button>
-                <button type="button" class="btn btn-secondary">PROJ</button>
-                <button type="button" class="btn btn-secondary">RCL</button>
-                <button type="button" class="btn btn-secondary">RM HP</button>
-                <button type="button" class="btn btn-secondary">ROLLSHOP</button>
-                <button type="button" class="btn btn-secondary">SMS</button>
-                <button type="button" class="btn btn-secondary">TS</button>
-                <button type="button" class="btn btn-secondary">WAP</button>
-                <button type="button" class="btn btn-secondary">ACVS</button>
-                <button type="button" class="btn btn-secondary">C&IT</button>
-                <button type="button" class="btn btn-secondary">ECD</button>
-                <button type="button" class="btn btn-secondary">FIRE</button>
-                <button type="button" class="btn btn-secondary">HM</button>
-                <button type="button" class="btn btn-secondary">INFRA</button>
-                <button type="button" class="btn btn-secondary">INSTT.</button>
-                <button type="button" class="btn btn-secondary">MSM</button>
-                <button type="button" class="btn btn-secondary">NLCP</button>
-                <button type="button" class="btn btn-secondary">PCE</button>
-                <button type="button" class="btn btn-secondary">SP</button>
-                <button type="button" class="btn btn-secondary">SPU</button>
-                <button type="button" class="btn btn-secondary">TELECOM</button>
-                <button type="button" class="btn btn-secondary">TRAFFIC</button>
-                <button type="button" class="btn btn-secondary">WMD</button>
-                <button type="button" class="btn btn-secondary">WRS</button>
-                <button type="button" class="btn btn-secondary">(BLANK)</button>
-            </div><br>
-
-            <button type="button" class="clear-filter-button">Clear Filter</button>
-        </div>
-    </div>
-
-    <div class="container"><br><br>
-        <div class="search-container">
-            <i class='bx bx-search-alt-2'></i>
-            <input type="text" id="searchInput" onkeyup="myFunction()" placeholder="Search for data...">
-        </div>
-        <table id="dataTable">
+    <h1>Project Details</h1>
+    <div class="container">
+        <table id="projectTable">
             <thead>
                 <tr>
-                    <th>SL. (FY2023-24)</th>
-                    <th>SL. (FY2022-23)</th>
-                    <th>WBS Element IPM-F&A</th>
-                    <th>PROJECT ID</th>
+                    <th>Sl1</th>
+                    <th>Previous Sl1</th>
+                    <th>WBS Element</th>
+                    <th>Project ID</th>
                     <th>Scheme Name</th>
-                    <th>Sanctioned Cost (INR / Crs)</th>
-                    <th>Anticipated Cost (INR / Crs)</th>
-                    <th>IPM-MM (DO)</th>
-                    <th>Dept</th>
-                    <th>PROJ MGR</th>
-                    <th>CURRENT STATUS</th>
-                    <th>SCHEME TYPE</th>
-                    <th>Stage-I Plant PAG Date</th>
-                    <th>Stage-I Approval Date</th>
-                    <th>Stage-I Cost (Gross Rs Cr)</th>
-                    <th>Stage-I Cost (Net Rs Cr)</th>
-                    <th>Time taken in Stage-I Approval</th>
-                    <th>Stage-I PAG (Qtr/FY)</th>
-                    <th>Stage-I Approval (Qtr/FY)</th>
-                    <th>Stage-I Approval Trend</th>
-                    <th>Award Trend from NIT</th>
-                    <th>Stage-II PAG Trend</th>
-                    <th>Award Trend from Stage-II Approval</th>
+                    <th>Sanctioned Cost</th>
+                    <th>Anticipated Cost</th>
+                    <th>IPM-MM</th>
+                    <th>Department</th>
+                    <th>Project Manager</th>
+                    <th>Current Status</th>
+                    <th>Scheme Type</th>
+                    <th>Stage1 Approval</th>
+                    <th>Stage1 Approval Date</th>
+                    <th>Stage1 Cost Gross</th>
+                    <th>Stage1 Cost Net</th>
+                    <th>Stage1 Approval Time</th>
+                    <th>Stage1 PAG QTR</th>
+                    <th>Stage1 Approval QTR</th>
+                    <th>Stage1 Approval Trend</th>
+                    <th>Award Trend NIT</th>
+                    <th>Stage2 PAG Trend</th>
+                    <th>Award Trend Stage2</th>
                     <th>Project Delay Trend</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Data will be inserted here dynamically -->
+                <!-- Dynamic data will be injected here -->
             </tbody>
         </table>
     </div>
-
-
     <script>
-
-        // Get the elements with class="column"
-        var elements = document.getElementsByClassName("column");
-
-        // Declare a loop variable
-        var i;
-
-        // List View
-        function listView() {
-            for (i = 0; i < elements.length; i++) {
-                elements[i].style.width = "100%";
-            }
-        }
-
-        // Grid View
-        function gridView() {
-            for (i = 0; i < elements.length; i++) {
-                elements[i].style.width = "50%";
-            }
-        }
-
         document.addEventListener("DOMContentLoaded", function () {
             fetchFormData();
 
@@ -331,79 +298,100 @@
                 fetch('http://localhost:5000/api/form_data')
                     .then(response => response.json())
                     .then(data => {
+                        console.log('Fetched data:', data);
                         displayFormData(data);
                     })
                     .catch(error => console.error('Error fetching form data:', error));
             }
 
             function displayFormData(form_data) {
-                const tbody = document.querySelector('#dataTable tbody');
+                console.log('Displaying form data:', form_data);
+                const tbody = document.querySelector('#projectTable tbody');
                 tbody.innerHTML = '';
                 form_data.forEach(data => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                <td>${data.Sl1}</td>
-                <td>${data.previousSl1}</td>
-                <td>${data.wbsElement}</td>
-                <td>${data.projectId}</td>
-                <td>${data.schemeName}</td>
-                <td>${data.sanctionedCost}</td>
-                <td>${data.anticipatedCost}</td>
-                <td>${data.ipmm}</td>
-                <td>${data.dept}</td>
-                <td>${data.proj_mgr}</td>
-                <td>${data.current_status}</td>
-                <td>${data.scheme_type}</td>
-                <td>${data.stage1_approval}</td>
-                <td>${data.stage1_approvaldate}</td>
-                <td>${data.stage1_cost_gross}</td>
-                <td>${data.stage1_cost_net}</td>
-                <td>${data.stage1_approval_time}</td>
-                <td>${data.stage1_pag_qtr}</td>
-                <td>${data.stage1_approval_qtr}</td>
-                <td>${data.stage1_approval_trend}</td>
-                <td>${data.award_trend_nit}</td>
-                <td>${data.stage2_pag_trend}</td>
-                <td>${data.award_trend_stage2}</td>
-                <td>${data.project_delay_trend}</td>
-                <td>
-                    <button onclick="updateUser(${data.id})" style="background-color: #007bff; color: #fff; border: none; padding: 8px 16px; cursor: pointer; border-radius: 4px;">Update</button>
-                    <button onclick="deleteUser(${data.id})" style="background-color: #dc3545; color: #fff; border: none; padding: 8px 16px; cursor: pointer; border-radius: 4px;">Delete</button>
-                </td>
-            `;
+                        <td>${data.Sl1}</td>
+                        <td>${data.previousSl1}</td>
+                        <td>${data.wbsElement}</td>
+                        <td>${data.projectId}</td>
+                        <td>${data.schemeName}</td>
+                        <td>${data.sanctionedCost}</td>
+                        <td>${data.anticipatedCost}</td>
+                        <td>${data.ipmm}</td>
+                        <td>${data.dept}</td>
+                        <td>${data.proj_mgr}</td>
+                        <td>${data.current_status}</td>
+                        <td>${data.scheme_type}</td>
+                        <td>${data.stage1_approval}</td>
+                        <td>${data.stage1_approvaldate}</td>
+                        <td>${data.stage1_cost_gross}</td>
+                        <td>${data.stage1_cost_net}</td>
+                        <td>${data.stage1_approval_time}</td>
+                        <td>${data.stage1_pag_qtr}</td>
+                        <td>${data.stage1_approval_qtr}</td>
+                        <td>${data.stage1_approval_trend}</td>
+                        <td>${data.award_trend_nit}</td>
+                        <td>${data.stage2_pag_trend}</td>
+                        <td>${data.award_trend_stage2}</td>
+                        <td>${data.project_delay_trend}</td>
+                        <td>
+                            <button onclick="updateUser(${data.id})">Update</button>
+                            <button onclick="deleteUser(${data.id})">Delete</button>
+                        </td>
+                    `;
                     tbody.appendChild(tr);
                 });
             }
 
-            function myFunction() {
-                const input = document.getElementById('searchInput');
-                const filter = input.value.toUpperCase();
-                const table = document.getElementById("dataTable");
-                const tr = table.getElementsByTagName('tr');
+            window.updateRecord = function (sl1) {
+                const previousSl1 = document.querySelector(`td[data-id="${sl1}"][data-field="previousSl1"]`).innerText;
+                const wbsElement = document.querySelector(`td[data-id="${sl1}"][data-field="wbsElement"]`).innerText;
+                const projectId = document.querySelector(`td[data-id="${sl1}"][data-field="projectId"]`).innerText;
+                const schemeName = document.querySelector(`td[data-id="${sl1}"][data-field="schemeName"]`).innerText;
+                const sanctionedCost = document.querySelector(`td[data-id="${sl1}"][data-field="sanctionedCost"]`).innerText;
+                const anticipatedCost = document.querySelector(`td[data-id="${sl1}"][data-field="anticipatedCost"]`).innerText;
+                const ipmm = document.querySelector(`td[data-id="${sl1}"][data-field="ipmm"]`).innerText;
+                const dept = document.querySelector(`td[data-id="${sl1}"][data-field="dept"]`).innerText;
+                const proj_mgr = document.querySelector(`td[data-id="${sl1}"][data-field="proj_mgr"]`).innerText;
+                const current_status = document.querySelector(`td[data-id="${sl1}"][data-field="current_status"]`).innerText;
+                const scheme_type = document.querySelector(`td[data-id="${sl1}"][data-field="scheme_type"]`).innerText;
+                const stage1_approval = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approval"]`).innerText;
+                const stage1_approvaldate = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approvaldate"]`).innerText;
+                const stage1_cost_gross = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_cost_gross"]`).innerText;
+                const stage1_cost_net = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_cost_net"]`).innerText;
+                const stage1_approval_time = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approval_time"]`).innerText;
+                const stage1_pag_qtr = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_pag_qtr"]`).innerText;
+                const stage1_approval_qtr = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approval_qtr"]`).innerText;
+                const stage1_approval_trend = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approval_trend"]`).innerText;
+                const award_trend_nit = document.querySelector(`td[data-id="${sl1}"][data-field="award_trend_nit"]`).innerText;
+                const stage2_pag_trend = document.querySelector(`td[data-id="${sl1}"][data-field="stage2_pag_trend"]`).innerText;
+                const award_trend_stage2 = document.querySelector(`td[data-id="${sl1}"][data-field="award_trend_stage2"]`).innerText;
+                const project_delay_trend = document.querySelector(`td[data-id="${sl1}"][data-field="project_delay_trend"]`).innerText;
 
-                for (let i = 1; i < tr.length; i++) {
-                    const td = tr[i].getElementsByTagName('td');
-                    let match = false;
+                fetch(`http://localhost:5000/api/records/${sl1}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        previousSl1, wbsElement, projectId, schemeName, sanctionedCost,
+                        anticipatedCost, ipmm, dept, proj_mgr, current_status, scheme_type,
+                        stage1_approval, stage1_approvaldate, stage1_cost_gross, stage1_cost_net,
+                        stage1_approval_time, stage1_pag_qtr, stage1_approval_qtr, stage1_approval_trend,
+                        award_trend_nit, stage2_pag_trend, award_trend_stage2, project_delay_trend
+                    })
+                }).then(() => fetchRecords());
+            };
 
-                    for (let j = 0; j < td.length; j++) {
-                        if (td[j]) {
-                            const txtValue = td[j].textContent || td[j].innerText;
-                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                match = true;
-                                break;
-                            }
-                        }
-                    }
 
-                    if (match) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
+            window.deleteRecord = function (sl1) {
+                fetch(`http://localhost:5000/api/records/${sl1}`, {
+                    method: 'DELETE'
+                }).then(() => fetchRecords());
+            };
+
         });
-
     </script>
 </body>
 
