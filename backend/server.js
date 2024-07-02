@@ -657,6 +657,125 @@ app.delete('/api/records/:Sl1', (req, res) => {
 });
 
 
+// Get all module2 data
+app.get('/api/module2', (req, res) => {
+  console.log('Received request for /api/module2');
+
+  const sql = 'SELECT * FROM module2';
+  connectionFormData.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err); // Log the error
+      res.status(500).send('Error fetching data');
+      return;
+    }
+    res.json(results);
+  });
+});
+
+// Update a record in module2
+app.put('/api/records/:Sl2', (req, res) => {
+  const Sl2 = req.params.Sl2;
+  const {
+    previousSl2,
+    nitdate,
+    tod,
+    tc_recomendation_date,
+    stageII_pagdate,
+    stageII_approval,
+    stageII_gross,
+    stageII_net,
+    stage1_approval_trend,
+    time_taken_in_issuing_nIT_after_StageI,
+    nit,
+    award_trend_nit,
+    time_taken_StageIIPAG_after_TC_Recommendation,
+    TC_Recommendation,
+    stageII_plant_pag,
+    stage2_pag_trend,
+    time_taken_StageII_Approval_from_PAGII,
+    stageII_approval_qtr,
+    stageII_approval_trend,
+    award_trend_stage2,
+    project_delay_trend
+  } = req.body;
+  
+  const sql = `
+    UPDATE module2 
+    SET 
+      previousSl2=?, 
+      nitdate=?, 
+      tod=?, 
+      tc_recomendation_date=?, 
+      stageII_pagdate=?, 
+      stageII_approval=?, 
+      stageII_gross=?, 
+      stageII_net=?, 
+      stage1_approval_trend=?, 
+      time_taken_in_issuing_nIT_after_StageI=?, 
+      nit=?, 
+      award_trend_nit=?, 
+      time_taken_StageIIPAG_after_TC_Recommendation=?, 
+      TC_Recommendation=?, 
+      stageII_plant_pag=?, 
+      stage2_pag_trend=?, 
+      time_taken_StageII_Approval_from_PAGII=?, 
+      stageII_approval_qtr=?, 
+      stageII_approval_trend=?, 
+      award_trend_stage2=?, 
+      project_delay_trend=?
+    WHERE Sl2=?
+  `;
+  
+  const values = [
+    previousSl2,
+    nitdate,
+    tod,
+    tc_recomendation_date,
+    stageII_pagdate,
+    stageII_approval,
+    stageII_gross,
+    stageII_net,
+    stage1_approval_trend,
+    time_taken_in_issuing_nIT_after_StageI,
+    nit,
+    award_trend_nit,
+    time_taken_StageIIPAG_after_TC_Recommendation,
+    TC_Recommendation,
+    stageII_plant_pag,
+    stage2_pag_trend,
+    time_taken_StageII_Approval_from_PAGII,
+    stageII_approval_qtr,
+    stageII_approval_trend,
+    award_trend_stage2,
+    project_delay_trend,
+    Sl2
+  ];
+
+  connectionFormData.query(sql, values, (err, result) => {
+    if (err) {
+      console.error('Error updating record:', err);
+      res.status(500).send('Error updating record');
+      return;
+    }
+    console.log(`Record with Sl2 ${Sl2} updated successfully`);
+    res.status(200).send(`Record with Sl2 ${Sl2} updated successfully`);
+  });
+});
+
+// Delete a record
+app.delete('/api/records/:Sl2', (req, res) => {
+  const Sl1 = req.params.Sl2;
+  const sql = `DELETE FROM module1 WHERE Sl2=?`;
+
+  connectionFormData.query(sql, [Sl1], (err, result) => {
+    if (err) {
+      console.error('Error deleting record:', err);
+      res.status(500).send('Error deleting record');
+      return;
+    }
+    res.send('Record deleted successfully');
+  });
+});
 
 // Start server
 app.listen(PORT, () => {

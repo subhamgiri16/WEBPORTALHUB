@@ -72,29 +72,6 @@
             text-align: center;
         }
 
-        .search-container {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto 20px;
-        }
-
-        .search-container i {
-            position: absolute;
-            top: 50%;
-            right: 15px;
-            transform: translateY(-50%);
-            color: #f3961c;
-        }
-
-        #searchInput {
-            width: 100%;
-            padding-left: 30px;
-            font-size: 16px;
-            border: 1px solid #252525;
-            border-radius: 5px;
-            height: 36px;
-        }
 
         table {
             width: 100%;
@@ -116,7 +93,7 @@
         }
 
         th {
-            background-color: #252525be;
+            background-color: #4d4b4bbe;
         }
 
         td[contenteditable="true"] {
@@ -189,17 +166,22 @@
     <div class="row">
         <div class="column" style="background-color:#aaa;">
             <h2>Sanctioned cost in (Cr.)</h2>
-            <button type="button" class="button">a. &gt; 30cr.</button>
-            <button type="button" class="btn">b. 2-30cr.</button>
-            <button type="button" class="btn">c. &lt;2cr.</button>
-            <button type="button" class="btn clear-filter-button">Clear Filter</button>
+            <button type="button" class="filter-button" data-filter="sanctionedCost" data-value=">30">a. &gt;
+                30cr.</button>
+            <button type="button" class="filter-button" data-filter="sanctionedCost" data-value="2-30">b.
+                2-30cr.</button>
+            <button type="button" class="filter-button" data-filter="sanctionedCost" data-value="<2">c.
+                &lt;2cr.</button>
+            <button type="button" class="clear-filter-button">Clear Filter</button>
         </div>
         <div class="column" style="background-color:#bbb;">
             <h2>SCHEME TYPE- APPROVED</h2>
-            <button type="button" class="button">a. Corporate.</button>
-            <button type="button" class="btn btn-secondary">b. Plant Level.</button>
-            <button type="button" class="btn btn-secondary">c. MEP.</button>
-            <button type="button" class="btn btn-secondary">d. Cr.</button>
+            <button type="button" class="filter-button" data-filter="schemeType" data-value="Corporate">a.
+                Corporate.</button>
+            <button type="button" class="filter-button" data-filter="schemeType" data-value="Plant Level">b. Plant
+                Level.</button>
+            <button type="button" class="filter-button" data-filter="schemeType" data-value="MEP">c. MEP.</button>
+            <button type="button" class="filter-button" data-filter="schemeType" data-value="Cr">d. Cr.</button>
             <button type="button" class="clear-filter-button">Clear Filter</button>
         </div>
     </div>
@@ -208,30 +190,42 @@
     <div class="row">
         <div class="column" style="background-color:#ccc;">
             <h2>IPM-MM (DO):</h2><br>
-            <button type="button" class="btn btn-secondary filter-button">Aditi Sur</button>
-            <button type="button" class="btn btn-secondary filter-button">K A Krishna</button>
-            <button type="button" class="btn btn-secondary filter-button">R K Vyas</button>
-            <button type="button" class="btn btn-secondary filter-button">S Chatterjee</button>
-            <button type="button" class="btn btn-secondary filter-button">Blank</button>
-            <button type="button" class="btn btn-secondary filter-button">Other</button>
+            <button type="button" class="filter-button" data-filter="ipmm" data-value="Aditi Sur">Aditi Sur</button>
+            <button type="button" class="filter-button" data-filter="ipmm" data-value="K A Krishna">K A Krishna</button>
+            <button type="button" class="filter-button" data-filter="ipmm" data-value="R K Vyas">R K Vyas</button>
+            <button type="button" class="filter-button" data-filter="ipmm" data-value="S Chatterjee">S
+                Chatterjee</button>
+            <button type="button" class="filter-button" data-filter="ipmm" data-value="Blank">Blank</button>
+            <button type="button" class="filter-button" data-filter="ipmm" data-value="Other">Other</button>
             <button type="button" class="clear-filter-button">Clear Filter</button>
 
         </div>
         <div class="column" style="background-color:#ddd;">
             <h2>CURRENT STATUS:</h2>
             <div class="scrollable-menu">
-                <button type="button" class="btn btn-secondary filter-button">Closed</button>
-                <button type="button" class="btn btn-secondary filter-button">Completed</button>
-                <button type="button" class="btn btn-secondary filter-button">Ongoing</button>
-                <button type="button" class="btn btn-secondary filter-button">Under Tendering</button>
-                <button type="button" class="btn btn-secondary filter-button">Under Stage-II approval</button>
-                <button type="button" class="btn btn-secondary filter-button">Under Stage-II PAG</button>
-                <button type="button" class="btn btn-secondary filter-button">Under Stage-I approval</button>
-                <button type="button" class="btn btn-secondary filter-button">Under Stage-I PAG</button>
-                <button type="button" class="btn btn-secondary filter-button">Under Formulation</button>
-                <button type="button" class="btn btn-secondary filter-button">Dropped / Cancelled</button>
-                <button type="button" class="btn btn-secondary filter-button">Capital Repair / Spares</button>
-            </div><br>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Closed">Closed</button>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Completed">Completed</button>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Ongoing">Ongoing</button>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Under Tendering">Under Tendering</button>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Under Stage-II approval">Under Stage-II approval</button>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Under Stage-II PAG">Under Stage-II PAG</button>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Under Stage-I approval">Under Stage-I approval</button>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Under Stage-I PAG">Under Stage-I PAG</button>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Under Formulation">Under Formulation</button>
+                <button type="button" class="filter-button" data-filter="currentStatus"
+                    data-value="Dropped / Cancelled">Dropped / Cancelled</button>
+                <button type="button" class="filter-button" data-filter="currentStatus" data-value="Not Started">Not
+                    Started</button>
+            </div>
             <button type="button" class="clear-filter-button">Clear Filter</button>
         </div>
     </div>
@@ -240,20 +234,21 @@
         <div class="column">
             <h2>Project ID:</h2>
             <div class="scrollable-menu">
-                <button type="button" class="btn btn-secondary">B.8.18</button>
-                <button type="button" class="btn btn-secondary">B.8.23</button>
-                <button type="button" class="btn btn-secondary">B.8.24</button>
-                <button type="button" class="btn btn-secondary">B.8.25</button>
-                <button type="button" class="btn btn-secondary">B.8.26</button>
-                <button type="button" class="btn btn-secondary">B.8.29</button>
-                <button type="button" class="btn btn-secondary">B.8.30</button>
-                <button type="button" class="btn btn-secondary">B.8.31</button>
+                <button type="button" class="filter-button" data-filter="projectId" data-value="B.8.18">B.8.18</button>
+                <button type="button" class="filter-button" data-filter="projectId" data-value="B.8.23">B.8.23</button>
+                <button type="button" class="filter-button" data-filter="projectId" data-value="B.8.24">B.8.24</button>
+                <button type="button" class="filter-button" data-filter="projectId" data-value="B.8.25">B.8.25</button>
+                <button type="button" class="filter-button" data-filter="projectId" data-value="B.8.26">B.8.26</button>
+                <button type="button" class="filter-button" data-filter="projectId" data-value="B.8.29">B.8.29</button>
+                <button type="button" class="filter-button" data-filter="projectId" data-value="B.8.30">B.8.30</button>
+                <button type="button" class="filter-button" data-filter="projectId" data-value="B.8.31">B.8.31</button>
             </div><br>
             <button type="button" class="clear-filter-button">Clear Filter</button>
         </div>
     </div>
 
-    <h1>Project Details</h1>
+
+    <h1>List of All Data</h1>
     <div class="container">
         <table id="projectTable">
             <thead>
@@ -289,8 +284,137 @@
                 <!-- Dynamic data will be injected here -->
             </tbody>
         </table>
-    </div>
+    </div><br><br>
+
+
+    <div class="container">
+        <table id="projectTable1">
+            <thead>
+                <tr>
+                    <th>Sl2</th>
+                    <th>Previous Sl2</th>
+                    <th>NIT Date</th>
+                    <th>TOD</th>
+                    <th>TC Recommendation Date</th>
+                    <th>Stage II PAG Date</th>
+                    <th>Stage II Approval</th>
+                    <th>Stage II Gross</th>
+                    <th>Stage II Net</th>
+                    <th>Stage I Approval Trend</th>
+                    <th>Time Taken in Issuing NIT after Stage I</th>
+                    <th>NIT</th>
+                    <th>Award Trend NIT</th>
+                    <th>Time Taken Stage II PAG after TC Recommendation</th>
+                    <th>TC Recommendation</th>
+                    <th>Stage II Plant PAG</th>
+                    <th>Stage II PAG Trend</th>
+                    <th>Time Taken Stage II Approval from PAG II</th>
+                    <th>Stage II Approval QTR</th>
+                    <th>Stage II Approval Trend</th>
+                    <th>Award Trend Stage 2</th>
+                    <th>Project Delay Trend</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic data will be injected here -->
+            </tbody>
+        </table>
+    </div><br><br>
+
+
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const projectTable = document.getElementById("projectTable").getElementsByTagName("tbody")[0];
+
+
+            let projectsData = [];
+
+
+            fetch("/api/projects")
+                .then(response => response.json())
+                .then(data => {
+                    projectsData = data;
+                    displayProjects(projectsData);
+                })
+                .catch(error => console.error("Error fetching project data:", error));
+
+            function displayProjects(projects) {
+                projectTable.innerHTML = "";
+                projects.forEach(project => {
+                    const row = projectTable.insertRow();
+                    Object.values(project).forEach(value => {
+                        const cell = row.insertCell();
+                        cell.textContent = value;
+                    });
+                });
+            }
+
+            function filterProjects() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const filteredProjects = projectsData.filter(project =>
+                    Object.values(project).some(value =>
+                        String(value).toLowerCase().includes(searchTerm)
+                    )
+                );
+                displayProjects(filteredProjects);
+            }
+
+            searchInput.addEventListener("input", filterProjects);
+
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const clearFilterButtons = document.querySelectorAll('.clear-filter-button');
+            let filters = {};
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filterType = button.getAttribute('data-filter');
+                    const filterValue = button.getAttribute('data-value');
+                    filters[filterType] = filterValue;
+                    applyFilters();
+                });
+            });
+
+            clearFilterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filters = {};
+                    displayProjects(projectsData);
+                });
+            });
+
+            function applyFilters() {
+                let filteredProjects = projectsData;
+
+                if (filters.sanctionedCost) {
+                    if (filters.sanctionedCost === '>30') {
+                        filteredProjects = filteredProjects.filter(project => parseFloat(project.SANCTIONED_COST_CR) > 30);
+                    } else if (filters.sanctionedCost === '2-30') {
+                        filteredProjects = filteredProjects.filter(project => parseFloat(project.SANCTIONED_COST_CR) >= 2 && parseFloat(project.SANCTIONED_COST_CR) <= 30);
+                    } else if (filters.sanctionedCost === '<2') {
+                        filteredProjects = filteredProjects.filter(project => parseFloat(project.SANCTIONED_COST_CR) < 2);
+                    }
+                }
+
+                if (filters.schemeType) {
+                    filteredProjects = filteredProjects.filter(project => project.SCHEME_TYPE === filters.schemeType);
+                }
+
+                if (filters.ipmm) {
+                    filteredProjects = filteredProjects.filter(project => project.IPMM === filters.ipmm);
+                }
+
+                if (filters.currentStatus) {
+                    filteredProjects = filteredProjects.filter(project => project.CURRENT_STATUS === filters.currentStatus);
+                }
+
+                if (filters.projectId) {
+                    filteredProjects = filteredProjects.filter(project => project.SAP_CODE === filters.projectId);
+                }
+
+                displayProjects(filteredProjects);
+            }
+        });
+
         document.addEventListener("DOMContentLoaded", function () {
             fetchFormData();
 
@@ -336,40 +460,40 @@
                         <td>${data.award_trend_stage2}</td>
                         <td>${data.project_delay_trend}</td>
                         <td>
-                            <button onclick="updateUser(${data.id})">Update</button>
-                            <button onclick="deleteUser(${data.id})">Delete</button>
+                            <button onclick="updateUser(${data.Sl1})" style = "background-color: #007bff;">Update</button>
+                            <button onclick="deleteUser(${data.Sl1})" style = "background-color: #red;">Delete</button>
                         </td>
                     `;
                     tbody.appendChild(tr);
                 });
             }
 
-            window.updateRecord = function (sl1) {
-                const previousSl1 = document.querySelector(`td[data-id="${sl1}"][data-field="previousSl1"]`).innerText;
-                const wbsElement = document.querySelector(`td[data-id="${sl1}"][data-field="wbsElement"]`).innerText;
-                const projectId = document.querySelector(`td[data-id="${sl1}"][data-field="projectId"]`).innerText;
-                const schemeName = document.querySelector(`td[data-id="${sl1}"][data-field="schemeName"]`).innerText;
-                const sanctionedCost = document.querySelector(`td[data-id="${sl1}"][data-field="sanctionedCost"]`).innerText;
-                const anticipatedCost = document.querySelector(`td[data-id="${sl1}"][data-field="anticipatedCost"]`).innerText;
-                const ipmm = document.querySelector(`td[data-id="${sl1}"][data-field="ipmm"]`).innerText;
-                const dept = document.querySelector(`td[data-id="${sl1}"][data-field="dept"]`).innerText;
-                const proj_mgr = document.querySelector(`td[data-id="${sl1}"][data-field="proj_mgr"]`).innerText;
-                const current_status = document.querySelector(`td[data-id="${sl1}"][data-field="current_status"]`).innerText;
-                const scheme_type = document.querySelector(`td[data-id="${sl1}"][data-field="scheme_type"]`).innerText;
-                const stage1_approval = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approval"]`).innerText;
-                const stage1_approvaldate = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approvaldate"]`).innerText;
-                const stage1_cost_gross = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_cost_gross"]`).innerText;
-                const stage1_cost_net = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_cost_net"]`).innerText;
-                const stage1_approval_time = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approval_time"]`).innerText;
-                const stage1_pag_qtr = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_pag_qtr"]`).innerText;
-                const stage1_approval_qtr = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approval_qtr"]`).innerText;
-                const stage1_approval_trend = document.querySelector(`td[data-id="${sl1}"][data-field="stage1_approval_trend"]`).innerText;
-                const award_trend_nit = document.querySelector(`td[data-id="${sl1}"][data-field="award_trend_nit"]`).innerText;
-                const stage2_pag_trend = document.querySelector(`td[data-id="${sl1}"][data-field="stage2_pag_trend"]`).innerText;
-                const award_trend_stage2 = document.querySelector(`td[data-id="${sl1}"][data-field="award_trend_stage2"]`).innerText;
-                const project_delay_trend = document.querySelector(`td[data-id="${sl1}"][data-field="project_delay_trend"]`).innerText;
+            window.updateRecord = function (Sl1) {
+                const previousSl1 = document.querySelector(`td[data-id="${Sl1}"][data-field="previousSl1"]`).innerText;
+                const wbsElement = document.querySelector(`td[data-id="${Sl1}"][data-field="wbsElement"]`).innerText;
+                const projectId = document.querySelector(`td[data-id="${Sl1}"][data-field="projectId"]`).innerText;
+                const schemeName = document.querySelector(`td[data-id="${Sl1}"][data-field="schemeName"]`).innerText;
+                const sanctionedCost = document.querySelector(`td[data-id="${Sl1}"][data-field="sanctionedCost"]`).innerText;
+                const anticipatedCost = document.querySelector(`td[data-id="${Sl1}"][data-field="anticipatedCost"]`).innerText;
+                const ipmm = document.querySelector(`td[data-id="${Sl1}"][data-field="ipmm"]`).innerText;
+                const dept = document.querySelector(`td[data-id="${Sl1}"][data-field="dept"]`).innerText;
+                const proj_mgr = document.querySelector(`td[data-id="${Sl1}"][data-field="proj_mgr"]`).innerText;
+                const current_status = document.querySelector(`td[data-id="${Sl1}"][data-field="current_status"]`).innerText;
+                const scheme_type = document.querySelector(`td[data-id="${Sl1}"][data-field="scheme_type"]`).innerText;
+                const stage1_approval = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approval"]`).innerText;
+                const stage1_approvaldate = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approvaldate"]`).innerText;
+                const stage1_cost_gross = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_cost_gross"]`).innerText;
+                const stage1_cost_net = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_cost_net"]`).innerText;
+                const stage1_approval_time = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approval_time"]`).innerText;
+                const stage1_pag_qtr = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_pag_qtr"]`).innerText;
+                const stage1_approval_qtr = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approval_qtr"]`).innerText;
+                const stage1_approval_trend = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approval_trend"]`).innerText;
+                const award_trend_nit = document.querySelector(`td[data-id="${Sl1}"][data-field="award_trend_nit"]`).innerText;
+                const stage2_pag_trend = document.querySelector(`td[data-id="${Sl1}"][data-field="stage2_pag_trend"]`).innerText;
+                const award_trend_stage2 = document.querySelector(`td[data-id="${Sl1}"][data-field="award_trend_stage2"]`).innerText;
+                const project_delay_trend = document.querySelector(`td[data-id="${Sl1}"][data-field="project_delay_trend"]`).innerText;
 
-                fetch(`http://localhost:5000/api/records/${sl1}`, {
+                fetch(`http://localhost:5000/api/records/${Sl1}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
@@ -386,12 +510,125 @@
 
 
             window.deleteRecord = function (sl1) {
-                fetch(`http://localhost:5000/api/records/${sl1}`, {
+                fetch(`http://localhost:5000/api/records/${Sl1}`, {
                     method: 'DELETE'
                 }).then(() => fetchRecords());
             };
 
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchFormData();
+
+            function fetchFormData() {
+                fetch('http://localhost:5000/api/module2')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Fetched data:', data);
+                        displayFormData(data);
+                    })
+                    .catch(error => console.error('Error fetching form data:', error));
+            }
+
+            function displayFormData(form_data) {
+                console.log('Displaying form data:', form_data);
+                const tbody = document.querySelector('#projectTable1 tbody');
+                tbody.innerHTML = '';
+                form_data.forEach(data => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                <td>${data.Sl2}</td>
+                <td>${data.previousSl2}</td>
+                <td>${data.nitdate}</td>
+                <td>${data.tod}</td>
+                <td>${data.tc_recomendation_date}</td>
+                <td>${data.stageII_pagdate}</td>
+                <td>${data.stageII_approval}</td>
+                <td>${data.stageII_gross}</td>
+                <td>${data.stageII_net}</td>
+                <td>${data.stage1_approval_trend}</td>
+                <td>${data.time_taken_in_issuing_nIT_after_StageI}</td>
+                <td>${data.nit}</td>
+                <td>${data.award_trend_nit}</td>
+                <td>${data.time_taken_StageIIPAG_after_TC_Recommendation}</td>
+                <td>${data.TC_Recommendation}</td>
+                <td>${data.stageII_plant_pag}</td>
+                <td>${data.stage2_pag_trend}</td>
+                <td>${data.time_taken_StageII_Approval_from_PAGII}</td>
+                <td>${data.stageII_approval_qtr}</td>
+                <td>${data.stageII_approval_trend}</td>
+                <td>${data.award_trend_stage2}</td>
+                <td>${data.project_delay_trend}</td>
+                <td>
+                    <button onclick="updateUser(${data.Sl2})">Update</button>
+                    <button onclick="deleteUser(${data.Sl2})">Delete</button>
+                </td>
+            `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            window.updateRecord = function (Sl2) {
+                // Extract data from table cells
+                const previousSl2 = document.querySelector(`td[data-id="${Sl2}"][data-field="previousSl2"]`).innerText;
+                const nitdate = document.querySelector(`td[data-id="${Sl2}"][data-field="nitdate"]`).innerText;
+                const tod = document.querySelector(`td[data-id="${Sl2}"][data-field="tod"]`).innerText;
+                const tc_recomendation_date = document.querySelector(`td[data-id="${Sl2}"][data-field="tc_recomendation_date"]`).innerText;
+                const stageII_pagdate = document.querySelector(`td[data-id="${Sl2}"][data-field="stageII_pagdate"]`).innerText;
+                const stageII_approval = document.querySelector(`td[data-id="${Sl2}"][data-field="stageII_approval"]`).innerText;
+                const stageII_gross = document.querySelector(`td[data-id="${Sl2}"][data-field="stageII_gross"]`).innerText;
+                const stageII_net = document.querySelector(`td[data-id="${Sl2}"][data-field="stageII_net"]`).innerText;
+                const stage1_approval_trend = document.querySelector(`td[data-id="${Sl2}"][data-field="stage1_approval_trend"]`).innerText;
+                const time_taken_in_issuing_nIT_after_StageI = document.querySelector(`td[data-id="${Sl2}"][data-field="time_taken_in_issuing_nIT_after_StageI"]`).innerText;
+                const nit = document.querySelector(`td[data-id="${Sl2}"][data-field="nit"]`).innerText;
+                const award_trend_nit = document.querySelector(`td[data-id="${Sl2}"][data-field="award_trend_nit"]`).innerText;
+                const time_taken_StageIIPAG_after_TC_Recommendation = document.querySelector(`td[data-id="${Sl2}"][data-field="time_taken_StageIIPAG_after_TC_Recommendation"]`).innerText;
+                const TC_Recommendation = document.querySelector(`td[data-id="${Sl2}"][data-field="TC_Recommendation"]`).innerText;
+                const stageII_plant_pag = document.querySelector(`td[data-id="${Sl2}"][data-field="stageII_plant_pag"]`).innerText;
+                const stage2_pag_trend = document.querySelector(`td[data-id="${Sl2}"][data-field="stage2_pag_trend"]`).innerText;
+                const time_taken_StageII_Approval_from_PAGII = document.querySelector(`td[data-id="${Sl2}"][data-field="time_taken_StageII_Approval_from_PAGII"]`).innerText;
+                const stageII_approval_qtr = document.querySelector(`td[data-id="${Sl2}"][data-field="stageII_approval_qtr"]`).innerText;
+                const stageII_approval_trend = document.querySelector(`td[data-id="${Sl2}"][data-field="stageII_approval_trend"]`).innerText;
+                const award_trend_stage2 = document.querySelector(`td[data-id="${Sl2}"][data-field="award_trend_stage2"]`).innerText;
+                const project_delay_trend = document.querySelector(`td[data-id="${Sl2}"][data-field="project_delay_trend"]`).innerText;
+
+                // Construct the update request
+                fetch(`http://localhost:5000/api/records/${Sl2}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        previousSl2, nitdate, tod, tc_recomendation_date, stageII_pagdate,
+                        stageII_approval, stageII_gross, stageII_net, stage1_approval_trend,
+                        time_taken_in_issuing_nIT_after_StageI, nit, award_trend_nit,
+                        time_taken_StageIIPAG_after_TC_Recommendation, TC_Recommendation,
+                        stageII_plant_pag, stage2_pag_trend, time_taken_StageII_Approval_from_PAGII,
+                        stageII_approval_qtr, stageII_approval_trend, award_trend_stage2,
+                        project_delay_trend
+                    })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to update record');
+                        }
+                        console.log(`Record with Sl2 ${Sl2} updated successfully`);
+                        fetchRecords(); // Refresh table data
+                    })
+                    .catch(error => {
+                        console.error('Error updating record:', error);
+                        // Handle error
+                    });
+            };
+
+            window.deleteRecord = function (Sl2) {
+                fetch(`http://localhost:5000/api/records/${Sl2}`, {
+                    method: 'DELETE'
+                }).then(() => fetchRecords());
+            };
+
+        });
+
     </script>
 </body>
 
