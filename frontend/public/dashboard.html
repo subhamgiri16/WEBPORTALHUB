@@ -313,6 +313,48 @@
                     <th>Stage II Approval Trend</th>
                     <th>Award Trend Stage 2</th>
                     <th>Project Delay Trend</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamic data will be injected here -->
+            </tbody>
+        </table>
+    </div><br><br>
+
+    <div class="container">
+        <table id="projectTable2">
+            <thead>
+                <tr>
+                    <th>Sl3</th>
+                    <th>previousSl3</th>
+                    <th>award_date</th>
+                    <th>order_cost</th>
+                    <th>order_cost_net</th>
+                    <th>party_name</th>
+                    <th>email</th>
+                    <th>contact_no</th>
+                    <th>pan_no</th>
+                    <th>contract_date</th>
+                    <th>completion_period</th>
+                    <th>completion_date</th>
+                    <th>actual_completion_date</th>
+                    <th>delay_reason</th>
+                    <th>action_taken</th>
+                    <th>status_scheme</th>
+                    <th>stage1_approval_trend</th>
+                    <th>award_nit</th>
+                    <th>award_date_qtr</th>
+                    <th>award_trend_nit</th>
+                    <th>stage2_pag_trend</th>
+                    <th>time_taken_stage_approval</th>
+                    <th>award_trend_stage2</th>
+                    <th>eff_contractdate</th>
+                    <th>schedule_completion</th>
+                    <th>completion_qtr</th>
+                    <th>projectdelay</th>
+                    <th>project_delay_trend</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -628,6 +670,65 @@
             };
 
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchFormData();
+
+            function fetchFormData() {
+                fetch('http://localhost:5000/api/module3')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Fetched data:', data);
+                        displayFormData(data);
+                    })
+                    .catch(error => console.error('Error fetching form data:', error));
+            }
+
+            function displayFormData(form_data) {
+                console.log('Displaying form data:', form_data);
+                const tbody = document.querySelector('#projectTable tbody');
+                tbody.innerHTML = '';
+                form_data.forEach(data => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                <td>${data.Sl3}</td>
+                <td>${data.previousSl3}</td>
+                <td>${data.award_date}</td>
+                <td>${data.order_cost}</td>
+                <td>${data.order_cost_net}</td>
+                <td>${data.party_name}</td>
+                <td>${data.email}</td>
+                <td>${data.contact_no}</td>
+                <td>${data.pan_no}</td>
+                <td>${data.contract_date}</td>
+                <td>${data.completion_period}</td>
+                <td>${data.completion_date}</td>
+                <td>${data.actual_completion_date}</td>
+                <td>${data.delay_reason}</td>
+                <td>${data.action_taken}</td>
+                <td>${data.status_scheme}</td>
+                <td>${data.stage1_approval_trend}</td>
+                <td>${data.award_nit}</td>
+                <td>${data.award_date_qtr}</td>
+                <td>${data.award_trend_nit}</td>
+                <td>${data.stage2_pag_trend}</td>
+                <td>${data.time_taken_stage_approval}</td>
+                <td>${data.award_trend_stage2}</td>
+                <td>${data.eff_contractdate}</td>
+                <td>${data.schedule_completion}</td>
+                <td>${data.completion_qtr}</td>
+                <td>${data.projectdelay}</td>
+                <td>${data.project_delay_trend}</td>
+                <td>
+                    <button onclick="updateUser(${data.Sl3})" style="background-color: #007bff;">Update</button>
+                    <button onclick="deleteUser(${data.Sl3})" style="background-color: red;">Delete</button>
+                </td>
+            `;
+                    tbody.appendChild(tr);
+                });
+            }
+        });
+
 
     </script>
 </body>

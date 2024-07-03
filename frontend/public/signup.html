@@ -8,7 +8,6 @@
     <!-- Favicons -->
     <link href="/frontend/images/site_logo.png" rel="icon">
     <link rel="stylesheet" href="/frontend/public/styles.css">
-    <!-- Assuming this file exists and contains your CSS styles -->
 </head>
 
 <body>
@@ -25,7 +24,7 @@
             <input type="email" id="email" name="email" placeholder="Email" required>
 
             <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" placeholder="Phone" placeholder="+639948621564" required>
+            <input type="text" id="phone" name="phone" placeholder="Phone" required>
             <div class="number-input">
                 <div id="recaptcha-container" style="position: relative; align-items: center;"></div>
                 <button type="button" id="send" onclick="sendOTP()">Verify Number</button>
@@ -45,7 +44,7 @@
 
                 <div class="incorrect" style="display: none;">
                     <img src="https://cdn-icons-png.flaticon.com/512/14025/14025477.png" alt="">
-                    <h3>Phone Number Verified!</h3>
+                    <h3>Phone Number Not Verified!</h3>
                     <button onclick="location.reload()">Try Again!</button>
                 </div>
             </div>
@@ -70,8 +69,6 @@
 
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.12.1/firebase-auth-compat.js"></script>
-    <script src="app.js"></script>
-    
     <script>
         // Your Firebase config
         var firebaseConfig = {
@@ -93,63 +90,51 @@
 
         function render() {
             window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-                'size': 'normal', // or 'invisible'
-                'callback': function(response) {
-                    // reCAPTCHA solved, allow sendOTP to proceed.
+                'size': 'normal',
+                'callback': function (response) {
                     document.getElementById('send').disabled = false;
                 },
-                'expired-callback': function() {
-                    // Response expired. Ask user to solve reCAPTCHA again.
+                'expired-callback': function () {
                     alert('reCAPTCHA expired, please solve it again.');
                 },
-                'error-callback': function(error) {
-                    // Handle reCAPTCHA errors.
+                'error-callback': function (error) {
                     console.error('reCAPTCHA error:', error);
                     alert('reCAPTCHA verification failed. Please try again.');
                 }
             });
-            recaptchaVerifier.render().catch(function(error) {
+            recaptchaVerifier.render().catch(function (error) {
                 console.error('reCAPTCHA render failed: ', error);
                 alert('reCAPTCHA render failed. Please refresh the page and try again.');
             });
         }
 
         function sendOTP() {
-    var phoneNumber = document.getElementById('phone').value; // Corrected to 'phone'
-    firebase.auth().signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier)
-        .then(function (confirmationResult) {
-            window.confirmationResult = confirmationResult;
-            coderesult = confirmationResult;
-            document.querySelector('.number-input').style.display = 'none';
-            document.querySelector('.verification').style.display = 'block';
-        }).catch(function (error) {
-            console.error('Error during sendOTP:', error);
-            if (error.code === 'auth/captcha-check-failed') {
-                alert('reCAPTCHA verification failed. Please try again.');
-            } else {
-                alert('Error: ' + error.message);
-            }
-        });
-}
+            var phoneNumber = document.getElementById('phone').value;
+            var appVerifier = window.recaptchaVerifier;
+            firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then(function (confirmationResult) {
+                    window.confirmationResult = confirmationResult;
+                    document.querySelector('.number-input').style.display = 'none';
+                    document.querySelector('.verification').style.display = 'block';
+                }).catch(function (error) {
+                    console.error('Error during sendOTP:', error);
+                    alert('Error: ' + error.message);
+                });
+        }
 
         function verifyCode() {
             var code = document.getElementById('verificationCode').value;
-            coderesult.confirm(code)
-                .then(function () {
+            confirmationResult.confirm(code)
+                .then(function (result) {
                     document.querySelector('.verification').style.display = 'none';
                     document.querySelector('.result').style.display = 'block';
                     document.querySelector('.correct').style.display = 'block';
-                    console.log('OTP Verified');
                 }).catch(function (error) {
                     console.error('Error during verifyCode:', error);
-                    if (error.code === 'auth/invalid-verification-code') {
-                        alert('Invalid OTP. Please try again.');
-                    } else {
-                        alert('Error: ' + error.message);
-                    }
                     document.querySelector('.verification').style.display = 'none';
                     document.querySelector('.result').style.display = 'block';
                     document.querySelector('.incorrect').style.display = 'block';
+                    alert('Error: ' + error.message);
                 });
         }
     </script>

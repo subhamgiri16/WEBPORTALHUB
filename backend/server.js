@@ -316,102 +316,48 @@ app.post("/submit-module2", (req, res) => {
   });
 });
 
-// Route to handle form data submission for Module 3
-app.post("/submit-module3", (req, res) => {
+// Endpoint to handle form data submission for Module 3
+app.post('/submit-module3', (req, res) => {
+  console.log('Received data:', req.body);
+
   const {
-    Sl3,
-    previousSl3,
-    award_date,
-    order_cost,
-    order_cost_net,
-    party_name,
-    email,
-    contact_no,
-    pan_no,
-    contract_date,
-    completion_period,
-    completion_date,
-    actual_completion_date,
-    delay_reason,
-    action_taken,
-    status_scheme,
-    stage1_approval_trend,
-    award_nit,
-    award_date_qtr,
-    award_trend_nit,
-    stage2_pag_trend,
-    time_taken_stage_approval,
-    award_trend_stage2,
-    eff_contractdate,
-    schedule_completion,
-    completion_qtr,
-    projectdelay,
+    Sl3, previousSl3, award_date, order_cost, order_cost_net, party_name, email,
+    contact_no, pan_no, contract_date, completion_period, completion_date,
+    actual_completion_date, delay_reason, action_taken, status_scheme,
+    stage1_approval_trend, award_nit, award_date_qtr, award_trend_nit,
+    stage2_pag_trend, time_taken_stage_approval, award_trend_stage2,
+    eff_contractdate, schedule_completion, completion_qtr, projectdelay,
     project_delay_trend
   } = req.body;
 
   // Check for required fields
-  if (!Sl3 ||
-      !previousSl3 ||
-      !award_date ||
-      !order_cost ||
-      !order_cost_net ||
-      !contract_date ||
-      !completion_date ||
-      !actual_completion_date ||
-      !delay_reason ||
-      !action_taken ||
-      !status_scheme ||
-      !stage1_approval_trend ||
-      !award_trend_nit ||
-      !stage2_pag_trend ||
-      !award_trend_stage2 ||
+  if (!Sl3 || !previousSl3 || !award_date || !order_cost || !order_cost_net ||
+      !contract_date || !completion_date || !actual_completion_date ||
+      !delay_reason || !action_taken || !status_scheme || !stage1_approval_trend ||
+      !award_trend_nit || !stage2_pag_trend || !award_trend_stage2 ||
       !project_delay_trend) {
-    return res.status(400).send("Required fields are missing");
+    return res.status(400).send('Required fields are missing');
   }
 
-  // Construct data object with all fields (optional fields may be empty)
   const data = {
-    Sl3,
-    previousSl3,
-    award_date,
-    order_cost,
-    order_cost_net,
-    party_name,
-    email,
-    contact_no,
-    pan_no,
-    contract_date,
-    completion_period,
-    completion_date,
-    actual_completion_date,
-    delay_reason,
-    action_taken,
-    status_scheme,
-    stage1_approval_trend,
-    award_nit,
-    award_date_qtr,
-    award_trend_nit,
-    stage2_pag_trend,
-    time_taken_stage_approval,
-    award_trend_stage2,
-    eff_contractdate,
-    schedule_completion,
-    completion_qtr,
-    projectdelay,
-    project_delay_trend,
+    Sl3, previousSl3, award_date, order_cost, order_cost_net, party_name, email,
+    contact_no, pan_no, contract_date, completion_period, completion_date,
+    actual_completion_date, delay_reason, action_taken, status_scheme,
+    stage1_approval_trend, award_nit, award_date_qtr, award_trend_nit,
+    stage2_pag_trend, time_taken_stage_approval, award_trend_stage2,
+    eff_contractdate, schedule_completion, completion_qtr, projectdelay,
+    project_delay_trend
   };
 
-  // Insert data into database
-  const sql = "INSERT INTO module3 SET ?";
+  const sql = 'INSERT INTO module3 SET ?';
   connectionFormData.query(sql, data, (err, results) => {
     if (err) {
-      console.error("Error inserting module3 data:", err);
-      return res.status(500).send(err);
+      console.error('Error inserting module3 data:', err);
+      return res.status(500).send('Error inserting module3 data: ' + err.message);
     }
-    return res.send("Module 3 data saved successfully");
+    return res.send('Module 3 data saved successfully');
   });
 });
-
 
   //Route to handle form data submission for capex 
 app.post("/submit-capex", (req, res) => {
@@ -774,6 +720,21 @@ app.delete('/api/records/:Sl2', (req, res) => {
       return;
     }
     res.send('Record deleted successfully');
+  });
+});
+
+// Get all module3 data
+app.get('/api/module3', (req, res) => {
+  console.log('Received request for /api/module3');
+
+  const sql = 'SELECT * FROM module3';
+  connectionFormData.query(sql, (err, results) => {
+    if (err) {
+      console.error('Error fetching data:', err); // Log the error
+      res.status(500).send('Error fetching data');
+      return;
+    }
+    res.json(results);
   });
 });
 
