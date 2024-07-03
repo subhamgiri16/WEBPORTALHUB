@@ -140,7 +140,10 @@ app.post("/login", async (req, res) => {
 
 // Route to handle form data submission for Module 1
 app.post("/submit-module1", (req, res) => {
+  console.log("Recived")
+  console.log(req.body)
   const {
+    id,
     Sl1,
     previousSl1,
     wbsElement,
@@ -167,6 +170,7 @@ app.post("/submit-module1", (req, res) => {
     project_delay_trend,
   } = req.body;
 
+
   if (
     !Sl1 ||
     !previousSl1 ||
@@ -192,6 +196,7 @@ app.post("/submit-module1", (req, res) => {
   }
 
   const data = {
+    id,
     Sl1,
     previousSl1,
     wbsElement,
@@ -493,9 +498,12 @@ app.get('/api/form_data', (req, res) => {
 });
 
 // Update a record
-app.put('/api/records/:Sl1', (req, res) => {
-  const Sl1 = req.params.Sl1;
+app.put('/api/records/:id', (req, res) => {
+
+  const id = req.params.id;
+
   const {
+    Sl1,
     previousSl1,
     wbsElement,
     projectId,
@@ -524,6 +532,7 @@ app.put('/api/records/:Sl1', (req, res) => {
   const sql = `
     UPDATE module1 
     SET 
+      Sl1=?,
       previousSl1=?, 
       wbsElement=?, 
       projectId=?, 
@@ -547,10 +556,11 @@ app.put('/api/records/:Sl1', (req, res) => {
       stage2_pag_trend=?, 
       award_trend_stage2=?, 
       project_delay_trend=?
-    WHERE Sl1=?
+    WHERE id=?
   `;
   
   const values = [
+    Sl1,
     previousSl1,
     wbsElement,
     projectId,
@@ -574,7 +584,7 @@ app.put('/api/records/:Sl1', (req, res) => {
     stage2_pag_trend,
     award_trend_stage2,
     project_delay_trend,
-    Sl1
+    id
   ];
   
   connectionFormData.query(sql, values, (err, result) => {
@@ -588,11 +598,11 @@ app.put('/api/records/:Sl1', (req, res) => {
 });
 
 // Delete a record
-app.delete('/api/records/:Sl1', (req, res) => {
-  const Sl1 = req.params.Sl1;
+app.delete('/api/records/:id', (req, res) => {
+  const Sl1 = req.params.id;
   const sql = `DELETE FROM module1 WHERE Sl1=?`;
 
-  connectionFormData.query(sql, [Sl1], (err, result) => {
+  connectionFormData.query(sql, id, (err, result) => {
     if (err) {
       console.error('Error deleting record:', err);
       res.status(500).send('Error deleting record');

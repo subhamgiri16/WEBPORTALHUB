@@ -253,6 +253,7 @@
         <table id="projectTable">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Sl1</th>
                     <th>Previous Sl1</th>
                     <th>WBS Element</th>
@@ -284,7 +285,8 @@
                 <!-- Dynamic data will be injected here -->
             </tbody>
         </table>
-    </div><br><br>
+    </div>
+
 
 
     <div class="container">
@@ -477,87 +479,92 @@
                 form_data.forEach(data => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
-                        <td>${data.Sl1}</td>
-                        <td>${data.previousSl1}</td>
-                        <td>${data.wbsElement}</td>
-                        <td>${data.projectId}</td>
-                        <td>${data.schemeName}</td>
-                        <td>${data.sanctionedCost}</td>
-                        <td>${data.anticipatedCost}</td>
-                        <td>${data.ipmm}</td>
-                        <td>${data.dept}</td>
-                        <td>${data.proj_mgr}</td>
-                        <td>${data.current_status}</td>
-                        <td>${data.scheme_type}</td>
-                        <td>${data.stage1_approval}</td>
-                        <td>${data.stage1_approvaldate}</td>
-                        <td>${data.stage1_cost_gross}</td>
-                        <td>${data.stage1_cost_net}</td>
-                        <td>${data.stage1_approval_time}</td>
-                        <td>${data.stage1_pag_qtr}</td>
-                        <td>${data.stage1_approval_qtr}</td>
-                        <td>${data.stage1_approval_trend}</td>
-                        <td>${data.award_trend_nit}</td>
-                        <td>${data.stage2_pag_trend}</td>
-                        <td>${data.award_trend_stage2}</td>
-                        <td>${data.project_delay_trend}</td>
-                        <td>
-                            <button onclick="updateUser(${data.Sl1})" style = "background-color: #007bff;">Update</button>
-                            <button onclick="deleteUser(${data.Sl1})" style = "background-color: #red;">Delete</button>
-                        </td>
-                    `;
+                <td>${data.id}</td>
+                <td>${data.Sl1}</td>
+                <td>${data.previousSl1}</td>
+                <td>${data.wbsElement}</td>
+                <td>${data.projectId}</td>
+                <td>${data.schemeName}</td>
+                <td>${data.sanctionedCost}</td>
+                <td>${data.anticipatedCost}</td>
+                <td>${data.ipmm}</td>
+                <td>${data.dept}</td>
+                <td>${data.proj_mgr}</td>
+                <td>${data.current_status}</td>
+                <td>${data.scheme_type}</td>
+                <td>${data.stage1_approval}</td>
+                <td>${data.stage1_approvaldate}</td>
+                <td>${data.stage1_cost_gross}</td>
+                <td>${data.stage1_cost_net}</td>
+                <td>${data.stage1_approval_time}</td>
+                <td>${data.stage1_pag_qtr}</td>
+                <td>${data.stage1_approval_qtr}</td>
+                <td>${data.stage1_approval_trend}</td>
+                <td>${data.award_trend_nit}</td>
+                <td>${data.stage2_pag_trend}</td>
+                <td>${data.award_trend_stage2}</td>
+                <td>${data.project_delay_trend}</td>
+                <td>
+                    <button onclick="updateRecord(${data.id})" style="background-color: #007bff;">Update</button>
+                    <button onclick="deleteRecord(${data.id})" style="background-color: red;">Delete</button>
+                </td>
+            `;
                     tbody.appendChild(tr);
                 });
             }
 
-            window.updateRecord = function (Sl1) {
-                const previousSl1 = document.querySelector(`td[data-id="${Sl1}"][data-field="previousSl1"]`).innerText;
-                const wbsElement = document.querySelector(`td[data-id="${Sl1}"][data-field="wbsElement"]`).innerText;
-                const projectId = document.querySelector(`td[data-id="${Sl1}"][data-field="projectId"]`).innerText;
-                const schemeName = document.querySelector(`td[data-id="${Sl1}"][data-field="schemeName"]`).innerText;
-                const sanctionedCost = document.querySelector(`td[data-id="${Sl1}"][data-field="sanctionedCost"]`).innerText;
-                const anticipatedCost = document.querySelector(`td[data-id="${Sl1}"][data-field="anticipatedCost"]`).innerText;
-                const ipmm = document.querySelector(`td[data-id="${Sl1}"][data-field="ipmm"]`).innerText;
-                const dept = document.querySelector(`td[data-id="${Sl1}"][data-field="dept"]`).innerText;
-                const proj_mgr = document.querySelector(`td[data-id="${Sl1}"][data-field="proj_mgr"]`).innerText;
-                const current_status = document.querySelector(`td[data-id="${Sl1}"][data-field="current_status"]`).innerText;
-                const scheme_type = document.querySelector(`td[data-id="${Sl1}"][data-field="scheme_type"]`).innerText;
-                const stage1_approval = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approval"]`).innerText;
-                const stage1_approvaldate = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approvaldate"]`).innerText;
-                const stage1_cost_gross = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_cost_gross"]`).innerText;
-                const stage1_cost_net = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_cost_net"]`).innerText;
-                const stage1_approval_time = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approval_time"]`).innerText;
-                const stage1_pag_qtr = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_pag_qtr"]`).innerText;
-                const stage1_approval_qtr = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approval_qtr"]`).innerText;
-                const stage1_approval_trend = document.querySelector(`td[data-id="${Sl1}"][data-field="stage1_approval_trend"]`).innerText;
-                const award_trend_nit = document.querySelector(`td[data-id="${Sl1}"][data-field="award_trend_nit"]`).innerText;
-                const stage2_pag_trend = document.querySelector(`td[data-id="${Sl1}"][data-field="stage2_pag_trend"]`).innerText;
-                const award_trend_stage2 = document.querySelector(`td[data-id="${Sl1}"][data-field="award_trend_stage2"]`).innerText;
-                const project_delay_trend = document.querySelector(`td[data-id="${Sl1}"][data-field="project_delay_trend"]`).innerText;
+            window.updateRecord = function (id) {
+                // Retrieve values from table cells
+                const Sl1 = document.querySelector(`td[data-id="${id}"][data-field="Sl1"]`).innerText;
+                const previousSl1 = document.querySelector(`td[data-id="${id}"][data-field="previousSl1"]`).innerText;
+                const wbsElement = document.querySelector(`td[data-id="${id}"][data-field="wbsElement"]`).innerText;
+                const projectId = document.querySelector(`td[data-id="${id}"][data-field="projectId"]`).innerText;
+                const schemeName = document.querySelector(`td[data-id="${id}"][data-field="schemeName"]`).innerText;
+                const sanctionedCost = document.querySelector(`td[data-id="${id}"][data-field="sanctionedCost"]`).innerText;
+                const anticipatedCost = document.querySelector(`td[data-id="${id}"][data-field="anticipatedCost"]`).innerText;
+                const ipmm = document.querySelector(`td[data-id="${id}"][data-field="ipmm"]`).innerText;
+                const dept = document.querySelector(`td[data-id="${id}"][data-field="dept"]`).innerText;
+                const proj_mgr = document.querySelector(`td[data-id="${id}"][data-field="proj_mgr"]`).innerText;
+                const current_status = document.querySelector(`td[data-id="${id}"][data-field="current_status"]`).innerText;
+                const scheme_type = document.querySelector(`td[data-id="${id}"][data-field="scheme_type"]`).innerText;
+                const stage1_approval = document.querySelector(`td[data-id="${id}"][data-field="stage1_approval"]`).innerText;
+                const stage1_approvaldate = document.querySelector(`td[data-id="${id}"][data-field="stage1_approvaldate"]`).innerText;
+                const stage1_cost_gross = document.querySelector(`td[data-id="${id}"][data-field="stage1_cost_gross"]`).innerText;
+                const stage1_cost_net = document.querySelector(`td[data-id="${id}"][data-field="stage1_cost_net"]`).innerText;
+                const stage1_approval_time = document.querySelector(`td[data-id="${id}"][data-field="stage1_approval_time"]`).innerText;
+                const stage1_pag_qtr = document.querySelector(`td[data-id="${id}"][data-field="stage1_pag_qtr"]`).innerText;
+                const stage1_approval_qtr = document.querySelector(`td[data-id="${id}"][data-field="stage1_approval_qtr"]`).innerText;
+                const stage1_approval_trend = document.querySelector(`td[data-id="${id}"][data-field="stage1_approval_trend"]`).innerText;
+                const award_trend_nit = document.querySelector(`td[data-id="${id}"][data-field="award_trend_nit"]`).innerText;
+                const stage2_pag_trend = document.querySelector(`td[data-id="${id}"][data-field="stage2_pag_trend"]`).innerText;
+                const award_trend_stage2 = document.querySelector(`td[data-id="${id}"][data-field="award_trend_stage2"]`).innerText;
+                const project_delay_trend = document.querySelector(`td[data-id="${id}"][data-field="project_delay_trend"]`).innerText;
 
-                fetch(`http://localhost:5000/api/records/${Sl1}`, {
+                // Make PUT request to update record
+                fetch(`http://localhost:5000/api/records/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        previousSl1, wbsElement, projectId, schemeName, sanctionedCost,
+                        Sl1, previousSl1, wbsElement, projectId, schemeName, sanctionedCost,
                         anticipatedCost, ipmm, dept, proj_mgr, current_status, scheme_type,
                         stage1_approval, stage1_approvaldate, stage1_cost_gross, stage1_cost_net,
                         stage1_approval_time, stage1_pag_qtr, stage1_approval_qtr, stage1_approval_trend,
                         award_trend_nit, stage2_pag_trend, award_trend_stage2, project_delay_trend
                     })
-                }).then(() => fetchRecords());
+                }).then(() => fetchFormData());  // Refresh data after update
             };
 
-
-            window.deleteRecord = function (sl1) {
-                fetch(`http://localhost:5000/api/records/${Sl1}`, {
+            window.deleteRecord = function (id) {
+                // Make DELETE request to delete record
+                fetch(`http://localhost:5000/api/records/${id}`, {
                     method: 'DELETE'
-                }).then(() => fetchRecords());
+                }).then(() => fetchFormData());  // Refresh data after delete
             };
 
         });
+
 
         document.addEventListener("DOMContentLoaded", function () {
             fetchFormData();
@@ -602,8 +609,8 @@
                 <td>${data.award_trend_stage2}</td>
                 <td>${data.project_delay_trend}</td>
                 <td>
-                    <button onclick="updateUser(${data.Sl2})">Update</button>
-                    <button onclick="deleteUser(${data.Sl2})">Delete</button>
+                    <button onclick="updateUser(${data.Sl2})" style="background-color: #007bff;">Update</button>
+                    <button onclick="deleteUser(${data.Sl2})" style="background-color: red;">Delete</button>
                 </td>
             `;
                     tbody.appendChild(tr);
