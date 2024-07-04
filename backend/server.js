@@ -3,7 +3,8 @@ const mysql = require("mysql2");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -11,11 +12,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // CORS Middleware
-app.use(cors({
-  origin: "*",
-  methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    credentials: true,
+  })
+);
 
 // Middleware
 app.use(bodyParser.json());
@@ -55,28 +58,28 @@ connectionFormData.connect((err) => {
 
 // Signup route
 app.post("/signup", async (req, res) => {
-  const username = req.body.username ?? '';
-  const email = req.body.email ?? '';
-  const phone = req.body.phone ?? '';
-  const password = req.body.password ?? '';
-  const dt = req.body.dt ?? '';
-  const role = req.body.role ?? '';
+  const username = req.body.username ?? "";
+  const email = req.body.email ?? "";
+  const phone = req.body.phone ?? "";
+  const password = req.body.password ?? "";
+  const dt = req.body.dt ?? "";
+  const role = req.body.role ?? "";
 
   // Validate input data
   if (!username || username.length > 6) {
-    return res.status(400).json({ error: 'Invalid username' });
+    return res.status(400).json({ error: "Invalid username" });
   }
-  if (!email || email.length <= 5 || !email.includes('@')) {
-    return res.status(400).json({ error: 'Invalid email' });
+  if (!email || email.length <= 5 || !email.includes("@")) {
+    return res.status(400).json({ error: "Invalid email" });
   }
   if (!phone || phone.length < 10) {
-    return res.status(400).json({ error: 'Invalid phone number' });
+    return res.status(400).json({ error: "Invalid phone number" });
   }
   if (!password || password.length > 10) {
-    return res.status(400).json({ error: 'Invalid password' });
+    return res.status(400).json({ error: "Invalid password" });
   }
   if (!role || role.length < 1) {
-    return res.status(400).json({ error: 'Invalid role' });
+    return res.status(400).json({ error: "Invalid role" });
   }
 
   try {
@@ -90,20 +93,69 @@ app.post("/signup", async (req, res) => {
       role,
     };
 
-    connection.query('INSERT INTO users SET ?', newUser, (err, result) => {
+    connection.query("INSERT INTO users SET ?", newUser, (err, result) => {
       if (err) {
-        console.error('Error registering user:', err);
-        return res.status(500).json({ message: 'Error registering user', error: err });
+        console.error("Error registering user:", err);
+        return res
+          .status(500)
+          .json({ message: "Error registering user", error: err });
       }
-      
+
       // Return registered email along with success message
-      return res.status(201).json({ message: 'User registered successfully', email: newUser.email });
+      return res
+        .status(201)
+        .json({
+          message: "User registered successfully",
+          email: newUser.email,
+        });
     });
   } catch (error) {
-    console.error('Error registering user:', error);
-    return res.status(500).json({ message: 'Error registering user', error });
+    console.error("Error registering user:", error);
+    return res.status(500).json({ message: "Error registering user", error });
+  }
+
+      // Generate OTP
+      const otp = Math.floor(100000 + Math.random() * 900000).toString();
+      otpStore[email] = otp;
+  
+      // Send OTP via email
+      transporter.sendMail({
+          from: '"WEBPORTALHUB 👻" <webportalhub@ethereal.email>',
+          to: email,
+          subject: 'Mobile Verification OTP',
+          text: `Your OTP for mobile verification is: ${otp}`,
+          html: `<b>Your OTP for mobile verification is: ${otp}</b>`
+      }, (error, info) => {
+          if (error) {
+              console.error('Error sending OTP:', error);
+              return res.status(500).send('Failed to send OTP');
+          }
+          console.log('Message sent: %s', info.messageId);
+          res.status(200).send({ message: 'OTP sent to your email' });
+      });
+  });
+  
+  app.post('/verify-otp', (req, res) => {
+      const { email, otp } = req.body;
+  
+      if (otpStore[email] === otp) {
+          delete otpStore[email]; // Remove OTP after successful verification
+          res.status(200).send({ message: 'OTP verified successfully' });
+      } else {
+          res.status(400).send({ message: 'Invalid OTP' });
+      }
+  });
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.ethereal.email',
+  port: 587,
+  auth: {
+      user: 'carmine.okeefe@ethereal.email',
+      pass: 'WCeu16RtMyUEaEgHNd'
   }
 });
+
+let otpStore = {};
 
 
 // Login route
@@ -115,7 +167,9 @@ app.post("/login", async (req, res) => {
   }
 
   try {
-    const [rows] = await connection.promise().query("SELECT * FROM users WHERE email = ?", [email]);
+    const [rows] = await connection
+      .promise()
+      .query("SELECT * FROM users WHERE email = ?", [email]);
 
     if (rows.length === 0) {
       return res.status(401).json({ message: "User not found" });
@@ -141,11 +195,10 @@ app.post("/login", async (req, res) => {
   }
 });
 
-
 // Route to handle form data submission for Module 1
 app.post("/submit-module1", (req, res) => {
-  console.log("Recived")
-  console.log(req.body)
+  console.log("Recived");
+  console.log(req.body);
   const {
     id,
     Sl1,
@@ -173,7 +226,6 @@ app.post("/submit-module1", (req, res) => {
     award_trend_stage2,
     project_delay_trend,
   } = req.body;
-
 
   if (
     !Sl1 ||
@@ -265,28 +317,30 @@ app.post("/submit-module2", (req, res) => {
   } = req.body;
 
   // Validate required fields
-  if (!Sl2 ||
-      !previousSl2 ||
-      !nitdate ||
-      !tod ||
-      !tc_recomendation_date ||
-      !stageII_pagdate ||
-      !stageII_approval ||
-      !stageII_gross ||
-      !stageII_net ||
-      !stage1_approval_trend ||
-      !time_taken_in_issuing_nIT_after_StageI ||
-      !nit ||
-      !award_trend_nit ||
-      !time_taken_StageIIPAG_after_TC_Recommendation ||
-      !TC_Recommendation ||
-      !stageII_plant_pag ||
-      !stage2_pag_trend ||
-      !time_taken_StageII_Approval_from_PAGII ||
-      !stageII_approval_qtr ||
-      !stageII_approval_trend ||
-      !award_trend_stage2 ||
-      !project_delay_trend) {
+  if (
+    !Sl2 ||
+    !previousSl2 ||
+    !nitdate ||
+    !tod ||
+    !tc_recomendation_date ||
+    !stageII_pagdate ||
+    !stageII_approval ||
+    !stageII_gross ||
+    !stageII_net ||
+    !stage1_approval_trend ||
+    !time_taken_in_issuing_nIT_after_StageI ||
+    !nit ||
+    !award_trend_nit ||
+    !time_taken_StageIIPAG_after_TC_Recommendation ||
+    !TC_Recommendation ||
+    !stageII_plant_pag ||
+    !stage2_pag_trend ||
+    !time_taken_StageII_Approval_from_PAGII ||
+    !stageII_approval_qtr ||
+    !stageII_approval_trend ||
+    !award_trend_stage2 ||
+    !project_delay_trend
+  ) {
     return res.status(400).send("All fields are required");
   }
 
@@ -326,49 +380,106 @@ app.post("/submit-module2", (req, res) => {
 });
 
 // Endpoint to handle form data submission for Module 3
-app.post('/submit-module3', (req, res) => {
-  console.log('Received data:', req.body);
+app.post("/submit-module3", (req, res) => {
+  console.log("Received data:", req.body);
 
   const {
-    Sl3, previousSl3, award_date, order_cost, order_cost_net, party_name, email,
-    contact_no, pan_no, contract_date, completion_period, completion_date,
-    actual_completion_date, delay_reason, action_taken, status_scheme,
-    stage1_approval_trend, award_nit, award_date_qtr, award_trend_nit,
-    stage2_pag_trend, time_taken_stage_approval, award_trend_stage2,
-    eff_contractdate, schedule_completion, completion_qtr, projectdelay,
-    project_delay_trend
+    Sl3,
+    previousSl3,
+    award_date,
+    order_cost,
+    order_cost_net,
+    party_name,
+    email,
+    contact_no,
+    pan_no,
+    contract_date,
+    completion_period,
+    completion_date,
+    actual_completion_date,
+    delay_reason,
+    action_taken,
+    status_scheme,
+    stage1_approval_trend,
+    award_nit,
+    award_date_qtr,
+    award_trend_nit,
+    stage2_pag_trend,
+    time_taken_stage_approval,
+    award_trend_stage2,
+    eff_contractdate,
+    schedule_completion,
+    completion_qtr,
+    projectdelay,
+    project_delay_trend,
   } = req.body;
 
   // Check for required fields
-  if (!Sl3 || !previousSl3 || !award_date || !order_cost || !order_cost_net ||
-      !contract_date || !completion_date || !actual_completion_date ||
-      !delay_reason || !action_taken || !status_scheme || !stage1_approval_trend ||
-      !award_trend_nit || !stage2_pag_trend || !award_trend_stage2 ||
-      !project_delay_trend) {
-    return res.status(400).send('Required fields are missing');
+  if (
+    !Sl3 ||
+    !previousSl3 ||
+    !award_date ||
+    !order_cost ||
+    !order_cost_net ||
+    !contract_date ||
+    !completion_date ||
+    !actual_completion_date ||
+    !delay_reason ||
+    !action_taken ||
+    !status_scheme ||
+    !stage1_approval_trend ||
+    !award_trend_nit ||
+    !stage2_pag_trend ||
+    !award_trend_stage2 ||
+    !project_delay_trend
+  ) {
+    return res.status(400).send("Required fields are missing");
   }
 
   const data = {
-    Sl3, previousSl3, award_date, order_cost, order_cost_net, party_name, email,
-    contact_no, pan_no, contract_date, completion_period, completion_date,
-    actual_completion_date, delay_reason, action_taken, status_scheme,
-    stage1_approval_trend, award_nit, award_date_qtr, award_trend_nit,
-    stage2_pag_trend, time_taken_stage_approval, award_trend_stage2,
-    eff_contractdate, schedule_completion, completion_qtr, projectdelay,
-    project_delay_trend
+    Sl3,
+    previousSl3,
+    award_date,
+    order_cost,
+    order_cost_net,
+    party_name,
+    email,
+    contact_no,
+    pan_no,
+    contract_date,
+    completion_period,
+    completion_date,
+    actual_completion_date,
+    delay_reason,
+    action_taken,
+    status_scheme,
+    stage1_approval_trend,
+    award_nit,
+    award_date_qtr,
+    award_trend_nit,
+    stage2_pag_trend,
+    time_taken_stage_approval,
+    award_trend_stage2,
+    eff_contractdate,
+    schedule_completion,
+    completion_qtr,
+    projectdelay,
+    project_delay_trend,
   };
 
-  const sql = 'INSERT INTO module3 SET ?';
+  const sql = "INSERT INTO module3 SET ?";
   connectionFormData.query(sql, data, (err, results) => {
     if (err) {
-      console.error('Error inserting module3 data:', err);
-      return res.status(500).send('Error inserting module3 data: ' + err.message);
+      console.error("Error inserting module3 data:", err);
+      return res
+        .status(500)
+        .send("Error inserting module3 data: " + err.message);
     }
-    return res.send('Module 3 data saved successfully');
+    return res.send("Module 3 data saved successfully");
   });
 });
 
-  //Route to handle form data submission for capex 
+//Route to handle form data submission for capex
 app.post("/submit-capex", (req, res) => {
   const {
     Sl,
@@ -392,18 +503,20 @@ app.post("/submit-capex", (req, res) => {
     "STATUS as per Annual Plan 24-25": statusAnnualPlan24_25,
     "Actual Capex 2024-25(TILL DATE)": actualCapex2024_25,
     stage1_approval_trend,
-    award_trend_nit
+    award_trend_nit,
   } = req.body;
 
   // Check for required fields
-  if (!Sl ||
-      !previousSl ||
-      !status_31_03_2023 ||
-      !statusAnnualPlan23_24 ||
-      !status_31_03_24 ||
-      !statusAnnualPlan24_25 ||
-      !stage1_approval_trend ||
-      !award_trend_nit) {
+  if (
+    !Sl ||
+    !previousSl ||
+    !status_31_03_2023 ||
+    !statusAnnualPlan23_24 ||
+    !status_31_03_24 ||
+    !statusAnnualPlan24_25 ||
+    !stage1_approval_trend ||
+    !award_trend_nit
+  ) {
     return res.status(400).send("Required fields are missing");
   }
 
@@ -430,7 +543,7 @@ app.post("/submit-capex", (req, res) => {
     "STATUS as per Annual Plan 24-25": statusAnnualPlan24_25,
     "Actual Capex 2024-25(TILL DATE)": actualCapex2024_25,
     stage1_approval_trend,
-    award_trend_nit
+    award_trend_nit,
   };
 
   // Insert data into database
@@ -445,66 +558,63 @@ app.post("/submit-capex", (req, res) => {
 });
 
 //Get all users
-app.get('/api/users', (req, res) => {
-  const sql = 'SELECT * FROM users';
+app.get("/api/users", (req, res) => {
+  const sql = "SELECT * FROM users";
   connection.query(sql, (err, results) => {
-      if (err) {
-          console.error('Error fetching users:', err);
-          res.status(500).send('Error fetching users data');
-          return;
-      }
-      res.json(results); // Send JSON response with fetched users data
+    if (err) {
+      console.error("Error fetching users:", err);
+      res.status(500).send("Error fetching users data");
+      return;
+    }
+    res.json(results); // Send JSON response with fetched users data
   });
 });
 
-
 // Update a user
-app.put('/api/users/:id', (req, res) => {
+app.put("/api/users/:id", (req, res) => {
   const id = req.params.id;
   const { username, email, phone, role } = req.body;
   const sql = `UPDATE users SET username=?, email=?, phone=?, role=? WHERE id=?`;
   connection.query(sql, [username, email, phone, role, id], (err, result) => {
-      if (err) {
-          console.error('Error updating user:', err);
-          res.status(500).send('Error updating user');
-          return;
-      }
-      res.send('User updated successfully');
+    if (err) {
+      console.error("Error updating user:", err);
+      res.status(500).send("Error updating user");
+      return;
+    }
+    res.send("User updated successfully");
   });
 });
 
 // Delete a user
-app.delete('/api/users/:id', (req, res) => {
+app.delete("/api/users/:id", (req, res) => {
   const id = req.params.id;
-  const sql = 'DELETE FROM users WHERE id=?';
+  const sql = "DELETE FROM users WHERE id=?";
   connection.query(sql, id, (err, result) => {
-      if (err) {
-          console.error('Error deleting user:', err);
-          res.status(500).send('Error deleting user');
-          return;
-      }
-      res.send('User deleted successfully');
+    if (err) {
+      console.error("Error deleting user:", err);
+      res.status(500).send("Error deleting user");
+      return;
+    }
+    res.send("User deleted successfully");
   });
 });
 
-
 // Get all schemes
-app.get('/api/form_data', (req, res) => {
-  console.log('Received request for /api/form_data');
-  const sql = 'SELECT * FROM module1'; 
+app.get("/api/form_data", (req, res) => {
+  console.log("Received request for /api/form_data");
+  const sql = "SELECT * FROM module1";
   connectionFormData.query(sql, (err, results) => {
-      if (err) {
-          console.error('Error fetching data:', err);
-          res.status(500).send('Error fetching data');
-          return;
-      }
-      res.json(results); 
+    if (err) {
+      console.error("Error fetching data:", err);
+      res.status(500).send("Error fetching data");
+      return;
+    }
+    res.json(results);
   });
 });
 
 // Update a record
-app.put('/api/records/:id', (req, res) => {
-
+app.put("/api/records/:id", (req, res) => {
   const id = req.params.id;
 
   const {
@@ -531,9 +641,9 @@ app.put('/api/records/:id', (req, res) => {
     award_trend_nit,
     stage2_pag_trend,
     award_trend_stage2,
-    project_delay_trend
+    project_delay_trend,
   } = req.body;
-  
+
   const sql = `
     UPDATE module1 
     SET 
@@ -563,7 +673,7 @@ app.put('/api/records/:id', (req, res) => {
       project_delay_trend=?
     WHERE id=?
   `;
-  
+
   const values = [
     Sl1,
     previousSl1,
@@ -589,44 +699,43 @@ app.put('/api/records/:id', (req, res) => {
     stage2_pag_trend,
     award_trend_stage2,
     project_delay_trend,
-    id
+    id,
   ];
-  
+
   connectionFormData.query(sql, values, (err, result) => {
     if (err) {
-      console.error('Error updating record:', err);
-      res.status(500).send('Error updating record');
+      console.error("Error updating record:", err);
+      res.status(500).send("Error updating record");
       return;
     }
-    res.send('Record updated successfully');
+    res.send("Record updated successfully");
   });
 });
 
 // Delete a record
-app.delete('/api/records/:id', (req, res) => {
+app.delete("/api/records/:id", (req, res) => {
   const Sl1 = req.params.id;
   const sql = `DELETE FROM module1 WHERE Sl1=?`;
 
   connectionFormData.query(sql, id, (err, result) => {
     if (err) {
-      console.error('Error deleting record:', err);
-      res.status(500).send('Error deleting record');
+      console.error("Error deleting record:", err);
+      res.status(500).send("Error deleting record");
       return;
     }
-    res.send('Record deleted successfully');
+    res.send("Record deleted successfully");
   });
 });
 
-
 // Get all module2 data
-app.get('/api/module2', (req, res) => {
-  console.log('Received request for /api/module2');
+app.get("/api/module2", (req, res) => {
+  console.log("Received request for /api/module2");
 
-  const sql = 'SELECT * FROM module2';
+  const sql = "SELECT * FROM module2";
   connectionFormData.query(sql, (err, results) => {
     if (err) {
-      console.error('Error fetching data:', err); // Log the error
-      res.status(500).send('Error fetching data');
+      console.error("Error fetching data:", err); // Log the error
+      res.status(500).send("Error fetching data");
       return;
     }
     res.json(results);
@@ -634,7 +743,7 @@ app.get('/api/module2', (req, res) => {
 });
 
 // Update a record in module2
-app.put('/api/records/:Sl2', (req, res) => {
+app.put("/api/records/:Sl2", (req, res) => {
   const Sl2 = req.params.Sl2;
   const {
     previousSl2,
@@ -657,9 +766,9 @@ app.put('/api/records/:Sl2', (req, res) => {
     stageII_approval_qtr,
     stageII_approval_trend,
     award_trend_stage2,
-    project_delay_trend
+    project_delay_trend,
   } = req.body;
-  
+
   const sql = `
     UPDATE module2 
     SET 
@@ -686,7 +795,7 @@ app.put('/api/records/:Sl2', (req, res) => {
       project_delay_trend=?
     WHERE Sl2=?
   `;
-  
+
   const values = [
     previousSl2,
     nitdate,
@@ -709,13 +818,13 @@ app.put('/api/records/:Sl2', (req, res) => {
     stageII_approval_trend,
     award_trend_stage2,
     project_delay_trend,
-    Sl2
+    Sl2,
   ];
 
   connectionFormData.query(sql, values, (err, result) => {
     if (err) {
-      console.error('Error updating record:', err);
-      res.status(500).send('Error updating record');
+      console.error("Error updating record:", err);
+      res.status(500).send("Error updating record");
       return;
     }
     console.log(`Record with Sl2 ${Sl2} updated successfully`);
@@ -724,29 +833,29 @@ app.put('/api/records/:Sl2', (req, res) => {
 });
 
 // Delete a record
-app.delete('/api/records/:Sl2', (req, res) => {
+app.delete("/api/records/:Sl2", (req, res) => {
   const Sl1 = req.params.Sl2;
   const sql = `DELETE FROM module1 WHERE Sl2=?`;
 
   connectionFormData.query(sql, [Sl1], (err, result) => {
     if (err) {
-      console.error('Error deleting record:', err);
-      res.status(500).send('Error deleting record');
+      console.error("Error deleting record:", err);
+      res.status(500).send("Error deleting record");
       return;
     }
-    res.send('Record deleted successfully');
+    res.send("Record deleted successfully");
   });
 });
 
 // Get all module3 data
-app.get('/api/module3', (req, res) => {
-  console.log('Received request for /api/module3');
+app.get("/api/module3", (req, res) => {
+  console.log("Received request for /api/module3");
 
-  const sql = 'SELECT * FROM module3';
+  const sql = "SELECT * FROM module3";
   connectionFormData.query(sql, (err, results) => {
     if (err) {
-      console.error('Error fetching data:', err); // Log the error
-      res.status(500).send('Error fetching data');
+      console.error("Error fetching data:", err); // Log the error
+      res.status(500).send("Error fetching data");
       return;
     }
     res.json(results);

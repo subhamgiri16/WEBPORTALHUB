@@ -26,11 +26,12 @@
             <label for="phone">Phone:</label>
             <input type="text" id="phone" name="phone" placeholder="Phone" required>
 
-            <div class="otpverify">
+            <div class="otpverify" style="display:none;">
                 <input type="text" id="otp_inp" placeholder="Enter the OTP sent to your Email...">
-                <button class="btn" id="otp-btn">Verify</button>
+                <button type="button" class="btn" onclick="verifyOTP()">Verify</button>
             </div>
-            <button class="btn" onclick="sendOTP()">Send OTP</button>
+
+            <button type="submit" class="btn">Send OTP</button>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Password" required>
@@ -119,6 +120,35 @@ function registerUser() {
         alert('Registration failed. Please try again later.');
     });
 }
+
+async function verifyOTP() {
+            const email = document.getElementById('email').value;
+            const otp = document.getElementById('otp_inp').value;
+
+            try {
+                const response = await fetch("http://127.0.0.1:5000/verify-otp", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, otp }),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                alert(data.message);
+
+                if (data.message === 'OTP verified successfully') {
+                    window.location.href = 'login.html';
+                }
+            } catch (error) {
+                console.error('Error during OTP verification:', error);
+                alert('OTP verification failed. Please try again later.');
+            }
+        }
 
     </script>
 </body>
