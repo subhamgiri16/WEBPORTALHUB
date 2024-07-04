@@ -3,6 +3,7 @@ const mysql = require("mysql2");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const nodemailer = require('nodemailer');
 const cors = require("cors");
 require("dotenv").config();
 
@@ -89,16 +90,18 @@ app.post("/signup", async (req, res) => {
       role,
     };
 
-    connection.query("INSERT INTO users SET ?", newUser, (err, result) => {
+    connection.query('INSERT INTO users SET ?', newUser, (err, result) => {
       if (err) {
-        console.error("Error registering user:", err);
-        return res.status(500).json({ message: "Error registering user", error: err });
+        console.error('Error registering user:', err);
+        return res.status(500).json({ message: 'Error registering user', error: err });
       }
-      return res.status(201).json({ message: "User registered successfully" });
+      
+      // Return registered email along with success message
+      return res.status(201).json({ message: 'User registered successfully', email: newUser.email });
     });
   } catch (error) {
-    console.error("Error registering user:", error);
-    return res.status(500).json({ message: "Error registering user", error });
+    console.error('Error registering user:', error);
+    return res.status(500).json({ message: 'Error registering user', error });
   }
 });
 
@@ -137,6 +140,7 @@ app.post("/login", async (req, res) => {
     return res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 // Route to handle form data submission for Module 1
 app.post("/submit-module1", (req, res) => {
@@ -486,6 +490,7 @@ app.delete('/api/users/:id', (req, res) => {
 
 // Get all schemes
 app.get('/api/form_data', (req, res) => {
+  console.log('Received request for /api/form_data');
   const sql = 'SELECT * FROM module1'; 
   connectionFormData.query(sql, (err, results) => {
       if (err) {
