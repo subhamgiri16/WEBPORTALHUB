@@ -16,7 +16,7 @@
     </a>
     <main>
         <h1>Sign Up</h1>
-        <form id="signupForm" method="post" onsubmit="return false;">
+        <form id="signupForm" method="post">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" placeholder="Username" required>
 
@@ -25,13 +25,6 @@
 
             <label for="phone">Phone:</label>
             <input type="text" id="phone" name="phone" placeholder="Phone" required>
-
-            <div class="otpverify" style="display:none;">
-                <input type="text" id="otp_inp" placeholder="Enter the OTP sent to your Email...">
-                <button type="button" class="btn" onclick="verifyOTP()">Verify</button>
-            </div>
-
-            <button type="submit" class="btn">Send OTP</button>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Password" required>
@@ -46,110 +39,108 @@
                 <option value="admin">Admin</option>
             </select><br>
 
-            <button type="submit" onclick="registerUser()">Sign Up</button>
+            <button type="submit" class="btn">Sign Up</button>
         </form>
         <p>Already have an account? <a href="login.html">Login</a></p>
     </main>
 
     <script>
-function registerUser() {
-    // Retrieve form data
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const password = document.getElementById('password').value;
-    const dt = document.getElementById('dt').value;
-    const role = document.getElementById('role').value;
+        document.getElementById('signupForm').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the default form submission
+            registerUser();
+        });
 
-    // Validate form data (optional client-side validation)
-    if (!username || username.length > 6) {
-        alert('Invalid username. Username must be up to 6 characters.');
-        return;
-    }
-    if (!email || email.length <= 5 || !email.includes('@')) {
-        alert('Invalid email.');
-        return;
-    }
-    if (!phone || phone.length < 10) {
-        alert('Invalid phone number.');
-        return;
-    }
-    if (!password || password.length > 10) {
-        alert('Invalid password. Password must be up to 10 characters.');
-        return;
-    }
-    if (!role || role.length < 1) {
-        alert('Invalid role.');
-        return;
-    }
-
-    // Prepare data to send to the server
-    const userData = {
-        username: username,
-        email: email,
-        phone: phone,
-        password: password,
-        dt: dt,
-        role: role
-    };
-
-    // Send data to the server using fetch API
-    fetch("http://127.0.0.1:5000/signup", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Handle successful registration
-        console.log('Registration successful:', data);
-        alert('Registration successful!');
-
-        // Redirect to login page
-        window.location.href = 'login.html';
-    })
-    .catch(error => {
-        console.error('Error during registration:', error);
-        alert('Registration failed. Please try again later.');
-    });
-}
-
-async function verifyOTP() {
+        async function registerUser() {
+            const username = document.getElementById('username').value;
             const email = document.getElementById('email').value;
-            const otp = document.getElementById('otp_inp').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const dt = document.getElementById('dt').value;
+            const role = document.getElementById('role').value;
+
+            // Validate form data (client-side validation)
+            if (!username || username.length > 6) {
+                alert('Invalid username. Username must be up to 6 characters.');
+                return;
+            }
+            if (!email || email.length <= 5 || !email.includes('@')) {
+                alert('Invalid email.');
+                return;
+            }
+            if (!phone || phone.length < 10) {
+                alert('Invalid phone number.');
+                return;
+            }
+            if (!password || password.length > 10) {
+                alert('Invalid password. Password must be up to 10 characters.');
+                return;
+            }
+            if (!role || role.length < 1) {
+                alert('Invalid role.');
+                return;
+            }
+
+            const userData = {
+                username,
+                email,
+                phone,
+                password,
+                dt,
+                role
+            };
 
             try {
-                const response = await fetch("http://127.0.0.1:5000/verify-otp", {
+                const response = await fetch('http://127.0.0.1:5000/signup', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ email, otp }),
+                    body: JSON.stringify(userData),
                 });
 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
 
-                const data = await response.json();
-                alert(data.message);
+                const responseData = await response.json();
+                console.log('Registration successful:', responseData);
 
-                if (data.message === 'OTP verified successfully') {
-                    window.location.href = 'login.html';
+                // Prompt user for email to send OTP
+                const sendOTP = confirm('Would you like to receive an OTP for email verification?');
+                if (sendOTP) {
+                    const userEmail = prompt('Please enter your email address:');
+                    if (userEmail) {
+                        // Send userEmail to the server for OTP generation
+                        const otpResponse = await fetch('http://127.0.0.1:5000/sendOTP', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ email: userEmail }),
+                        });
+
+                        if (!otpResponse.ok) {
+                            throw new Error('Failed to send OTP');
+                        }
+
+                        const otpData = await otpResponse.json();
+                        console.log('OTP sent successfully:', otpData.message);
+                        alert('OTP sent to ' + userEmail);
+                    } else {
+                        alert('Email address not provided. Please verify your email later.');
+                    }
+                } else {
+                    alert('You can verify your email later.');
                 }
+
+                // Redirect to login page
+                window.location.href = 'login.html';
+
             } catch (error) {
-                console.error('Error during OTP verification:', error);
-                alert('OTP verification failed. Please try again later.');
+                console.error('Error during registration:', error);
+                alert('Registration failed. Please try again later.');
             }
         }
-
     </script>
 </body>
 

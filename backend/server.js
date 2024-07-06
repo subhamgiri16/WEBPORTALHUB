@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
-const crypto = require("crypto");
+const otpGenerator = require('otp-generator');
 const cors = require("cors");
 require("dotenv").config();
 
@@ -100,63 +100,12 @@ app.post("/signup", async (req, res) => {
           .status(500)
           .json({ message: "Error registering user", error: err });
       }
-
-      // Return registered email along with success message
-      return res
-        .status(201)
-        .json({
-          message: "User registered successfully",
-          email: newUser.email,
-        });
     });
   } catch (error) {
     console.error("Error registering user:", error);
     return res.status(500).json({ message: "Error registering user", error });
   }
-
-      // Generate OTP
-      const otp = Math.floor(100000 + Math.random() * 900000).toString();
-      otpStore[email] = otp;
-  
-      // Send OTP via email
-      transporter.sendMail({
-          from: '"WEBPORTALHUB 👻" <webportalhub@ethereal.email>',
-          to: email,
-          subject: 'Mobile Verification OTP',
-          text: `Your OTP for mobile verification is: ${otp}`,
-          html: `<b>Your OTP for mobile verification is: ${otp}</b>`
-      }, (error, info) => {
-          if (error) {
-              console.error('Error sending OTP:', error);
-              return res.status(500).send('Failed to send OTP');
-          }
-          console.log('Message sent: %s', info.messageId);
-          res.status(200).send({ message: 'OTP sent to your email' });
-      });
-  });
-  
-  app.post('/verify-otp', (req, res) => {
-      const { email, otp } = req.body;
-  
-      if (otpStore[email] === otp) {
-          delete otpStore[email]; // Remove OTP after successful verification
-          res.status(200).send({ message: 'OTP verified successfully' });
-      } else {
-          res.status(400).send({ message: 'Invalid OTP' });
-      }
-  });
-
-const transporter = nodemailer.createTransport({
-  host: 'smtp.ethereal.email',
-  port: 587,
-  auth: {
-      user: 'carmine.okeefe@ethereal.email',
-      pass: 'WCeu16RtMyUEaEgHNd'
-  }
 });
-
-let otpStore = {};
-
 
 // Login route
 app.post("/login", async (req, res) => {

@@ -39,6 +39,7 @@
             <li id="account-option"><a href="login.html">Accounts</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="admin.html">Admin Panel</a></li>
+            <li id="logout-link" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
         </ul>
     </nav>
 </header>
@@ -266,6 +267,30 @@
         </div>
     </footer>
     <script src="app.js"></script>
+    <script>
+        // Function to update navbar based on login status
+        function updateNavbar() {
+            const logoutLink = document.getElementById('logout-link');
+            const accountOption = document.getElementById('account-option');
+    
+            if (isAuthenticated()) {
+                logoutLink.style.display = 'block'; // Show logout link
+                accountOption.style.display = 'none'; // Hide login option
+            } else {
+                logoutLink.style.display = 'none'; // Hide logout link
+                accountOption.style.display = 'block'; // Show login option
+            }
+        }
+    
+        // Function to logout
+        function logout() {
+            clearToken(); // Clear the session token
+            window.location.href = 'login.html'; // Redirect to login page
+        }
+    
+        // Call updateNavbar initially to set the initial state based on login status
+        updateNavbar();
+    </script>
 </body>
 
 </html>

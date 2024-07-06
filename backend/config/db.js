@@ -23,26 +23,3 @@ connection.connect((err) => {
   console.log("Connected to MySQL");
 });
 
-
-// const mysql = require('mysql');
-// require('dotenv').config();
-
-// const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'users',
-// });
-
-// connection.connect(function(error){
-// 	if(error)
-// 	{
-// 		throw error;
-// 	}
-// 	else
-// 	{
-// 		console.log('MySQL Database is connected Successfully');
-// 	}
-// });
-
-// module.exports = connection;
